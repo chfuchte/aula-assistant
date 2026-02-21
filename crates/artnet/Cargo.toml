@@ -1,0 +1,11 @@
+[package]
+name = "artnet"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "tiny implementation of the Art-Net protocol to fulfill basic needs for sending DMX data over UDP"
+authors = ["Christian Fuchte <christian.fuchte@grb-online.net>"]
+
+[dependencies]

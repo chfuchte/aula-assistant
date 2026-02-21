@@ -1,0 +1,12 @@
+[package]
+name = "x32osc"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "a tiny implementation of all needed features of the Behringer X32's OSC protocol"
+authors = ["Christian Fuchte <christian.fuchte@grb-online.net>"]
+
+[dependencies]
+rosc = "0.11"
