@@ -5,6 +5,7 @@ edition.workspace = true
 publish.workspace = true
 repository.workspace = true
 homepage.workspace = true
+documentation.workspace = true
 description = "a tiny implementation of all needed features of the Behringer X32's OSC protocol"
 authors = ["Christian Fuchte <christian.fuchte@grb-online.net>"]
 

@@ -1,13 +1,26 @@
 [workspace]
-members = [
-    "crates/*",
-    "src-tauri",
-]
 resolver = "3"
+members = [
+    "src-tauri",
+    "crates/artnet",
+    "crates/cli",
+    "crates/x32osc",
+    "crates/ptmahdbt42",
+    "crates/windows",
+]
+default-members = ["src-tauri"]
 
 [workspace.package]
 repository = "https://github.com/chfuchte/aula-assistant"
-homepage = "https://github.com/chfuchte/aula-assistant"
+homepage = "https://chfuchte.github.io/aula-assistant"
+documentation = "https://chfuchte.github.io/aula-assistant/docs"
 license = "GPL-3.0-or-later"
 edition = "2024"
 publish = false
+
+[workspace.dependencies]
+artnet = { path = "crates/artnet" }
+cli = { path = "crates/cli" }
+x32osc = { path = "crates/x32osc" }
+ptmahdbt42 = { path = "crates/ptmahdbt42" }
+windows = { path = "crates/windows" }

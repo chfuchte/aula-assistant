@@ -26,14 +26,14 @@ export function MenuAppBar() {
     const { isWindowMaximized, minimizeWindow, maximizeWindow, unmaximizeWindow, toggleMaximizeWindow, closeWindow } =
         useWindow();
     const startUpData = useStartupData();
-    const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+    const [isFullscreen, setIsFullscreen] = useState<boolean>(startUpData.open_in_fullscreen);
 
-    const toggleFullscreen = () => {
+    const toggleFullscreen = async () => {
         if (isFullscreen) {
-            unmaximizeWindow();
+            await unmaximizeWindow();
             setIsFullscreen(false);
         } else {
-            maximizeWindow();
+            await maximizeWindow();
             setIsFullscreen(true);
         }
     };
@@ -68,11 +68,11 @@ OS: ${os_info.platform()} ${os_info.arch()} ${os_info.version()}`,
     });
 
     useEffect(() => {
-        if (startUpData.open_in_fullscreen) {
-            maximizeWindow();
-            setIsFullscreen(true);
-        }
-    }, [startUpData]);
+        if (!startUpData.open_in_fullscreen) return;
+        maximizeWindow();
+        // this should only run once on startup
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <header

@@ -5,6 +5,7 @@ edition.workspace = true
 publish.workspace = true
 repository.workspace = true
 homepage.workspace = true
+documentation.workspace = true
 description = "a user-friendly media control system used in the Gymnasium Riedberg auditorium."
 authors = ["Christian Fuchte <christian.fuchte@grb-online.net>"]
 
@@ -17,10 +18,10 @@ tauri-build = { version = "2", features = [] }
 chrono = "0.4"
 
 [dependencies]
-artnet = { path = "../crates/artnet" }
-cli = { path = "../crates/cli" }
-x32osc = { path = "../crates/x32osc" }
-ptmahdbt42 = { path = "../crates/ptmahdbt42" }
+artnet = { workspace = true }
+cli = { workspace = true }
+x32osc = { workspace = true }
+ptmahdbt42 = { workspace = true }
 tauri = { version = "2", features = [] }
 tauri-plugin-opener = "2"
 serde = { version = "1", features = ["derive"] }
@@ -32,7 +33,7 @@ tauri-plugin-dialog = "2"
 tauri-plugin-os = "2"
 
 [target.'cfg(windows)'.dependencies]
-windows = { path = "../crates/windows" }
+windows = { workspace = true }
 
 [target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
 tauri-plugin-single-instance = "2"
