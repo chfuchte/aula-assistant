@@ -3,8 +3,9 @@ use artnet::create_artnet_socket;
 use std::{
     collections::HashMap,
     net::{SocketAddr, UdpSocket},
-    sync::Mutex,
+    sync::{Arc, Mutex},
 };
+use x32osc::create_x32osc_socket;
 
 pub struct AppStateBuilder {
     show_appbar: Option<bool>,
@@ -17,6 +18,8 @@ pub struct AppStateBuilder {
     lighting_scenes: HashMap<String, Vec<Option<u8>>>,
     ptmahdbt42_host: Option<String>,
     ptmahdbt42_port: Option<u16>,
+    x32osc_bind: Option<SocketAddr>,
+    x32osc_target: Option<SocketAddr>,
 }
 
 impl AppStateBuilder {
@@ -32,6 +35,8 @@ impl AppStateBuilder {
             lighting_scenes: HashMap::new(),
             ptmahdbt42_host: None,
             ptmahdbt42_port: None,
+            x32osc_bind: None,
+            x32osc_target: None,
         }
     }
 
@@ -67,6 +72,11 @@ impl AppStateBuilder {
             .expect("failed to create artnet socket"),
             ptmahdbt42_host: self.ptmahdbt42_host.expect("ptmahdbt42_host must be set"),
             ptmahdbt42_port: self.ptmahdbt42_port.expect("ptmahdbt42_port must be set"),
+            x32_socket: Arc::new(
+                create_x32osc_socket(self.x32osc_bind.expect("x32osc_bind must be set"))
+                    .expect("failed to create x32osc socket"),
+            ),
+            x32_target: self.x32osc_target.expect("x32osc_target must be set"),
         }
     }
 }
@@ -136,6 +146,21 @@ impl TakeFrom<&FileConfig> for AppStateBuilder {
 
         self.ptmahdbt42_host = Some(config.hdmimatrix().host().to_string());
         self.ptmahdbt42_port = config.hdmimatrix().port().or(Some(80));
+
+        self.x32osc_target = Some(
+            config
+                .x32()
+                .target()
+                .parse()
+                .expect("failed to parse x32 target address"),
+        );
+        self.x32osc_bind = Some(
+            config
+                .x32()
+                .bind()
+                .parse()
+                .expect("failed to parse x32 bind address"),
+        );
     }
 }
 
@@ -154,6 +179,9 @@ pub struct AppState {
     // hdmi matrix
     ptmahdbt42_host: String,
     ptmahdbt42_port: u16,
+    // x32
+    x32_socket: Arc<UdpSocket>,
+    x32_target: SocketAddr,
 }
 
 impl AppState {
@@ -195,5 +223,13 @@ impl AppState {
 
     pub fn ptmahdbt42_port(&self) -> u16 {
         self.ptmahdbt42_port
+    }
+
+    pub fn x32_socket(&self) -> Arc<UdpSocket> {
+        Arc::clone(&self.x32_socket)
+    }
+
+    pub fn x32_target(&self) -> &SocketAddr {
+        &self.x32_target
     }
 }
