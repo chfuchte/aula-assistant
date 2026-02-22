@@ -6,8 +6,8 @@ members = [
 resolver = "3"
 
 [workspace.package]
-repository = "https://github.com/grb-technik/aula-assistant"
-homepage = "https://github.com/grb-technik/aula-assistant"
+repository = "https://github.com/chfuchte/aula-assistant"
+homepage = "https://github.com/chfuchte/aula-assistant"
 license = "GPL-3.0-or-later"
 edition = "2024"
 publish = false

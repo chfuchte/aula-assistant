@@ -2,7 +2,7 @@
     "$schema": "https://schema.tauri.app/config/2",
     "productName": "aula-assistant",
     "version": "0.1.0",
-    "identifier": "com.github.grb-technik.aula-assistant",
+    "identifier": "com.github.chfuchte.aula-assistant",
     "build": {
         "beforeDevCommand": "pnpm dev",
         "devUrl": "http://localhost:1420",
@@ -20,21 +20,23 @@
                 "focus": true,
                 "theme": "Dark",
                 "decorations": false,
-                "tabbingIdentifier": "grb-technik.aula-assistant",
+                "incognito": true,
+                "tabbingIdentifier": "chfuchte.aula-assistant",
                 "devtools": false,
                 "browserExtensionsEnabled": false
             }
         ],
+        "enableGTKAppId": true,
         "security": {
             "csp": null
         }
     },
     "bundle": {
-        "copyright": "Copyright © 2026 ATec Gymnasium Riedberg",
-        "publisher": "ATec Gymnasium Riedberg",
+        "copyright": "Copyright © 2026 Christian Fuchte",
+        "publisher": "Christian Fuchte",
         "license": "GNU GPLv3",
         "category": "Utility",
-        "homepage": "https://github.com/grb-technik/aula-assistant",
+        "homepage": "https://github.com/chfuchte/aula-assistant",
         "licenseFile": "../LICENSE.txt",
         "active": true,
         "targets": ["msi", "deb"],

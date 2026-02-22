@@ -4,8 +4,13 @@ Thanks for your interest in contributing! Your help is greatly appreciated.
 
 ## Prerequisites
 
-Ensure you have the latest version of [Rust](https://www.rust-lang.org/tools/install) and [Node](https://nodejs.org/en/download) installed.
-[Git](https://git-scm.com/downloads) and [pnpm]https://pnpm.io/installation) are needed as well.
+Before you start contributing, please make sure you have the following installed on your system:
+
+- [Git](https://git-scm.com/downloads)
+- [Rust](https://www.rust-lang.org/tools/install)
+- [Node.js](https://nodejs.org/en/download)
+- [pnpm](https://pnpm.io/installation)
+- [Tauri Prerequisites](https://tauri.app/start/prerequisites) for your platform
 
 ## How to Contribute
 
@@ -13,16 +18,14 @@ Ensure you have the latest version of [Rust](https://www.rust-lang.org/tools/ins
 2. [Clone] (https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) it to your local machine.
 3. Have fun coding! Make your changes and commit them with clear messages.
 4. Ensure your code passes all tests and adheres to the project's coding standards.
-5. Create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) to [this](https://github.com/grb-technik/aula-assistant) repository. Describe your changes clearly and reference any relevant issues or discussions.
+5. Create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) to [this](https://github.com/chfuchte/aula-assistant) repository. Describe your changes clearly and reference any relevant issues or discussions.
 
-## Additional Notes
-
-### Target Hardware and Environment
+## Target Hardware and Environment
 
 This software is primarily designed to run on a Raspberry Pi equipped with a 7" capacitive touch display (resolution: 800×480) in tablet mode. The default window size is set accordingly to reflect the constraints of the Raspberry Pi display.
 However, the interface shall be responsive and should work well on laptops or other screen sizes too.
 
-Because the target environment relies on touch input (often less precise than a mouse) all ui elements must be designed to function without the need for a keyboard or an external mouse.
+Because the target environment relies on touch input (often less precise than a mouse) all ui elements must be designed to work without the need for a keyboard or any other external input device.
 
 ### Network
 

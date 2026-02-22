@@ -3,18 +3,6 @@ import { useWindow } from "@/contexts/window";
 import { CloseWindowIcon, MaximizeRestoreWindowIcon, MaximizeWindowIcon, MinimizeWindowIcon } from "@/components/icons";
 import { JSX } from "react";
 
-const TraficLightIconBtn = (props: JSX.IntrinsicAttributes & React.ComponentProps<"button">) => (
-    <button
-        tabIndex={-1}
-        {...props}
-        className={cn(
-            "inline-flex h-full w-11.5 cursor-default items-center justify-center rounded-none bg-transparent text-black/90 dark:text-white",
-            props.className,
-        )}>
-        {props.children}
-    </button>
-);
-
 export function TraficLights({ className }: { className?: string }) {
     const { isWindowMaximized, minimizeWindow, toggleMaximizeWindow, closeWindow } = useWindow();
 
@@ -40,5 +28,19 @@ export function TraficLights({ className }: { className?: string }) {
                 <CloseWindowIcon className="fill-foreground" fillOpacity="0.8956" />
             </TraficLightIconBtn>
         </div>
+    );
+}
+
+function TraficLightIconBtn(props: JSX.IntrinsicAttributes & React.ComponentProps<"button">) {
+    return (
+        <button
+            tabIndex={-1}
+            {...props}
+            className={cn(
+                "inline-flex h-full w-11.5 cursor-default items-center justify-center rounded-none bg-transparent text-black/90 dark:text-white",
+                props.className,
+            )}>
+            {props.children}
+        </button>
     );
 }

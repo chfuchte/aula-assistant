@@ -114,6 +114,7 @@
     * {
         @apply border-border outline-ring/50 select-none;
     }
+
     html,
     body {
         @apply bg-background text-foreground;

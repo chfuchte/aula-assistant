@@ -14,7 +14,7 @@ import {
     ContextMenuItem,
     ContextMenuShortcut,
 } from "@/components/ui/context-menu";
-import { TraficLights } from "./trafic-lights";
+import { TraficLights } from "../trafic-lights";
 import { useWindow } from "@/contexts/window";
 import { useEffect, useState } from "react";
 import * as os_info from "@tauri-apps/plugin-os";
@@ -77,7 +77,7 @@ OS: ${os_info.platform()} ${os_info.arch()} ${os_info.version()}`,
     return (
         <header
             data-tauri-drag-region
-            className="bg-background fixed top-0 right-0 left-0 z-50 flex h-10 items-center border-b py-2 pl-2 text-neutral-200">
+            className="bg-background text-muted-foreground fixed top-0 right-0 left-0 z-50 flex h-10 items-center border-b py-2 pl-2">
             <ContextMenu>
                 <ContextMenuTrigger>
                     <img src="/favicon.ico" className="aspect-square h-6" />
@@ -125,7 +125,7 @@ OS: ${os_info.platform()} ${os_info.arch()} ${os_info.version()}`,
                         <a
                             target="_blank"
                             rel="noreferrer"
-                            href="https://github.com/grb-technik/aula-assistant/blob/master/CHANGELOG.md">
+                            href="https://github.com/chfuchte/aula-assistant/blob/master/CHANGELOG.md">
                             <MenubarItem>Show Release Notes</MenubarItem>
                         </a>
 
@@ -134,7 +134,7 @@ OS: ${os_info.platform()} ${os_info.arch()} ${os_info.version()}`,
                         <a
                             target="_blank"
                             rel="noreferrer"
-                            href="https://github.com/grb-technik/aula-assistant/issues/new/choose">
+                            href="https://github.com/chfuchte/aula-assistant/issues/new/choose">
                             <MenubarItem>Report Issue</MenubarItem>
                         </a>
 
@@ -143,16 +143,13 @@ OS: ${os_info.platform()} ${os_info.arch()} ${os_info.version()}`,
                         <a
                             target="_blank"
                             rel="noreferrer"
-                            href="https://github.com/grb-technik/aula-assistant/blob/master/LICENSE.txt">
+                            href="https://github.com/chfuchte/aula-assistant/blob/master/LICENSE.txt">
                             <MenubarItem>View License</MenubarItem>
                         </a>
 
                         <MenubarSeparator />
 
-                        <a
-                            target="_blank"
-                            rel="noreferrer"
-                            href="https://github.com/grb-technik/aula-assistant/releases">
+                        <a target="_blank" rel="noreferrer" href="https://github.com/chfuchte/aula-assistant/releases">
                             <MenubarItem>Check for Updates</MenubarItem>
                         </a>
 
