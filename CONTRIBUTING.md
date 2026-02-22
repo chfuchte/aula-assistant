@@ -15,7 +15,7 @@ Before you start contributing, please make sure you have the following installed
 ## How to Contribute
 
 1. [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository.
-2. [Clone] (https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) it to your local machine.
+2. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) it to your local machine.
 3. Have fun coding! Make your changes and commit them with clear messages.
 4. Ensure your code passes all tests and adheres to the project's coding standards.
 5. Create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) to [this](https://github.com/chfuchte/aula-assistant) repository. Describe your changes clearly and reference any relevant issues or discussions.
