@@ -5,6 +5,7 @@ edition.workspace = true
 publish.workspace = true
 repository.workspace = true
 homepage.workspace = true
+documentation.workspace = true
 description = "aula_assistant's command line interface"
 authors = ["Christian Fuchte <christian.fuchte@grb-online.net>"]
 

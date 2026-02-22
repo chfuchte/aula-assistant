@@ -29,7 +29,7 @@ export const StartupDataProvider: React.FC<{ children: React.ReactNode }> = ({ c
             const delay = new Promise((resolve) => setTimeout(resolve, 1000)); // 1 second delay to show splash screen
             const fetchStartupData = tryCatch(invoke<StartupDataType>("get_startup_data"));
 
-            const [_, result] = await Promise.all([delay, fetchStartupData]);
+            const [, result] = await Promise.all([delay, fetchStartupData]);
 
             if (result.error) {
                 error(`failed to retrieve startup data: failed to invoke get_startup_data: ${result.error.message}`);

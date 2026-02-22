@@ -2,6 +2,7 @@ import { ViewButton } from "@/components/view-button";
 import { BackArrowIcon, LockIcon, SupportIcon } from "@/components/icons";
 import { ViewLocation } from "..";
 import { ViewCard } from "@/components/view-card";
+import { DocsQRCode } from "@/components/docs-qr-code";
 
 export function HelpView({ onLocationSwitch }: { onLocationSwitch: (to: ViewLocation) => void }) {
     return (
@@ -13,12 +14,7 @@ export function HelpView({ onLocationSwitch }: { onLocationSwitch: (to: ViewLoca
                 onClick={() => onLocationSwitch("start")}
             />
             <ViewCard>
-                <div
-                    className="aspect-square h-full bg-contain bg-center bg-no-repeat max-sm:h-40"
-                    style={{
-                        backgroundImage: "url('/qrcode_docs.svg')",
-                    }}
-                />
+                <DocsQRCode className="max-sm:h-40" />
                 <span className="-mb-2 text-center">View Documentation</span>
             </ViewCard>
             <ViewButton

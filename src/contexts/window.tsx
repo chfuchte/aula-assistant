@@ -30,72 +30,74 @@ export const WindowProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         setIsWindowMaximized(result.data);
     }, [appWindow]);
 
-    const minimizeWindow = async () => {
-        if (appWindow) {
-            const result = await tryCatch(appWindow.minimize());
-            if (result.error) {
-                error(`failed to minimize window: ${result.error}`);
-                toast.error("Failed to minimize window.");
-                return;
-            }
-        }
-    };
+    const minimizeWindow = useCallback(async () => {
+        if (!appWindow) return;
 
-    const toggleMaximizeWindow = async () => {
-        if (appWindow) {
-            const result = await tryCatch(appWindow.toggleMaximize());
-            if (result.error) {
-                error(`failed to toggle maximize window: ${result.error}`);
-                toast.error("Failed to toggle maximize window.");
-                return;
-            }
+        const result = await tryCatch(appWindow.minimize());
+        if (result.error) {
+            error(`failed to minimize window: ${result.error}`);
+            toast.error("Failed to minimize window.");
+            return;
         }
-    };
+    }, [appWindow]);
 
-    const maximizeWindow = async () => {
-        if (appWindow) {
-            const result = await tryCatch(appWindow.maximize());
-            if (result.error) {
-                error(`failed to maximize window: ${result.error}`);
-                toast.error("Failed to maximize window.");
-                return;
-            }
-        }
-    };
+    const toggleMaximizeWindow = useCallback(async () => {
+        if (!appWindow) return;
 
-    const unmaximizeWindow = async () => {
-        if (appWindow) {
-            const result = await tryCatch(appWindow.unmaximize());
-            if (result.error) {
-                error(`failed to unmaximize window: ${result.error}`);
-                toast.error("Failed to unmaximize window.");
-                return;
-            }
+        const result = await tryCatch(appWindow.toggleMaximize());
+        if (result.error) {
+            error(`failed to toggle maximize window: ${result.error}`);
+            toast.error("Failed to toggle maximize window.");
+            return;
         }
-    };
+    }, [appWindow]);
 
-    const closeWindow = async () => {
-        if (appWindow) {
-            const result = await tryCatch(appWindow.close());
-            if (result.error) {
-                error(`failed to close window: ${result.error}`);
-                toast.error("Failed to close window.");
-                return;
-            }
+    const maximizeWindow = useCallback(async () => {
+        if (!appWindow) return;
+
+        const result = await tryCatch(appWindow.maximize());
+        if (result.error) {
+            error(`failed to maximize window: ${result.error}`);
+            toast.error("Failed to maximize window.");
+            return;
         }
-    };
+    }, [appWindow]);
+
+    const unmaximizeWindow = useCallback(async () => {
+        if (!appWindow) return;
+
+        const result = await tryCatch(appWindow.unmaximize());
+        if (result.error) {
+            error(`failed to unmaximize window: ${result.error}`);
+            toast.error("Failed to unmaximize window.");
+            return;
+        }
+    }, [appWindow]);
+
+    const closeWindow = useCallback(async () => {
+        if (!appWindow) return;
+
+        const result = await tryCatch(appWindow.close());
+        if (result.error) {
+            error(`failed to close window: ${result.error}`);
+            toast.error("Failed to close window.");
+            return;
+        }
+    }, [appWindow]);
 
     useEffect(() => {
-        updateIsWindowMaximized();
-
         let unlisten: () => void = () => {};
+
         const listen = async () => {
-            unlisten = await appWindow.onResized(() => {
-                updateIsWindowMaximized();
+            await updateIsWindowMaximized();
+
+            unlisten = await appWindow.onResized(async () => {
+                await updateIsWindowMaximized();
             });
         };
 
         listen();
+
         return () => unlisten?.();
     }, [appWindow, updateIsWindowMaximized]);
 

@@ -1,7 +1,5 @@
+node_modules/
+dist/
+target/
+.vscode/
 pnpm-debug.log*
-target
-node_modules
-dist
-.vscode
-.idea
-.DS_Store

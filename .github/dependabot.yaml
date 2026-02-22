@@ -7,7 +7,6 @@ updates:
       labels:
           - "dependencies"
       open-pull-requests-limit: 5
-
     - package-ecosystem: "cargo"
       directory: "/"
       schedule:
@@ -15,7 +14,6 @@ updates:
       labels:
           - "dependencies"
       open-pull-requests-limit: 5
-
     - package-ecosystem: "npm"
       directory: "/"
       schedule:

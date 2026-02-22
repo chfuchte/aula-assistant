@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/grb-technik/aula-assistant/refs/heads/master/etc/config.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/chfuchte/aula-assistant/refs/heads/master/etc/config.schema.json
 
 defaults:
     tablet_mode: false
