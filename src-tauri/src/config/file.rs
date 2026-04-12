@@ -14,6 +14,7 @@ pub struct FileConfig {
     defaults: Defaults,
     lighting: Lighting,
     hdmimatrix: HDMIMatrix,
+    x32: X32,
 }
 
 impl FileConfig {
@@ -32,6 +33,10 @@ impl FileConfig {
     pub fn hdmimatrix(&self) -> &HDMIMatrix {
         &self.hdmimatrix
     }
+
+    pub fn x32(&self) -> &X32 {
+        &self.x32
+    }
 }
 
 impl Validate for FileConfig {
@@ -40,6 +45,7 @@ impl Validate for FileConfig {
         self.security.validate()?;
         self.lighting.validate()?;
         self.hdmimatrix.validate()?;
+        self.x32.validate()?;
         Ok(())
     }
 }
@@ -65,8 +71,12 @@ impl Default for FileConfig {
                 scenes: HashMap::new(),
             },
             hdmimatrix: HDMIMatrix {
-                host: "".to_string(),
+                host: "127.0.0.1".to_string(),
                 port: None,
+            },
+            x32: X32 {
+                bind: "127.0.0.1:10024".to_string(),
+                target: "127.0.0.1:10024".to_string(),
             },
         }
     }
@@ -367,5 +377,40 @@ impl HDMIMatrix {
 
     pub fn port(&self) -> Option<u16> {
         self.port
+    }
+}
+
+#[derive(Deserialize, Debug, Clone, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct X32 {
+    bind: String,
+    target: String,
+}
+
+impl Validate for X32 {
+    fn validate(&self) -> Result<(), FileValidationError> {
+        if !self.bind().parse::<std::net::SocketAddr>().is_ok() {
+            return Err(FileValidationError::X32BindInvalid(
+                "x32 bind must be a valid IP:PORT socket address".to_string(),
+            ));
+        }
+
+        if !self.target().parse::<std::net::SocketAddr>().is_ok() {
+            return Err(FileValidationError::X32TargetInvalid(
+                "x32 target must be a valid IP:PORT socket address".to_string(),
+            ));
+        }
+
+        Ok(())
+    }
+}
+
+impl X32 {
+    pub fn bind(&self) -> &str {
+        &self.bind
+    }
+
+    pub fn target(&self) -> &str {
+        &self.target
     }
 }

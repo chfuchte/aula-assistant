@@ -54,6 +54,8 @@ pub enum FileValidationError {
     PatchedFixtureTypeInvalid(String),
     SceneSetInvalid(String),
     HDMIMatrixHostInvalid(String),
+    X32TargetInvalid(String),
+    X32BindInvalid(String),
 }
 
 impl std::fmt::Display for FileValidationError {
@@ -82,6 +84,12 @@ impl std::fmt::Display for FileValidationError {
                 }
                 FileValidationError::HDMIMatrixHostInvalid(str) => {
                     format!("hdmi_matrix.host is invalid: {}", str)
+                }
+                FileValidationError::X32TargetInvalid(str) => {
+                    format!("x32.target is invalid: {}", str)
+                }
+                FileValidationError::X32BindInvalid(str) => {
+                    format!("x32.bind is invalid: {}", str)
                 }
             }
         )

@@ -38,16 +38,14 @@
                     "type": "object",
                     "properties": {
                         "bind": {
-                            "type": "string",
-                            "default": "0.0.0.0:6454"
+                            "type": "string"
                         },
                         "broadcast": {
                             "type": "boolean",
                             "default": true
                         },
                         "target": {
-                            "type": "string",
-                            "default": "255.255.255.255:6454"
+                            "type": "string"
                         },
                         "universe": {
                             "type": "integer",
@@ -157,10 +155,32 @@
                     "type": "integer",
                     "minimum": 1,
                     "maximum": 65535,
-                    "description": "TCP port for controlling the matrix device (default 80)"
+                    "description": "TCP port for controlling the matrix device (default 80)",
+                    "default": 80
                 }
             },
             "required": ["host"],
+            "additionalProperties": false
+        },
+        "x32": {
+            "type": "object",
+            "properties": {
+                "osc": {
+                    "type": "object",
+                    "properties": {
+                        "bind": {
+                            "type": "string",
+                            "default": "0.0.0.0:10023"
+                        },
+                        "target": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["target"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["osc"],
             "additionalProperties": false
         }
     },

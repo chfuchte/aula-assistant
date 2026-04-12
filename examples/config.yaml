@@ -50,3 +50,7 @@ lighting:
 hdmimatrix:
     host: 127.0.0.1
     port: 80
+
+x32:
+    bind: 0.0.0.0:10024
+    target: 192.168.178.120:10023

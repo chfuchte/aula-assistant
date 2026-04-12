@@ -1,4 +1,5 @@
 use crate::{
+    commands::x32::register_x32osc_listeners,
     config::RuntimeConfig,
     state::{AppStateBuilder, TakeFrom},
 };
@@ -55,9 +56,11 @@ pub fn run(runtime_config: RuntimeConfig) -> tauri::Result<()> {
             app_state_builder.take_from(&runtime_config);
             app_state_builder.take_from(&file_config);
 
-            let state = app_state_builder.build();
+            let state = Mutex::new(app_state_builder.build());
 
-            app.manage(Mutex::new(state));
+            register_x32osc_listeners(&state);
+
+            app.manage(state);
 
             Ok(())
         })
