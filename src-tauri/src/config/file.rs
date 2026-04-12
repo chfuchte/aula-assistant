@@ -71,12 +71,12 @@ impl Default for FileConfig {
                 scenes: HashMap::new(),
             },
             hdmimatrix: HDMIMatrix {
-                host: "".to_string(),
+                host: "127.0.0.1".to_string(),
                 port: None,
             },
             x32: X32 {
-                bind: "".to_string(),
-                target: "".to_string(),
+                bind: "127.0.0.1:10024".to_string(),
+                target: "127.0.0.1:10024".to_string(),
             },
         }
     }
