@@ -75,8 +75,10 @@ impl Default for FileConfig {
                 port: None,
             },
             x32: X32 {
-                bind: "127.0.0.1:10024".to_string(),
-                target: "127.0.0.1:10024".to_string(),
+                osc: X32Osc {
+                    bind: "127.0.0.1:10024".to_string(),
+                    target: "127.0.0.1:10023".to_string(),
+                }
             },
         }
     }
@@ -383,11 +385,31 @@ impl HDMIMatrix {
 #[derive(Deserialize, Debug, Clone, Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct X32 {
+    osc: X32Osc,
+}
+
+impl Validate for X32 {
+    fn validate(&self) -> Result<(), FileValidationError> {
+        self.osc().validate()?;
+
+        Ok(())
+    }
+}
+
+impl X32 {
+    pub fn osc(&self) -> &X32Osc {
+        &self.osc
+    }
+}
+
+#[derive(Deserialize, Debug, Clone, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct X32Osc {
     bind: String,
     target: String,
 }
 
-impl Validate for X32 {
+impl Validate for X32Osc {
     fn validate(&self) -> Result<(), FileValidationError> {
         if !self.bind().parse::<std::net::SocketAddr>().is_ok() {
             return Err(FileValidationError::X32BindInvalid(
@@ -405,7 +427,7 @@ impl Validate for X32 {
     }
 }
 
-impl X32 {
+impl X32Osc {
     pub fn bind(&self) -> &str {
         &self.bind
     }

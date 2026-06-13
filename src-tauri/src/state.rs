@@ -150,6 +150,7 @@ impl TakeFrom<&FileConfig> for AppStateBuilder {
         self.x32osc_target = Some(
             config
                 .x32()
+                .osc()
                 .target()
                 .parse()
                 .expect("failed to parse x32 target address"),
@@ -157,6 +158,7 @@ impl TakeFrom<&FileConfig> for AppStateBuilder {
         self.x32osc_bind = Some(
             config
                 .x32()
+                .osc()
                 .bind()
                 .parse()
                 .expect("failed to parse x32 bind address"),
