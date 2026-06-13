@@ -52,5 +52,6 @@ hdmimatrix:
     port: 80
 
 x32:
+  osc:
     bind: 0.0.0.0:10024
     target: 192.168.178.120:10023
