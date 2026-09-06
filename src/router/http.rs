@@ -1,5 +1,6 @@
 use axum::{Json, extract::State, http::StatusCode, response::IntoResponse};
 use serde::Serialize;
+use tracing::error;
 
 use crate::router::router::SharedService;
 
@@ -21,7 +22,10 @@ pub(super) async fn post_beamer_on(State(service): State<SharedService>) -> impl
 
     match service.beamer_power_on().await {
         Ok(()) => StatusCode::OK,
-        Err(_) => StatusCode::INTERNAL_SERVER_ERROR,
+        Err(e) => {
+            error!("Failed to turn on beamer: {}", e);
+            StatusCode::INTERNAL_SERVER_ERROR
+        }
     }
 }
 
@@ -30,6 +34,9 @@ pub(super) async fn post_beamer_off(State(service): State<SharedService>) -> imp
 
     match service.beamer_power_off().await {
         Ok(()) => StatusCode::OK,
-        Err(_) => StatusCode::INTERNAL_SERVER_ERROR,
+        Err(e) => {
+            error!("Failed to turn off beamer: {}", e);
+            StatusCode::INTERNAL_SERVER_ERROR
+        }
     }
 }

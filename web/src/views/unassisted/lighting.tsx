@@ -1,8 +1,9 @@
 import { GridButton } from "@/components/grid-button";
 import { View } from "@/components/view";
+import { useData } from "@/hooks/data";
 
 export function UnassistedLightingView() {
-    const scenes = [
+    /* const scenes = [
         {
             name: "Strom An",
             description: "Lichtanlage einschalten",
@@ -39,14 +40,16 @@ export function UnassistedLightingView() {
             name: "Disko",
             description: "Buntes Diskolicht",
         },
-    ];
+    ]; */
+
+    const { lightingScenes } = useData();
 
     return (
         <View className="grid-cols-3 grid-rows-3">
-            {scenes.map((scene, key) => (
+            {lightingScenes.map((scene, key) => (
                 <GridButton key={key} onClick={() => {}}>
-                    <GridButton.Label>{scene.name}</GridButton.Label>
-                    <GridButton.Description>{scene.description}</GridButton.Description>
+                    <GridButton.Label>{scene}</GridButton.Label>
+                    {/* <GridButton.Description>{scene.description}</GridButton.Description> */}
                 </GridButton>
             ))}
         </View>

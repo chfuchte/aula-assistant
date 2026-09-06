@@ -10,7 +10,9 @@ export type RouterViewKey =
     | "unassisted:beamer"
     | "unassisted:lighting"
     // help pages
-    | "help:generic";
+    | "help:generic"
+    // error pages
+    | "error:fatal";
 
 interface Router {
     currentView: RouterViewKey;
@@ -18,6 +20,7 @@ interface Router {
     navigate: (view: RouterViewKey) => void;
     push: (view: RouterViewKey) => void;
     pop: () => void;
+    clearHistory: () => void;
 }
 
 const RouterContext = createContext<Router | undefined>(undefined);
@@ -59,6 +62,13 @@ export function RouterProvider({ children }: { children: React.ReactNode }) {
         });
     };
 
+    const clearHistory = () => {
+        setState((prev) => ({
+            currentView: prev.currentView,
+            history: new Set(),
+        }));
+    };
+
     return (
         <RouterContext.Provider
             value={{
@@ -67,6 +77,7 @@ export function RouterProvider({ children }: { children: React.ReactNode }) {
                 push,
                 pop,
                 navigate,
+                clearHistory,
             }}>
             {children}
         </RouterContext.Provider>

@@ -6,6 +6,7 @@ import { GenericHelpView } from "@/views/help/generic";
 import { SettingsView } from "@/views/settings";
 import { SplashScreen } from "@/views/splashscreen";
 import { ArrowLeft, CircleQuestionMark, Cog } from "lucide-react";
+import { FatalErrorView } from "./views/error/fatal";
 import { UnassistedAudioView } from "./views/unassisted/audio";
 import { UnassistedBeamerView } from "./views/unassisted/beamer";
 import { UnassistedDefaultView } from "./views/unassisted/default";
@@ -92,6 +93,17 @@ const views: Record<RouterViewKey, View> = {
     "help:generic": {
         component: <GenericHelpView />,
         title: "Hilfeseite",
+        options: {
+            fullscreen: false,
+            navigation: {
+                root: false,
+            },
+            help: null,
+        },
+    },
+    "error:fatal": {
+        component: <FatalErrorView />,
+        title: "Unexpected Error",
         options: {
             fullscreen: false,
             navigation: {

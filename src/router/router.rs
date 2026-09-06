@@ -20,10 +20,10 @@ pub(crate) async fn run_web_server(port: u16, service: AulaAssistantService) -> 
 
     let app = Router::new()
         // beamer
-        .route("/beamer/on", post(http::post_beamer_on))
-        .route("/beamer/off", post(http::post_beamer_off))
+        .route("/api/beamer/on", post(http::post_beamer_on))
+        .route("/api/beamer/off", post(http::post_beamer_off))
         // lighting
-        .route("/lighting/scenes", get(http::get_lighting_scenes))
+        .route("/api/lighting/scenes", get(http::get_lighting_scenes))
         // websockets
         .route("/ws", any(ws::handler))
         // frontend assets

@@ -5,6 +5,26 @@ fn main() {
     } else {
         eprintln!("cargo:warning=Failed to retrieve git commit information");
     }
+
+    build_frontend();
+}
+
+fn build_frontend() {
+    let pnpm = if cfg!(target_os = "windows") {
+        "pnpm.cmd"
+    } else {
+        "pnpm"
+    };
+
+    let status = std::process::Command::new(pnpm)
+        .args(["run", "build"])
+        .current_dir("web")
+        .status()
+        .expect("Failed to execute pnpm build command");
+
+    if !status.success() {
+        panic!("Frontend build failed with status: {}", status);
+    }
 }
 
 fn get_commit_information() -> Option<(String, String)> {
