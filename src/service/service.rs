@@ -46,7 +46,7 @@ impl AulaAssistantService {
             artnet_socket,
             artnet_target_addr: config.lighting().target().to_socket_addr()?,
             artnet_data: vec![[0; 512]; config.lighting().max_universe() as usize + 1],
-            artnet_scenes: config.lighting().try_into()?,
+            artnet_scenes: config.lighting().into(),
             osc_socket,
             osc_target_addr: config.audio().target().to_socket_addr()?,
             beamer_target_addr: config.beamer().target().to_socket_addr()?,
@@ -114,7 +114,7 @@ impl AulaAssistantService {
     async fn send_beamer_command(&self, command: ptmahdbt42::BeamerCommand) -> Result<()> {
         let request = ptmahdbt42::Request::new(
             self.beamer_target_addr,
-            ptmahdbt42::Method::POST,
+            ptmahdbt42::Method::Post,
             "/cgi-bin/MMX32_Keyvalue.cgi".to_string(),
             HashMap::new(),
             Some(ptmahdbt42::Body::String(command.to_string())),
@@ -181,7 +181,7 @@ impl From<&LightingConfig> for Vec<ArtNetScene> {
                 scene_data.push(vec![(universe, channel, fixture_state.value())]);
             }
 
-            scenes.push((scene.name().to_string(), scene_data));
+            scenes.push((scene_name, scene_data));
         }
 
         scenes

@@ -90,10 +90,10 @@ pub(super) fn parse_response_buffer(buf: Vec<u8>) -> Result<Response> {
 
     let response = Response {
         body: body_str,
-        http_version: http_version,
-        status_code: status_code,
-        status_message: status_message,
-        header: header,
+        http_version,
+        status_code,
+        status_message,
+        header,
     };
 
     Ok(response)

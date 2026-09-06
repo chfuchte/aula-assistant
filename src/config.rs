@@ -219,7 +219,6 @@ impl Address {
                     .into_iter()
                     .next()
                     .context("No addresses found for domain")?
-                    .into()
             }
         };
 

@@ -49,29 +49,29 @@ impl Request {
 }
 
 pub(crate) enum Method {
-    GET,
-    POST,
-    PUT,
-    DELETE,
-    PATCH,
-    HEAD,
-    OPTIONS,
-    CONNECT,
-    TRACE,
+    Get,
+    Post,
+    Put,
+    Delete,
+    Patch,
+    Head,
+    Options,
+    Connect,
+    Trace,
 }
 
 impl Display for Method {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let method_str = match self {
-            Method::GET => "GET",
-            Method::POST => "POST",
-            Method::PUT => "PUT",
-            Method::DELETE => "DELETE",
-            Method::PATCH => "PATCH",
-            Method::HEAD => "HEAD",
-            Method::OPTIONS => "OPTIONS",
-            Method::CONNECT => "CONNECT",
-            Method::TRACE => "TRACE",
+            Method::Get => "GET",
+            Method::Post => "POST",
+            Method::Put => "PUT",
+            Method::Delete => "DELETE",
+            Method::Patch => "PATCH",
+            Method::Head => "HEAD",
+            Method::Options => "OPTIONS",
+            Method::Connect => "CONNECT",
+            Method::Trace => "TRACE",
         };
         write!(f, "{}", method_str)
     }
@@ -101,8 +101,9 @@ pub(super) fn build_request_package(request: &Request) -> Vec<u8> {
     if request.addr.port() == 80 {
         request_vec.extend_from_slice(format!("Host: {}", request.addr.ip()).as_bytes());
     } else {
-        request_vec
-            .extend_from_slice(format!("Host: {}:{}", request.addr.ip(), request.addr.port()).as_bytes());
+        request_vec.extend_from_slice(
+            format!("Host: {}:{}", request.addr.ip(), request.addr.port()).as_bytes(),
+        );
     }
     request_vec.extend_from_slice(CRLF);
 
