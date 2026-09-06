@@ -1,12 +1,16 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
 import { useRouter, type RouterViewKey } from "@/hooks/router";
 import { cn } from "@/lib/utils";
 import { DefaultView } from "@/views/default";
 import { GenericHelpView } from "@/views/help/generic";
+import { SettingsView } from "@/views/settings";
 import { SplashScreen } from "@/views/splashscreen";
 import { ArrowLeft, CircleQuestionMark, Cog } from "lucide-react";
-import { ThemeProvider } from "./components/theme-provider";
-import { SettingsView } from "./views/settings";
+import { UnmanagedAudioView } from "./views/unmanaged/audio";
+import { UnmanagedBeamerView } from "./views/unmanaged/beamer";
+import { UnmanagedDefaultView } from "./views/unmanaged/default";
+import { UnmanagedLightingView } from "./views/unmanaged/lighting";
 
 const views: Record<RouterViewKey, View> = {
     "root:splashscreen": {
@@ -40,6 +44,50 @@ const views: Record<RouterViewKey, View> = {
                 root: false,
             },
             help: "help:generic",
+        },
+    },
+    "unmanaged:default": {
+        component: <UnmanagedDefaultView />,
+        title: "Ungeführter Modus",
+        options: {
+            fullscreen: false,
+            navigation: {
+                root: false,
+            },
+            help: null,
+        },
+    },
+    "unmanaged:audio": {
+        component: <UnmanagedAudioView />,
+        title: "Ungeführter Modus / Ton",
+        options: {
+            fullscreen: false,
+            navigation: {
+                root: false,
+            },
+            help: null,
+        },
+    },
+    "unmanaged:beamer": {
+        component: <UnmanagedBeamerView />,
+        title: "Ungeführter Modus / Beamer",
+        options: {
+            fullscreen: false,
+            navigation: {
+                root: false,
+            },
+            help: null,
+        },
+    },
+    "unmanaged:lighting": {
+        component: <UnmanagedLightingView />,
+        title: "Ungeführter Modus / Licht",
+        options: {
+            fullscreen: false,
+            navigation: {
+                root: false,
+            },
+            help: null,
         },
     },
     "help:generic": {
@@ -77,7 +125,7 @@ export function App() {
             <ThemeProvider defaultTheme="system" storageKey="aula-assistant-ui-theme">
                 <header
                     className={cn(
-                        "relative h-16 flex-row items-center justify-center px-4 py-2",
+                        "relative h-16 flex-row items-center justify-center px-4 py-2 select-none",
                         currentView.options.fullscreen ? "hidden" : "flex",
                     )}>
                     {!currentView.options.navigation.root && (

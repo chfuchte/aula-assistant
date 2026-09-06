@@ -4,11 +4,17 @@ export type RouterViewKey =
     | "root:splashscreen"
     | "root:default"
     | "settings"
+    // unmanaged mode
+    | "unmanaged:default"
+    | "unmanaged:audio"
+    | "unmanaged:beamer"
+    | "unmanaged:lighting"
+    // help pages
     | "help:generic";
 
 interface Router {
     currentView: RouterViewKey;
-    history: RouterViewKey[];
+    history: Set<RouterViewKey>;
     navigate: (view: RouterViewKey) => void;
     push: (view: RouterViewKey) => void;
     pop: () => void;
@@ -18,41 +24,37 @@ const RouterContext = createContext<Router | undefined>(undefined);
 
 interface RouterState {
     currentView: RouterViewKey;
-    history: RouterViewKey[];
+    history: Set<RouterViewKey>;
 }
 
 export function RouterProvider({ children }: { children: React.ReactNode }) {
     const [state, setState] = useState<RouterState>({
         currentView: "root:default",
-        history: [],
+        history: new Set(),
     });
 
     const navigate = (view: RouterViewKey) => {
         setState((prev) => ({
-            ...prev,
             currentView: view,
+            history: prev.history,
         }));
     };
 
     const push = (view: RouterViewKey) => {
         setState((prev) => ({
             currentView: view,
-            history: [...prev.history, prev.currentView],
+            history: new Set([...prev.history, prev.currentView]),
         }));
     };
 
     const pop = () => {
         setState((prev) => {
-            if (prev.history.length === 0) {
-                return prev;
-            }
-
-            const history = [...prev.history];
-            const currentView = history.pop()!;
-
+            const historyArray = Array.from(prev.history);
+            const lastView = historyArray[historyArray.length - 1] || "root:default";
+            const newHistory = new Set(historyArray.slice(0, -1));
             return {
-                currentView,
-                history,
+                currentView: lastView,
+                history: newHistory,
             };
         });
     };

@@ -5,7 +5,7 @@ export function View({ children, className }: { children?: ReactNode; className?
     return (
         <div
             className={cn(
-                "grid min-h-[inherit] gap-4 p-4 max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-start",
+                "grid min-h-[inherit] gap-8 p-8 pt-2 max-md:flex max-md:flex-col max-md:items-center max-md:justify-start",
                 className,
             )}>
             {children}
