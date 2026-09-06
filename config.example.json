@@ -1,0 +1,75 @@
+{
+    "$schema": "./config.schema.json",
+    "audio": {
+        "target": {
+            "Ip": {
+                "ip": "127.0.0.1",
+                "port": 10023
+            }
+        },
+        "default_scene": 0,
+        "channels": []
+    },
+    "beamer": {
+        "target": {
+            "Ip": {
+                "ip": "127.0.0.1",
+                "port": 80
+            }
+        }
+    },
+    "lighting": {
+        "target": {
+            "Ip": {
+                "ip": "255.255.255.255",
+                "port": 6454
+            }
+        },
+        "broadcast": true,
+        "fixture_types": [
+            {
+                "id": "singlechannel",
+                "channels": [
+                    "on"
+                ]
+            }
+        ],
+        "fixtures": [
+            {
+                "id": "power01",
+                "fixture_type": "singlechannel",
+                "dmx_universe": 0,
+                "dmx_start_address": 1
+            }
+        ],
+        "scenes": [
+            {
+                "name": "Power On",
+                "reset": false,
+                "fixture_states": [
+                    {
+                        "fixture_id": "power01",
+                        "channel_id": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            {
+                "name": "Power Off",
+                "reset": false,
+                "fixture_states": [
+                    {
+                        "fixture_id": "power01",
+                        "channel_id": "on",
+                        "value": 0
+                    }
+                ]
+            },
+            {
+                "name": "Reset",
+                "reset": true,
+                "fixture_states": []
+            }
+        ]
+    }
+}

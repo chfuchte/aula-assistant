@@ -1,9 +1,13 @@
 use anyhow::{Ok, Result};
 
-use crate::{cli::Mode, router::run_web_server};
+use crate::{
+    cli::Mode, config::load_config_from_file, router::run_web_server, service::AulaAssistantService,
+};
 
 mod cli;
+mod config;
 mod router;
+mod service;
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -24,7 +28,11 @@ async fn main() -> Result<()> {
             Ok(())
         }
         Mode::Serve(args) => {
-            run_web_server(args.port()).await?;
+            let config = load_config_from_file(args.config_file_path())?;
+
+            let service = AulaAssistantService::new(&config).await?;
+
+            run_web_server(args.port(), service).await?;
 
             Ok(())
         }

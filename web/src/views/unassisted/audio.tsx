@@ -4,7 +4,7 @@ import { View } from "@/components/view";
 import { cn } from "cn";
 import { Volume2, VolumeOff } from "lucide-react";
 
-export function UnmanagedAudioView() {
+export function UnassistedAudioView() {
     const channels = [
         {
             id: "/main/lr",

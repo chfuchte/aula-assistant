@@ -8,15 +8,17 @@ export function DefaultView() {
 
     return (
         <View className="grid-cols-2 grid-rows-1">
-            <GridButton onClick={() => router.push("root:default")}>
+            <GridButton disabled onClick={() => router.push("root:default")}>
                 <GridButton.Icon>
                     <LifeBuoy />
                 </GridButton.Icon>
                 <GridButton.Label>Geführter Modus</GridButton.Label>
-                <GridButton.Description>Schritt-für-Schritt durch die ersten Veranstaltungen</GridButton.Description>
+                <GridButton.Description>
+                    {/* Schritt-für-Schritt durch die ersten Veranstaltungen */} Comming soon
+                </GridButton.Description>
             </GridButton>
 
-            <GridButton onClick={() => router.push("unmanaged:default")}>
+            <GridButton onClick={() => router.push("unassisted:default")}>
                 <GridButton.Icon>
                     <Rocket />
                 </GridButton.Icon>

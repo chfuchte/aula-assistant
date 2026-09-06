@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use anyhow::Result;
 use clap::{ArgAction, arg, command, value_parser};
 
@@ -9,11 +11,16 @@ pub(crate) enum Mode {
 
 pub(crate) struct ServeArgs {
     port: u16,
+    config_file_path: PathBuf,
 }
 
 impl ServeArgs {
     pub(crate) fn port(&self) -> u16 {
         self.port
+    }
+
+    pub(crate) fn config_file_path(&self) -> &PathBuf {
+        &self.config_file_path
     }
 }
 
@@ -41,6 +48,11 @@ pub(crate) fn parse() -> Result<Mode> {
                         .value_parser(value_parser!(u16))
                         .action(ArgAction::Set)
                         .default_value("3000"),
+                )
+                .arg(
+                    arg!(-c --config <CONFIG> "Path to the configuration file")
+                        .value_parser(value_parser!(PathBuf))
+                        .action(ArgAction::Set),
                 ),
         );
 
@@ -60,7 +72,15 @@ pub(crate) fn parse() -> Result<Mode> {
                 .get_one::<u16>("port")
                 .expect("port is required and has a default value");
 
-            let args = ServeArgs { port };
+            let config_file_path = sub_matches
+                .get_one::<PathBuf>("config")
+                .cloned()
+                .expect("config file path is required");
+
+            let args = ServeArgs {
+                port,
+                config_file_path,
+            };
 
             Ok(Mode::Serve(args))
         }

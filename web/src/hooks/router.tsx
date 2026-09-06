@@ -4,11 +4,11 @@ export type RouterViewKey =
     | "root:splashscreen"
     | "root:default"
     | "settings"
-    // unmanaged mode
-    | "unmanaged:default"
-    | "unmanaged:audio"
-    | "unmanaged:beamer"
-    | "unmanaged:lighting"
+    // unassisted mode
+    | "unassisted:default"
+    | "unassisted:audio"
+    | "unassisted:beamer"
+    | "unassisted:lighting"
     // help pages
     | "help:generic";
 

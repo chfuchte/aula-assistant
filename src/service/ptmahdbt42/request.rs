@@ -1,9 +1,9 @@
-use crate::CRLF;
-use std::{collections::HashMap, fmt::Display};
+use std::{collections::HashMap, fmt::Display, net::SocketAddr};
 
-pub struct Request {
-    host: String,
-    port: u16,
+use crate::service::ptmahdbt42::CRLF;
+
+pub(crate) struct Request {
+    addr: SocketAddr,
     method: Method,
     path: String,
     headers: HashMap<String, String>,
@@ -11,17 +11,15 @@ pub struct Request {
 }
 
 impl Request {
-    pub fn new(
-        host: String,
-        port: u16,
+    pub(crate) fn new(
+        addr: SocketAddr,
         method: Method,
         path: String,
         headers: HashMap<String, String>,
         body: Option<Body>,
     ) -> Self {
         Request {
-            host,
-            port,
+            addr,
             method,
             path,
             headers,
@@ -29,32 +27,28 @@ impl Request {
         }
     }
 
-    pub fn host(&self) -> &String {
-        &self.host
+    pub(super) fn addr(&self) -> SocketAddr {
+        self.addr
     }
 
-    pub fn port(&self) -> u16 {
-        self.port
-    }
-
-    pub fn method(&self) -> &Method {
+    pub(super) fn method(&self) -> &Method {
         &self.method
     }
 
-    pub fn path(&self) -> &String {
+    pub(super) fn path(&self) -> &String {
         &self.path
     }
 
-    pub fn headers(&self) -> &HashMap<String, String> {
+    pub(super) fn headers(&self) -> &HashMap<String, String> {
         &self.headers
     }
 
-    pub fn body(&self) -> Option<&Body> {
+    pub(super) fn body(&self) -> Option<&Body> {
         self.body.as_ref()
     }
 }
 
-pub enum Method {
+pub(crate) enum Method {
     GET,
     POST,
     PUT,
@@ -83,7 +77,7 @@ impl Display for Method {
     }
 }
 
-pub enum Body {
+pub(crate) enum Body {
     String(String),
     Bytes(Vec<u8>),
 }
@@ -97,18 +91,18 @@ impl Body {
     }
 }
 
-pub(crate) fn build_request_package(request: &Request) -> Vec<u8> {
+pub(super) fn build_request_package(request: &Request) -> Vec<u8> {
     let mut request_vec: Vec<u8> = vec![];
 
     request_vec
         .extend_from_slice(format!("{} {} HTTP/1.0", request.method, request.path).as_bytes());
     request_vec.extend_from_slice(CRLF);
 
-    if request.port == 80 {
-        request_vec.extend_from_slice(format!("Host: {}", request.host).as_bytes());
+    if request.addr.port() == 80 {
+        request_vec.extend_from_slice(format!("Host: {}", request.addr.ip()).as_bytes());
     } else {
         request_vec
-            .extend_from_slice(format!("Host: {}:{}", request.host, request.port).as_bytes());
+            .extend_from_slice(format!("Host: {}:{}", request.addr.ip(), request.addr.port()).as_bytes());
     }
     request_vec.extend_from_slice(CRLF);
 

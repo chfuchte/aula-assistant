@@ -3,12 +3,12 @@ import { View } from "@/components/view";
 import { useRouter } from "@/hooks/router";
 import { Lightbulb, Lock, Music, Projector } from "lucide-react";
 
-export function UnmanagedDefaultView() {
+export function UnassistedDefaultView() {
     const router = useRouter();
 
     return (
         <View className="grid-cols-2 grid-rows-2">
-            <GridButton onClick={() => router.push("unmanaged:audio")}>
+            <GridButton onClick={() => router.push("unassisted:audio")}>
                 <GridButton.Icon>
                     <Music />
                 </GridButton.Icon>
@@ -16,7 +16,7 @@ export function UnmanagedDefaultView() {
                 <GridButton.Description>lorem ipsum</GridButton.Description>
             </GridButton>
 
-            <GridButton onClick={() => router.push("unmanaged:beamer")}>
+            <GridButton onClick={() => router.push("unassisted:beamer")}>
                 <GridButton.Icon>
                     <Projector />
                 </GridButton.Icon>
@@ -24,7 +24,7 @@ export function UnmanagedDefaultView() {
                 <GridButton.Description>lorem ipsum</GridButton.Description>
             </GridButton>
 
-            <GridButton onClick={() => router.push("unmanaged:lighting")}>
+            <GridButton onClick={() => router.push("unassisted:lighting")}>
                 <GridButton.Icon>
                     <Lightbulb />
                 </GridButton.Icon>

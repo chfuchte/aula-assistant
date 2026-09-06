@@ -1,7 +1,7 @@
 import { GridButton } from "@/components/grid-button";
 import { View } from "@/components/view";
 
-export function UnmanagedLightingView() {
+export function UnassistedLightingView() {
     const scenes = [
         {
             name: "Strom An",

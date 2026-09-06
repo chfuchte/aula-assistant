@@ -1,0 +1,241 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "chfuchte.aula_assistant.config.schema.json",
+    "title": "ATec Aula Assistant Configuration File Schema",
+    "description": "Schema for the configuration file of the ATec Aula Assistant application.",
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "audio": {
+            "type": "object",
+            "properties": {
+                "target": {
+                    "$ref": "#/$defs/address"
+                },
+                "default_scene": {
+                    "type": "number"
+                },
+                "channels": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "path": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "path"
+                        ],
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "required": [
+                "target",
+                "default_scene",
+                "channels"
+            ],
+            "additionalProperties": false
+        },
+        "beamer": {
+            "type": "object",
+            "properties": {
+                "target": {
+                    "$ref": "#/$defs/address"
+                }
+            },
+            "required": [
+                "target"
+            ],
+            "additionalProperties": false
+        },
+        "lighting": {
+            "type": "object",
+            "properties": {
+                "target": {
+                    "$ref": "#/$defs/address"
+                },
+                "broadcast": {
+                    "type": "boolean"
+                },
+                "fixture_types": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "channels": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "channels"
+                        ],
+                        "additionalProperties": false
+                    }
+                },
+                "fixtures": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "fixture_type": {
+                                "type": "string"
+                            },
+                            "dmx_universe": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "dmx_start_address": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 512
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "fixture_type",
+                            "dmx_universe",
+                            "dmx_start_address"
+                        ],
+                        "additionalProperties": false
+                    }
+                },
+                "scenes": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "reset": {
+                                "type": "boolean"
+                            },
+                            "fixture_states": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "fixture_id": {
+                                            "type": "string"
+                                        },
+                                        "channel_id": {
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 255
+                                        }
+                                    },
+                                    "required": [
+                                        "fixture_id",
+                                        "channel_values"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "reset",
+                            "fixture_states"
+                        ],
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "required": [
+                "target",
+                "broadcast",
+                "fixture_types",
+                "fixtures",
+                "scenes"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "$defs": {
+        "address": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "Ip": {
+                            "type": "object",
+                            "properties": {
+                                "ip": {
+                                    "type": "string"
+                                },
+                                "port": {
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 65535
+                                }
+                            },
+                            "required": [
+                                "ip",
+                                "port"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "Ip"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "Domain": {
+                            "type": "object",
+                            "properties": {
+                                "domain": {
+                                    "type": "string"
+                                },
+                                "port": {
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 65535
+                                }
+                            },
+                            "required": [
+                                "domain",
+                                "port"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "Domain"
+                    ],
+                    "additionalProperties": false
+                }
+            ]
+        }
+    },
+    "required": [
+        "audio",
+        "beamer",
+        "lighting"
+    ],
+    "additionalProperties": false
+}

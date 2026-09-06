@@ -1,9 +1,11 @@
-pub type ArtNetUniverse = u16;
-pub type ArtNetData = [u8; 512];
-pub type ArtNetPackage = [u8; 530];
+pub(crate) type ArtNetUniverse = u16;
+pub(crate) type ArtNetData = [u8; 512];
+pub(crate) type ArtNetPackage = [u8; 530];
+pub(crate) type DMXChannel = u16;
+pub(crate) type DMXData = u8;
 
 /// see also https://art-net.org.uk/downloads/art-net.pdf
-pub fn build_artnet_package(universe: &ArtNetUniverse, data: &ArtNetData) -> ArtNetPackage {
+pub(crate) fn build_artnet_package(universe: &ArtNetUniverse, data: &ArtNetData) -> ArtNetPackage {
     const ARTNET_NAME: &[u8; 8] = b"Art-Net\0";
     const ARTNET_VERSION: u8 = 14;
     const ARTNET_OPCODE: u8 = 80;

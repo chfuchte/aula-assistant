@@ -6,10 +6,10 @@ import { GenericHelpView } from "@/views/help/generic";
 import { SettingsView } from "@/views/settings";
 import { SplashScreen } from "@/views/splashscreen";
 import { ArrowLeft, CircleQuestionMark, Cog } from "lucide-react";
-import { UnmanagedAudioView } from "./views/unmanaged/audio";
-import { UnmanagedBeamerView } from "./views/unmanaged/beamer";
-import { UnmanagedDefaultView } from "./views/unmanaged/default";
-import { UnmanagedLightingView } from "./views/unmanaged/lighting";
+import { UnassistedAudioView } from "./views/unassisted/audio";
+import { UnassistedBeamerView } from "./views/unassisted/beamer";
+import { UnassistedDefaultView } from "./views/unassisted/default";
+import { UnassistedLightingView } from "./views/unassisted/lighting";
 
 const views: Record<RouterViewKey, View> = {
     "root:splashscreen": {
@@ -45,8 +45,8 @@ const views: Record<RouterViewKey, View> = {
             help: "help:generic",
         },
     },
-    "unmanaged:default": {
-        component: <UnmanagedDefaultView />,
+    "unassisted:default": {
+        component: <UnassistedDefaultView />,
         title: "Ungeführter Modus",
         options: {
             fullscreen: false,
@@ -56,8 +56,8 @@ const views: Record<RouterViewKey, View> = {
             help: null,
         },
     },
-    "unmanaged:audio": {
-        component: <UnmanagedAudioView />,
+    "unassisted:audio": {
+        component: <UnassistedAudioView />,
         title: "Ungeführter Modus / Ton",
         options: {
             fullscreen: false,
@@ -67,8 +67,8 @@ const views: Record<RouterViewKey, View> = {
             help: null,
         },
     },
-    "unmanaged:beamer": {
-        component: <UnmanagedBeamerView />,
+    "unassisted:beamer": {
+        component: <UnassistedBeamerView />,
         title: "Ungeführter Modus / Beamer",
         options: {
             fullscreen: false,
@@ -78,8 +78,8 @@ const views: Record<RouterViewKey, View> = {
             help: null,
         },
     },
-    "unmanaged:lighting": {
-        component: <UnmanagedLightingView />,
+    "unassisted:lighting": {
+        component: <UnassistedLightingView />,
         title: "Ungeführter Modus / Licht",
         options: {
             fullscreen: false,
