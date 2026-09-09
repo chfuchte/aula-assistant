@@ -1,0 +1,58 @@
+import { GridButton } from "@/components/grid-button";
+import { View } from "@/components/view";
+import { useData } from "@/hooks/data";
+import { postGoLightingScene } from "@/lib/queries/lighting";
+
+export function UnassistedLightingView() {
+    /* const scenes = [
+        {
+            name: "Strom An",
+            description: "Lichtanlage einschalten",
+        },
+        {
+            name: "Strom Aus",
+            description: "Lichtanlage ausschalten",
+        },
+        {
+            name: "Reset",
+            description: "Alle Szenen zurücksetzen; Bühne dunkel",
+        },
+        {
+            name: "Frontlicht",
+            description: "Licht von vorne",
+        },
+        {
+            name: "Frontlicht Dimmed",
+            description: "Gedimmtes Licht von vorne",
+        },
+        {
+            name: "Frontlicht Off",
+            description: "Kein Frontlicht",
+        },
+        {
+            name: "Bühne Warmweiß",
+            description: "Warmweißes Bühnenlicht",
+        },
+        {
+            name: "Bühne Kaltweiß",
+            description: "Kaltweißes Bühnenlicht",
+        },
+        {
+            name: "Disko",
+            description: "Buntes Diskolicht",
+        },
+    ]; */
+
+    const { lightingScenes } = useData();
+
+    return (
+        <View className="grid-cols-3 grid-rows-3">
+            {lightingScenes.map((scene, key) => (
+                <GridButton key={key} onClick={() => postGoLightingScene(key)}>
+                    <GridButton.Label>{scene}</GridButton.Label>
+                    {/* <GridButton.Description>{scene.description}</GridButton.Description> */}
+                </GridButton>
+            ))}
+        </View>
+    );
+}
