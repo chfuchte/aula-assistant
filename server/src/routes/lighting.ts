@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { config } from "../config/index.js";
-import { logger } from "../utils/logger.js";
 import { LightingService } from "../service/lighting.js";
+import { logger } from "../utils/logger.js";
 
 const log = logger("server.routes.lighting");
 
@@ -27,8 +27,8 @@ export function lightingRouter(): Router {
         }
 
         const lightingService = LightingService.getInstance();
-        lightingService.triggerScene(sceneName);
-        
+        await lightingService.triggerScene(sceneName);
+
         res.status(200).json({ message: `Scene '${sceneName}' triggered` });
     });
 

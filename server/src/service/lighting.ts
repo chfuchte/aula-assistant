@@ -124,7 +124,7 @@ export class LightingService {
         if (universe === undefined) {
             this.data.forEach((universeData, universe) => {
                 let buffer = buildArtNetPackage(universe, universeData);
-                this.socket.send(buffer, this.port, this.host, (err) => {
+                this.socket.send(buffer, (err) => {
                     if (err) {
                         throw err;
                     } else {
@@ -137,7 +137,7 @@ export class LightingService {
             }
 
             let buffer = buildArtNetPackage(universe, this.data[universe]);
-            this.socket.send(buffer, this.port, this.host, (err) => {
+            this.socket.send(buffer, (err) => {
                 if (err) {
                     throw err;
                 } else {
