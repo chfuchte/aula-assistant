@@ -8,10 +8,10 @@ const log = logger("server.routes.audio");
 export function audioRouter(): Router {
     const router = Router();
 
-    router.get("/channels", async (_, res) => {
-        const channels = config.audio.channel.map((channel) => channel.name);
+    router.get("/channel", async (_, res) => {
+        const channel = config.audio.channel.map((channel) => channel.name);
 
-        res.status(200).json(channels);
+        res.status(200).json(channel);
     });
 
     router.post("/channels/:channelName/mute", async (req, res) => {
