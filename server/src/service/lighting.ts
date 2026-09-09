@@ -9,7 +9,7 @@ type Scenes = Record<
     {
         reset: boolean;
         type: "default" | "power-on" | "power-off";
-        values: Array<{ universe: number; channel: number; value: number }>;
+        values: Array<{ universe: number; address: number; value: number }>;
     }
 >;
 
@@ -59,7 +59,7 @@ export class LightingService {
         this.socket.on("close", () => {});
     }
 
-    public static initialize(host: string, port: number, broadcast = false, scenes: Scenes = {}): void {
+    public static initialize(host: string, port: number, broadcast = false, scenes: Scenes): void {
         if (LightingService._instance) {
             throw new Error("LightingService is already initialized.");
         }
@@ -87,8 +87,8 @@ export class LightingService {
             }
         }
 
-        for (const { universe, channel, value } of scene.values) {
-            this.set(universe, channel, value);
+        for (const { universe, address, value } of scene.values) {
+            this.set(universe, address, value);
         }
 
         for (const { universe } of scene.values) {
