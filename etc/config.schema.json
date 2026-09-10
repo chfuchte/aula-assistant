@@ -23,9 +23,7 @@
                     }
                 }
             },
-            "required": [
-                "port"
-            ],
+            "required": ["port"],
             "additionalProperties": false
         },
         "audio": {
@@ -44,10 +42,7 @@
                             "default": 10023
                         }
                     },
-                    "required": [
-                        "host",
-                        "port"
-                    ],
+                    "required": ["host", "port"],
                     "additionalProperties": false
                 },
                 "channel": {
@@ -63,30 +58,15 @@
                             },
                             "type": {
                                 "type": "string",
-                                "enum": [
-                                    "microphone",
-                                    "headset",
-                                    "music",
-                                    "jack",
-                                    "audience",
-                                    "mc",
-                                    "lr"
-                                ]
+                                "enum": ["microphone", "headset", "music", "jack", "audience", "mc", "lr"]
                             }
                         },
-                        "required": [
-                            "name",
-                            "path",
-                            "type"
-                        ],
+                        "required": ["name", "path", "type"],
                         "additionalProperties": false
                     }
                 }
             },
-            "required": [
-                "x32",
-                "channel"
-            ],
+            "required": ["x32", "channel"],
             "additionalProperties": false
         },
         "beamer": {
@@ -105,16 +85,11 @@
                             "default": 80
                         }
                     },
-                    "required": [
-                        "host",
-                        "port"
-                    ],
+                    "required": ["host", "port"],
                     "additionalProperties": false
                 }
             },
-            "required": [
-                "ptmahdbt42"
-            ],
+            "required": ["ptmahdbt42"],
             "additionalProperties": false
         },
         "lighting": {
@@ -149,14 +124,7 @@
                             "patternProperties": {
                                 "^[a-zA-Z0-9_-]+$": {
                                     "type": "string",
-                                    "enum": [
-                                        "generic",
-                                        "red",
-                                        "green",
-                                        "blue",
-                                        "white",
-                                        "dimmer"
-                                    ],
+                                    "enum": ["generic", "red", "green", "blue", "white", "dimmer"],
                                     "default": "generic"
                                 }
                             },
@@ -187,11 +155,7 @@
                                     "maximum": 512
                                 }
                             },
-                            "required": [
-                                "type",
-                                "universe",
-                                "start_address"
-                            ],
+                            "required": ["type", "universe", "start_address"],
                             "additionalProperties": false
                         }
                     },
@@ -206,12 +170,7 @@
                             "properties": {
                                 "type": {
                                     "type": "string",
-                                    "enum": [
-                                        "default",
-                                        "power-on",
-                                        "power-off",
-                                        "colorpicker"
-                                    ],
+                                    "enum": ["default", "power-on", "power-off", "colorpicker"],
                                     "default": "default"
                                 },
                                 "reset": {
@@ -235,38 +194,21 @@
                                                 "maximum": 255
                                             }
                                         },
-                                        "required": [
-                                            "fixture",
-                                            "channel",
-                                            "value"
-                                        ],
+                                        "required": ["fixture", "channel", "value"],
                                         "additionalProperties": false
                                     }
                                 }
                             },
-                            "required": [
-                                "type",
-                                "reset",
-                                "values"
-                            ],
+                            "required": ["type", "reset", "values"],
                             "additionalProperties": false
                         }
                     }
                 }
             },
-            "required": [
-                "fixture_types",
-                "fixtures",
-                "scenes"
-            ],
+            "required": ["fixture_types", "fixtures", "scenes"],
             "additionalProperties": false
         }
     },
-    "required": [
-        "server",
-        "audio",
-        "beamer",
-        "lighting"
-    ],
+    "required": ["server", "audio", "beamer", "lighting"],
     "additionalProperties": false
 }

@@ -1,0 +1,68 @@
+{
+    "$schema": "./etc/config.schema.json",
+    "server": {
+        "port": 3000,
+        "corsOrigins": ["*"]
+    },
+    "audio": {
+        "x32": {
+            "host": "127.0.0.1",
+            "port": 10023
+        },
+        "channel": [
+            {
+                "name": "M1",
+                "path": "/ch/01",
+                "type": "microphone"
+            },
+            {
+                "name": "M2",
+                "path": "/ch/02",
+                "type": "microphone"
+            },
+            {
+                "name": "M3",
+                "path": "/ch/03",
+                "type": "microphone"
+            }
+        ]
+    },
+    "beamer": {
+        "ptmahdbt42": {
+            "host": "127.0.0.1",
+            "port": 80
+        }
+    },
+    "lighting": {
+        "artnet": {
+            "host": "255.255.255.255",
+            "port": 6454,
+            "broadcast": true
+        },
+        "fixture_types": {
+            "singlechannel": {
+                "on": "generic"
+            }
+        },
+        "fixtures": {
+            "singlechannel1": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 1
+            }
+        },
+        "scenes": {
+            "power-on": {
+                "type": "power-on",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            }
+        }
+    }
+}
