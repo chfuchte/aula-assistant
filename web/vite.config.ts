@@ -1,6 +1,7 @@
 import tailwindcss from "@tailwindcss/vite";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
-import path, { resolve } from "node:path";
+import path from "node:path";
 import { defineConfig, loadEnv } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
@@ -8,6 +9,10 @@ const env = loadEnv(process.env.NODE_ENV || "development", process.cwd(), "");
 
 export default defineConfig({
     plugins: [
+        tanstackRouter({
+            target: "react",
+            autoCodeSplitting: true,
+        }),
         react(),
         tailwindcss(),
         VitePWA({
@@ -47,14 +52,6 @@ export default defineConfig({
     define: {
         __APP_VERSION__: JSON.stringify(env.npm_package_version),
         __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
-    },
-    build: {
-        rollupOptions: {
-            input: {
-                index: resolve(import.meta.dirname, "index.html"),
-                tablet: resolve(import.meta.dirname, "tablet.html"),
-            },
-        },
     },
     resolve: {
         alias: {

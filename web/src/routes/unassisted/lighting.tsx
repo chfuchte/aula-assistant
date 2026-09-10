@@ -1,10 +1,14 @@
 import { GridButton } from "@/components/grid-button";
-import { View } from "@/components/view";
-import { useData } from "@/hooks/data";
-import { postGoLightingScene } from "@/lib/queries/lighting";
+import { Page } from "@/components/router/page";
+import { View } from "@/components/router/view";
+import { createFileRoute } from "@tanstack/react-router";
 
-export function UnassistedLightingView() {
-    /* const scenes = [
+export const Route = createFileRoute("/unassisted/lighting")({
+    component: RouteComponent,
+});
+
+function RouteComponent() {
+    const scenes = [
         {
             name: "Strom An",
             description: "Lichtanlage einschalten",
@@ -41,18 +45,18 @@ export function UnassistedLightingView() {
             name: "Disko",
             description: "Buntes Diskolicht",
         },
-    ]; */
-
-    const { lightingScenes } = useData();
+    ];
 
     return (
-        <View className="grid-cols-3 grid-rows-3">
-            {lightingScenes.map((scene, key) => (
-                <GridButton key={key} onClick={() => postGoLightingScene(key)}>
-                    <GridButton.Label>{scene}</GridButton.Label>
-                    {/* <GridButton.Description>{scene.description}</GridButton.Description> */}
-                </GridButton>
-            ))}
-        </View>
+        <Page title="Ungeführter Modus // Beamer" withBefore help withSettings>
+            <View className="grid-cols-3 grid-rows-3">
+                {scenes.map((scene, key) => (
+                    <GridButton key={key} onClick={() => {}}>
+                        <GridButton.Label>{scene.name}</GridButton.Label>
+                        <GridButton.Description>{scene.description}</GridButton.Description>
+                    </GridButton>
+                ))}
+            </View>
+        </Page>
     );
 }
