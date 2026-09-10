@@ -38,7 +38,11 @@ export function Page(
                         size="icon"
                         variant="ghost"
                         className={props.withBefore ? "visible" : "invisible"}
-                        onClick={() => router.history.back()}>
+                        onClick={() =>
+                            router.navigate({
+                                to: "..",
+                            })
+                        }>
                         <ArrowLeft className="size-6" />
                     </Button>
 

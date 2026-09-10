@@ -3,7 +3,7 @@ import { Page } from "@/components/router/page";
 import { View } from "@/components/router/view";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/unassisted/lighting")({
+export const Route = createFileRoute("/lighting")({
     component: RouteComponent,
 });
 
@@ -48,7 +48,7 @@ function RouteComponent() {
     ];
 
     return (
-        <Page title="Ungeführter Modus // Beamer" withBefore help withSettings>
+        <Page title="Licht" withBefore help withSettings>
             <View className="grid-cols-3 grid-rows-3">
                 {scenes.map((scene, key) => (
                     <GridButton key={key} onClick={() => {}}>

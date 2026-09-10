@@ -4,13 +4,13 @@ import { View } from "@/components/router/view";
 import { createFileRoute } from "@tanstack/react-router";
 import { Power, PowerOff } from "lucide-react";
 
-export const Route = createFileRoute("/unassisted/beamer")({
+export const Route = createFileRoute("/beamer")({
     component: RouteComponent,
 });
 
 function RouteComponent() {
     return (
-        <Page title="Ungeführter Modus // Beamer" withBefore help withSettings>
+        <Page title="Beamer" withBefore help withSettings>
             <View className="grid-cols-2 grid-rows-1">
                 <GridButton onClick={() => {}}>
                     <GridButton.Icon>

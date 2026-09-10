@@ -132,4 +132,18 @@
     html {
         @apply font-sans;
     }
+
+    @keyframes slide-out-left {
+        to {
+            transform: translateX(-12px);
+            opacity: 0.95;
+        }
+    }
+
+    @keyframes slide-in-right {
+        from {
+            transform: translateX(12px);
+            opacity: 0.95;
+        }
+    }
 }

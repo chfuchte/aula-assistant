@@ -10,16 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AudioRouteImport } from './routes/audio'
+import { Route as BeamerRouteImport } from './routes/beamer'
+import { Route as LightingRouteImport } from './routes/lighting'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as HelpIndexRouteImport } from './routes/help/index'
-import { Route as UnassistedIndexRouteImport } from './routes/unassisted/index'
-import { Route as UnassistedAudioRouteImport } from './routes/unassisted/audio'
-import { Route as UnassistedBeamerRouteImport } from './routes/unassisted/beamer'
-import { Route as UnassistedLightingRouteImport } from './routes/unassisted/lighting'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AudioRoute = AudioRouteImport.update({
+  id: '/audio',
+  path: '/audio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeamerRoute = BeamerRouteImport.update({
+  id: '/beamer',
+  path: '/beamer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LightingRoute = LightingRouteImport.update({
+  id: '/lighting',
+  path: '/lighting',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SettingsRoute = SettingsRouteImport.update({
@@ -32,93 +46,54 @@ const HelpIndexRoute = HelpIndexRouteImport.update({
   path: '/help/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const UnassistedIndexRoute = UnassistedIndexRouteImport.update({
-  id: '/unassisted/',
-  path: '/unassisted/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UnassistedAudioRoute = UnassistedAudioRouteImport.update({
-  id: '/unassisted/audio',
-  path: '/unassisted/audio',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UnassistedBeamerRoute = UnassistedBeamerRouteImport.update({
-  id: '/unassisted/beamer',
-  path: '/unassisted/beamer',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UnassistedLightingRoute = UnassistedLightingRouteImport.update({
-  id: '/unassisted/lighting',
-  path: '/unassisted/lighting',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/audio': typeof AudioRoute
+  '/beamer': typeof BeamerRoute
+  '/lighting': typeof LightingRoute
   '/settings': typeof SettingsRoute
-  '/unassisted/audio': typeof UnassistedAudioRoute
-  '/unassisted/beamer': typeof UnassistedBeamerRoute
-  '/unassisted/lighting': typeof UnassistedLightingRoute
   '/help/': typeof HelpIndexRoute
-  '/unassisted/': typeof UnassistedIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/audio': typeof AudioRoute
+  '/beamer': typeof BeamerRoute
+  '/lighting': typeof LightingRoute
   '/settings': typeof SettingsRoute
-  '/unassisted/audio': typeof UnassistedAudioRoute
-  '/unassisted/beamer': typeof UnassistedBeamerRoute
-  '/unassisted/lighting': typeof UnassistedLightingRoute
   '/help': typeof HelpIndexRoute
-  '/unassisted': typeof UnassistedIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/audio': typeof AudioRoute
+  '/beamer': typeof BeamerRoute
+  '/lighting': typeof LightingRoute
   '/settings': typeof SettingsRoute
-  '/unassisted/audio': typeof UnassistedAudioRoute
-  '/unassisted/beamer': typeof UnassistedBeamerRoute
-  '/unassisted/lighting': typeof UnassistedLightingRoute
   '/help/': typeof HelpIndexRoute
-  '/unassisted/': typeof UnassistedIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/settings'
-    | '/unassisted/audio'
-    | '/unassisted/beamer'
-    | '/unassisted/lighting'
-    | '/help/'
-    | '/unassisted/'
+  fullPaths: '/' | '/audio' | '/beamer' | '/lighting' | '/settings' | '/help/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/settings'
-    | '/unassisted/audio'
-    | '/unassisted/beamer'
-    | '/unassisted/lighting'
-    | '/help'
-    | '/unassisted'
+  to: '/' | '/audio' | '/beamer' | '/lighting' | '/settings' | '/help'
   id:
     | '__root__'
     | '/'
+    | '/audio'
+    | '/beamer'
+    | '/lighting'
     | '/settings'
-    | '/unassisted/audio'
-    | '/unassisted/beamer'
-    | '/unassisted/lighting'
     | '/help/'
-    | '/unassisted/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AudioRoute: typeof AudioRoute
+  BeamerRoute: typeof BeamerRoute
+  LightingRoute: typeof LightingRoute
   SettingsRoute: typeof SettingsRoute
-  UnassistedAudioRoute: typeof UnassistedAudioRoute
-  UnassistedBeamerRoute: typeof UnassistedBeamerRoute
-  UnassistedLightingRoute: typeof UnassistedLightingRoute
   HelpIndexRoute: typeof HelpIndexRoute
-  UnassistedIndexRoute: typeof UnassistedIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -128,6 +103,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audio': {
+      id: '/audio'
+      path: '/audio'
+      fullPath: '/audio'
+      preLoaderRoute: typeof AudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beamer': {
+      id: '/beamer'
+      path: '/beamer'
+      fullPath: '/beamer'
+      preLoaderRoute: typeof BeamerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lighting': {
+      id: '/lighting'
+      path: '/lighting'
+      fullPath: '/lighting'
+      preLoaderRoute: typeof LightingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings': {
@@ -144,45 +140,16 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HelpIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/unassisted/': {
-      id: '/unassisted/'
-      path: '/unassisted'
-      fullPath: '/unassisted/'
-      preLoaderRoute: typeof UnassistedIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/unassisted/audio': {
-      id: '/unassisted/audio'
-      path: '/unassisted/audio'
-      fullPath: '/unassisted/audio'
-      preLoaderRoute: typeof UnassistedAudioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/unassisted/beamer': {
-      id: '/unassisted/beamer'
-      path: '/unassisted/beamer'
-      fullPath: '/unassisted/beamer'
-      preLoaderRoute: typeof UnassistedBeamerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/unassisted/lighting': {
-      id: '/unassisted/lighting'
-      path: '/unassisted/lighting'
-      fullPath: '/unassisted/lighting'
-      preLoaderRoute: typeof UnassistedLightingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AudioRoute: AudioRoute,
+  BeamerRoute: BeamerRoute,
+  LightingRoute: LightingRoute,
   SettingsRoute: SettingsRoute,
-  UnassistedAudioRoute: UnassistedAudioRoute,
-  UnassistedBeamerRoute: UnassistedBeamerRoute,
-  UnassistedLightingRoute: UnassistedLightingRoute,
   HelpIndexRoute: HelpIndexRoute,
-  UnassistedIndexRoute: UnassistedIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

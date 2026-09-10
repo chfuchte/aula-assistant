@@ -6,7 +6,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { cn } from "cn";
 import { Volume2, VolumeOff } from "lucide-react";
 
-export const Route = createFileRoute("/unassisted/audio")({
+export const Route = createFileRoute("/audio")({
     component: RouteComponent,
 });
 
@@ -39,7 +39,7 @@ function RouteComponent() {
     ];
 
     return (
-        <Page title="Ungeführter Modus // Audio" withBefore help withSettings>
+        <Page title="Audio" withBefore help withSettings>
             <View className="flex flex-col gap-8 pt-4">
                 {channels.map((channel, key) => (
                     <div key={key} className="flex flex-row items-center justify-between gap-4">
