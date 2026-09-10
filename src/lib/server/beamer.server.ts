@@ -1,7 +1,7 @@
 import "@tanstack/react-start/server-only";
 
 import { logger } from "@/utils/logger";
-import { sendRS232Command } from "../lib/ptmahdbt42";
+import { sendRS232Command } from "./ptmahdbt42.server";
 
 const BEAMER_PON = "02 50 4F 4E 03";
 const BEAMER_POF = "02 50 4F 46 03";

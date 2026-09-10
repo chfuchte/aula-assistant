@@ -3,7 +3,7 @@ import "@tanstack/react-start/server-only";
 import { logger } from "@/utils/logger";
 import type { Socket } from "node:dgram";
 import { createSocket } from "node:dgram";
-import { buildArtNetPackage } from "../lib/artnet";
+import { buildArtNetPackage } from "./artnet.server";
 
 const log = logger("service.lighting");
 
@@ -80,9 +80,6 @@ export class LightingService {
 
     public async triggerScene(sceneName: string): Promise<void> {
         const scene = this.scenes[sceneName];
-        if (!scene) {
-            throw new Error(`Scene "${sceneName}" not found.`);
-        }
 
         if (scene.reset) {
             for (let i = 0; i < this.data.length; i++) {
