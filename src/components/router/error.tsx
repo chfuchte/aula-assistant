@@ -2,13 +2,17 @@ import { Page } from "@/components/router/page";
 import { View } from "@/components/router/view";
 import { Button } from "@/components/ui/button";
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty";
+import { logger } from "@/utils/logger";
 import { useQueryClient } from "@tanstack/react-query";
+import type { ErrorComponentProps } from "@tanstack/react-router";
 import { useRouter } from "@tanstack/react-router";
 import { AlertCircle } from "lucide-react";
 
-export function ErrorComponent() {
+export function ErrorComponent({ reset, error }: ErrorComponentProps) {
     const router = useRouter();
     const queryClient = useQueryClient();
+
+    logger("error-component")("error", JSON.stringify(error, null, 2));
 
     return (
         <Page fullscreen>
@@ -34,6 +38,7 @@ export function ErrorComponent() {
                                     type: "all",
                                     refetchType: "all",
                                 });
+                                reset();
                             }}>
                             Erneut versuchen
                         </Button>
