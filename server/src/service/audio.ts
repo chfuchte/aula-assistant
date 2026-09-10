@@ -76,11 +76,7 @@ export class AudioService {
             if (data.oscType === "message") {
                 const msg = data;
                 this.lastMessageReceived = Date.now();
-                this.listeners.forEach((listener) => {
-                    if (listener.address === msg.address) {
-                        listener.callback(Array.isArray(msg.args) ? msg.args : [msg.args]);
-                    }
-                });
+                this.notifyListeners(msg.address, Array.isArray(msg.args) ? msg.args : [msg.args]);
             }
         });
 
@@ -124,14 +120,17 @@ export class AudioService {
 
     public muteChannel(channelPath: string) {
         this.sendOSC(`${channelPath}/mix/on`, 0);
+        this.notifyListeners(`${channelPath}/mix/on`, [{ type: "integer", value: 0 }]);
     }
 
     public unmuteChannel(channelPath: string) {
         this.sendOSC(`${channelPath}/mix/on`, 1);
+        this.notifyListeners(`${channelPath}/mix/on`, [{ type: "integer", value: 1 }]);
     }
 
     public setChannelFader(channelPath: string, faderValue: number) {
         this.sendOSC(`${channelPath}/mix/fader`, faderValue);
+        this.notifyListeners(`${channelPath}/mix/fader`, [{ type: "float", value: faderValue }]);
     }
 
     public close(): void {
@@ -140,6 +139,14 @@ export class AudioService {
 
     private addListener(address: string, callback: (args: OSCArgument[]) => void) {
         this.listeners.push({ address, callback });
+    }
+
+    private notifyListeners(address: string, args: OSCArgument[]) {
+        this.listeners.forEach((listener) => {
+            if (listener.address === address) {
+                listener.callback(args);
+            }
+        });
     }
 
     private sendOSC(address: string, ...args: (string | number)[]) {
