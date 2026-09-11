@@ -1,10 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "cn";
 
-function GridButtonRoot({ className, children, ...props }: React.ComponentProps<"button">) {
+function GridButtonRoot({
+    className,
+    children,
+    asChild = false,
+    ...props
+}: React.ComponentProps<"button"> & {
+    asChild?: boolean;
+}) {
     return (
         <Button
             variant="outline"
+            asChild={asChild}
             className={cn("flex size-full flex-col items-center justify-center gap-4 p-8 whitespace-normal", className)}
             {...props}>
             {children}

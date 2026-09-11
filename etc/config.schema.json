@@ -8,24 +8,6 @@
         "$schema": {
             "type": "string"
         },
-        "server": {
-            "type": "object",
-            "properties": {
-                "port": {
-                    "type": "number",
-                    "minimum": 1,
-                    "maximum": 65535
-                },
-                "corsOrigins": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            },
-            "required": ["port"],
-            "additionalProperties": false
-        },
         "audio": {
             "type": "object",
             "properties": {
@@ -42,7 +24,10 @@
                             "default": 10023
                         }
                     },
-                    "required": ["host", "port"],
+                    "required": [
+                        "host",
+                        "port"
+                    ],
                     "additionalProperties": false
                 },
                 "channel": {
@@ -55,18 +40,21 @@
                             },
                             "path": {
                                 "type": "string"
-                            },
-                            "type": {
-                                "type": "string",
-                                "enum": ["microphone", "headset", "music", "jack", "audience", "mc", "lr"]
                             }
                         },
-                        "required": ["name", "path", "type"],
+                        "required": [
+                            "name",
+                            "path"
+                        ],
                         "additionalProperties": false
-                    }
+                    },
+                    "maxItems": 8
                 }
             },
-            "required": ["x32", "channel"],
+            "required": [
+                "x32",
+                "channel"
+            ],
             "additionalProperties": false
         },
         "beamer": {
@@ -85,11 +73,16 @@
                             "default": 80
                         }
                     },
-                    "required": ["host", "port"],
+                    "required": [
+                        "host",
+                        "port"
+                    ],
                     "additionalProperties": false
                 }
             },
-            "required": ["ptmahdbt42"],
+            "required": [
+                "ptmahdbt42"
+            ],
             "additionalProperties": false
         },
         "lighting": {
@@ -124,7 +117,14 @@
                             "patternProperties": {
                                 "^[a-zA-Z0-9_-]+$": {
                                     "type": "string",
-                                    "enum": ["generic", "red", "green", "blue", "white", "dimmer"],
+                                    "enum": [
+                                        "generic",
+                                        "red",
+                                        "green",
+                                        "blue",
+                                        "white",
+                                        "dimmer"
+                                    ],
                                     "default": "generic"
                                 }
                             },
@@ -155,7 +155,11 @@
                                     "maximum": 512
                                 }
                             },
-                            "required": ["type", "universe", "start_address"],
+                            "required": [
+                                "type",
+                                "universe",
+                                "start_address"
+                            ],
                             "additionalProperties": false
                         }
                     },
@@ -164,13 +168,19 @@
                 },
                 "scenes": {
                     "type": "object",
+                    "maxProperties": 12,
                     "patternProperties": {
                         "^[a-zA-Z0-9_-]+$": {
                             "type": "object",
                             "properties": {
                                 "type": {
                                     "type": "string",
-                                    "enum": ["default", "power-on", "power-off", "colorpicker"],
+                                    "enum": [
+                                        "default",
+                                        "power-on",
+                                        "power-off",
+                                        "colorpicker"
+                                    ],
                                     "default": "default"
                                 },
                                 "reset": {
@@ -194,21 +204,37 @@
                                                 "maximum": 255
                                             }
                                         },
-                                        "required": ["fixture", "channel", "value"],
+                                        "required": [
+                                            "fixture",
+                                            "channel",
+                                            "value"
+                                        ],
                                         "additionalProperties": false
                                     }
                                 }
                             },
-                            "required": ["type", "reset", "values"],
+                            "required": [
+                                "type",
+                                "reset",
+                                "values"
+                            ],
                             "additionalProperties": false
                         }
                     }
                 }
             },
-            "required": ["fixture_types", "fixtures", "scenes"],
+            "required": [
+                "fixture_types",
+                "fixtures",
+                "scenes"
+            ],
             "additionalProperties": false
         }
     },
-    "required": ["server", "audio", "beamer", "lighting"],
+    "required": [
+        "audio",
+        "beamer",
+        "lighting"
+    ],
     "additionalProperties": false
 }

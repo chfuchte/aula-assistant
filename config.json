@@ -1,29 +1,38 @@
 {
     "$schema": "./etc/config.schema.json",
-    "server": {
-        "port": 3000,
-        "corsOrigins": ["*"]
-    },
     "audio": {
         "x32": {
-            "host": "127.0.0.1",
+            "host": "192.168.178.120",
             "port": 10023
         },
         "channel": [
             {
                 "name": "M1",
-                "path": "/ch/01",
-                "type": "microphone"
+                "path": "/ch/01"
             },
             {
                 "name": "M2",
-                "path": "/ch/02",
-                "type": "microphone"
+                "path": "/ch/02"
             },
             {
                 "name": "M3",
-                "path": "/ch/03",
-                "type": "microphone"
+                "path": "/ch/03"
+            },
+            {
+                "name": "Catchbox",
+                "path": "/ch/04"
+            },
+            {
+                "name": "Bluetooth (DN300Z)",
+                "path": "/ch/09"
+            },
+            {
+                "name": "HDMI (Beamer)",
+                "path": "/ch/11"
+            },
+            {
+                "name": "Sub (Bass)",
+                "path": "/mix/main/m"
             }
         ]
     },
@@ -52,7 +61,128 @@
             }
         },
         "scenes": {
-            "power-on": {
+            "1": {
+                "type": "power-on",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "2": {
+                "type": "power-on",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "3": {
+                "type": "power-on",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "4": {
+                "type": "power-on",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "5": {
+                "type": "power-on",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "6": {
+                "type": "power-on",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "7": {
+                "type": "power-on",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "8": {
+                "type": "power-on",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "9": {
+                "type": "power-on",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "10": {
+                "type": "power-on",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "11": {
+                "type": "power-on",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "12": {
                 "type": "power-on",
                 "reset": true,
                 "values": [

@@ -39,12 +39,12 @@ export const Route = createRootRoute({
 
 function Root() {
     return (
-        <html lang="de">
+        <html lang="de" suppressHydrationWarning>
             <head>
                 <HeadContent />
             </head>
             <body>
-                <ThemeProvider defaultTheme="system" storageKey="aula-assistant-ui-theme">
+                <ThemeProvider defaultTheme="dark" storageKey="aula-assistant-ui-theme">
                     <Outlet />
                 </ThemeProvider>
 

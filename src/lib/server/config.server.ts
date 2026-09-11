@@ -1,69 +1,24 @@
-import "@tanstack/react-start/server-only";
-
-import { env } from "@/lib/env.server";
+import { env } from "@/lib/server/env.server";
 import { tryCatchSync } from "@/utils";
 import { logger } from "@/utils/logger";
 import { readFileSync } from "node:fs";
 import { isAbsolute, join } from "node:path";
 import { z } from "zod";
 
-type Config = z.infer<typeof configSchema>;
-
-export const config: Config = loadConfig();
-
-function loadConfig() {
-    const log = logger("config");
-
-    const filePath = isAbsolute(env.CONFIG_FILE) ? env.CONFIG_FILE : join(process.cwd(), env.CONFIG_FILE);
-
-    const [configText, readError] = tryCatchSync(() => readFileSync(filePath, "utf-8"));
-    if (readError) {
-        process.exit(1);
-    }
-
-    const [configData, parseError] = tryCatchSync(() => JSON.parse(configText));
-    if (parseError) {
-        process.exit(1);
-    }
-
-    const parsedConfig = configSchema.safeParse(configData);
-    if (!parsedConfig.success) {
-        process.exit(1);
-    }
-
-    return parsedConfig.data;
-}
-
 export const configSchema = z.object({
-    server: z.object({
-        port: z.number().int().min(1).max(65535),
-        corsOrigins: z
-            .array(z.string())
-            .default(["*"])
-            .transform((origins) => {
-                let o: string[] | string = origins.map((origin) => origin.trim());
-
-                if (o.includes("*")) {
-                    o = "*";
-                } else if (o.length === 1) {
-                    o = o[0];
-                }
-
-                return o;
-            }),
-    }),
     audio: z.object({
         x32: z.object({
             host: z.string(),
             port: z.number().int().min(1).max(65535).default(10023),
         }),
-        channel: z.array(
-            z.object({
-                name: z.string().nonempty(),
-                path: z.string().regex(/^\/[a-zA-Z0-9_/]*[a-zA-Z0-9_]$/),
-                type: z.enum(["microphone", "headset", "music", "jack", "audience", "mc", "lr"]),
-            }),
-        ),
+        channel: z
+            .array(
+                z.object({
+                    name: z.string().nonempty(),
+                    path: z.string().regex(/^\/[a-zA-Z0-9_/]*[a-zA-Z0-9_]$/),
+                }),
+            )
+            .max(8, "There can be at most 8 audio channels."),
     }),
     beamer: z.object({
         ptmahdbt42: z.object({
@@ -90,20 +45,24 @@ export const configSchema = z.object({
                     start_address: z.number().int().min(1).max(512),
                 }),
             ),
-            scenes: z.record(
-                z.string().nonempty(),
-                z.object({
-                    type: z.enum(["default", "power-on", "power-off"]).default("default"),
-                    reset: z.boolean().default(false),
-                    values: z.array(
-                        z.object({
-                            fixture: z.string().nonempty(),
-                            channel: z.string().nonempty(),
-                            value: z.number().int().min(0).max(255),
-                        }),
-                    ),
+            scenes: z
+                .record(
+                    z.string().nonempty(),
+                    z.object({
+                        type: z.enum(["default", "power-on", "power-off"]).default("default"),
+                        reset: z.boolean().default(false),
+                        values: z.array(
+                            z.object({
+                                fixture: z.string().nonempty(),
+                                channel: z.string().nonempty(),
+                                value: z.number().int().min(0).max(255),
+                            }),
+                        ),
+                    }),
+                )
+                .refine((scenes) => Object.keys(scenes).length <= 12, {
+                    message: "There can be at most 12 scenes.",
                 }),
-            ),
         })
         .transform((lighting) => {
             return {
@@ -140,3 +99,38 @@ export const configSchema = z.object({
             };
         }),
 });
+
+type Config = z.infer<typeof configSchema>;
+
+export const config: Config = loadConfig();
+
+function loadConfig() {
+    const filePath = isAbsolute(env.CONFIG_FILE) ? env.CONFIG_FILE : join(process.cwd(), env.CONFIG_FILE);
+
+    const [configText, readError] = tryCatchSync(() => readFileSync(filePath, "utf-8"));
+    if (readError) {
+        logger("config")("error", readError);
+        throw readError;
+    }
+
+    const [configData, parseError] = tryCatchSync(() => JSON.parse(configText));
+    if (parseError) {
+        logger("config")("error", parseError);
+        throw parseError;
+    }
+
+    const [parsedConfig, validationError] = tryCatchSync(() => configSchema.safeParse(configData));
+    if (validationError) {
+        logger("config")("error", validationError);
+        throw validationError;
+    }
+
+    if (!parsedConfig.success) {
+        logger("config")("error", parsedConfig.error);
+        throw new Error("Config validation failed");
+    }
+
+    logger("config")("info", `Loaded config from ${filePath}.`);
+
+    return parsedConfig.data;
+}

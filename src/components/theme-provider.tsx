@@ -67,10 +67,10 @@ export function ThemeProvider({ children, defaultTheme = "system", storageKey = 
     };
 
     return (
-        <ThemeProviderContext value={{ theme, setTheme }}>
+        <ThemeProviderContext.Provider value={{ theme, setTheme }}>
             <ScriptOnce>{getThemeScript(storageKey, defaultTheme)}</ScriptOnce>
             {children}
-        </ThemeProviderContext>
+        </ThemeProviderContext.Provider>
     );
 }
 

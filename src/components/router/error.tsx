@@ -12,7 +12,9 @@ export function ErrorComponent({ reset, error }: ErrorComponentProps) {
     const router = useRouter();
     const queryClient = useQueryClient();
 
-    logger("error-component")("error", JSON.stringify(error, null, 2));
+    logger("error-component")("error", error instanceof Error ? error : new Error(String(error)));
+
+    const errorDetails = error instanceof Error ? (error.stack ?? error.message) : String(error);
 
     return (
         <Page fullscreen>
@@ -22,15 +24,21 @@ export function ErrorComponent({ reset, error }: ErrorComponentProps) {
                         <EmptyMedia>
                             <AlertCircle />
                         </EmptyMedia>
-                        <EmptyTitle>Unexpected Error</EmptyTitle>
+                        <EmptyTitle>Error</EmptyTitle>
                         <EmptyDescription>
-                            Ein fataler Fehler ist aufgetreten. Dies könnte auf ein Problem mit der Anwendung, der
+                            Ein unerwarteter Fehler ist aufgetreten. Dies könnte auf ein Problem mit der Anwendung, der
                             Konfiguration oder Netzwerkproblemen hindeuten. <br />
                             Bitte versuche es erneut oder kontaktiere die Technik AG, wenn das Problem weiterhin
                             bestehen bleibt.
                         </EmptyDescription>
                     </EmptyHeader>
                     <EmptyContent>
+                        <div>
+                            <pre className="w-full max-w-sm overflow-auto rounded-md border bg-muted/60 p-3 text-left text-xs whitespace-pre-wrap text-foreground">
+                                {errorDetails}
+                            </pre>
+                        </div>
+
                         <Button
                             onClick={() => {
                                 router.navigate({ to: "/" });

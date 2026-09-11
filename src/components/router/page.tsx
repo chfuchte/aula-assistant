@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { cn } from "cn";
 import { ArrowLeft, CircleQuestionMark, Cog } from "lucide-react";
 import type { ReactNode } from "react";
@@ -28,8 +28,6 @@ export function Page(
         withSettings: true,
     },
 ) {
-    const router = useRouter();
-
     return (
         <>
             {!props.fullscreen && (
@@ -38,12 +36,10 @@ export function Page(
                         size="icon"
                         variant="ghost"
                         className={props.withBefore ? "visible" : "invisible"}
-                        onClick={() =>
-                            router.navigate({
-                                to: "..",
-                            })
-                        }>
-                        <ArrowLeft className="size-6" />
+                        asChild={props.withBefore}>
+                        <Link to="..">
+                            <ArrowLeft className="size-6" />
+                        </Link>
                     </Button>
 
                     <h1 className="text-lg">{props.title}</h1>

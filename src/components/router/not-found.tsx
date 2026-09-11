@@ -13,15 +13,16 @@ export function NotFoundComponent() {
     return (
         <Page fullscreen>
             <View className="@container relative h-dvh w-full bg-background select-none">
+                <span className="sr-only">404 &en; Seite nicht gefunden</span>
+
                 <img
                     src={theme === "dark" ? LogoDarkMode : LogoLightMode}
                     className="absolute inset-0 top-0 left-0 m-auto aspect-square h-1/2 max-h-[50cqh] w-auto max-w-[50cqw] object-contain"
                 />
-                <div className="absolute bottom-12 flex w-full flex-row items-center justify-center gap-2 p-8">
-                    <Button>
-                        <Link to="/">Zurück zur Startseite</Link>
-                    </Button>
-                </div>
+
+                <Button className="absolute bottom-1/4 left-1/2 -translate-x-1/2" asChild>
+                    <Link to="/">Zurück zur Startseite</Link>
+                </Button>
             </View>
         </Page>
     );
