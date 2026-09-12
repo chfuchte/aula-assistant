@@ -33,10 +33,7 @@ export const configSchema = z.object({
                 port: z.number().int().min(1).max(65535).default(6454),
                 broadcast: z.boolean().default(true),
             }),
-            fixture_types: z.record(
-                z.string().nonempty(),
-                z.record(z.string().nonempty(), z.enum(["generic"]).default("generic")),
-            ),
+            fixture_types: z.record(z.string().nonempty(), z.record(z.string().nonempty(), z.enum(["generic"]))),
             fixtures: z.record(
                 z.string().nonempty(),
                 z.object({
@@ -49,7 +46,7 @@ export const configSchema = z.object({
                 .record(
                     z.string().nonempty(),
                     z.object({
-                        type: z.enum(["default", "power-on", "power-off"]).default("default"),
+                        type: z.enum(["default"]).default("default"),
                         reset: z.boolean().default(false),
                         values: z.array(
                             z.object({
@@ -100,37 +97,37 @@ export const configSchema = z.object({
         }),
 });
 
-type Config = z.infer<typeof configSchema>;
-
-export const config: Config = loadConfig();
+export const config: z.infer<typeof configSchema> = loadConfig();
 
 function loadConfig() {
+    const log = logger("config");
+
     const filePath = isAbsolute(env.CONFIG_FILE) ? env.CONFIG_FILE : join(process.cwd(), env.CONFIG_FILE);
 
     const [configText, readError] = tryCatchSync(() => readFileSync(filePath, "utf-8"));
     if (readError) {
-        logger("config")("error", readError);
+        log("error", readError);
         throw readError;
     }
 
     const [configData, parseError] = tryCatchSync(() => JSON.parse(configText));
     if (parseError) {
-        logger("config")("error", parseError);
+        log("error", parseError);
         throw parseError;
     }
 
     const [parsedConfig, validationError] = tryCatchSync(() => configSchema.safeParse(configData));
     if (validationError) {
-        logger("config")("error", validationError);
+        log("error", validationError);
         throw validationError;
     }
 
     if (!parsedConfig.success) {
-        logger("config")("error", parsedConfig.error);
+        log("error", parsedConfig.error);
         throw new Error("Config validation failed");
     }
 
-    logger("config")("info", `Loaded config from ${filePath}.`);
+    log("info", `Loaded config from ${filePath}.`);
 
     return parsedConfig.data;
 }
