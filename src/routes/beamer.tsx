@@ -1,7 +1,9 @@
 import { GridButton } from "@/components/grid-button";
 import { Page } from "@/components/router/page";
 import { View } from "@/components/router/view";
+import { turnBeamerOff, turnBeamerOn } from "@/lib/functions/beamer.functions";
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { Power, PowerOff } from "lucide-react";
 
 export const Route = createFileRoute("/beamer")({
@@ -9,10 +11,13 @@ export const Route = createFileRoute("/beamer")({
 });
 
 function RouteComponent() {
+    const turnOn = useServerFn(turnBeamerOn);
+    const turnOff = useServerFn(turnBeamerOff);
+
     return (
         <Page title="Beamer" withBefore help withSettings>
             <View className="grid-cols-2 grid-rows-1">
-                <GridButton onClick={() => {}}>
+                <GridButton onClick={() => void turnOn()}>
                     <GridButton.Icon>
                         <Power />
                     </GridButton.Icon>
@@ -20,7 +25,7 @@ function RouteComponent() {
                     <GridButton.Description>Beamer einschalten</GridButton.Description>
                 </GridButton>
 
-                <GridButton onClick={() => {}}>
+                <GridButton onClick={() => void turnOff()}>
                     <GridButton.Icon>
                         <PowerOff />
                     </GridButton.Icon>

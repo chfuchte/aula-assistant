@@ -1,5 +1,3 @@
-import "@tanstack/react-start/server-only";
-
 const PACKET_SIZE = 530;
 const DATA_SIZE = 512;
 

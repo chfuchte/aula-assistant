@@ -24,9 +24,7 @@
                             "default": 10023
                         }
                     },
-                    "required": [
-                        "host"
-                    ],
+                    "required": ["host"],
                     "additionalProperties": false
                 },
                 "channel": {
@@ -41,19 +39,13 @@
                                 "type": "string"
                             }
                         },
-                        "required": [
-                            "name",
-                            "path"
-                        ],
+                        "required": ["name", "path"],
                         "additionalProperties": false
                     },
                     "maxItems": 8
                 }
             },
-            "required": [
-                "x32",
-                "channel"
-            ],
+            "required": ["x32", "channel"],
             "additionalProperties": false
         },
         "beamer": {
@@ -72,15 +64,11 @@
                             "default": 80
                         }
                     },
-                    "required": [
-                        "host"
-                    ],
+                    "required": ["host"],
                     "additionalProperties": false
                 }
             },
-            "required": [
-                "ptmahdbt42"
-            ],
+            "required": ["ptmahdbt42"],
             "additionalProperties": false
         },
         "lighting": {
@@ -115,9 +103,7 @@
                             "patternProperties": {
                                 "^[a-zA-Z0-9_-]+$": {
                                     "type": "string",
-                                    "enum": [
-                                        "generic"
-                                    ],
+                                    "enum": ["generic"],
                                     "default": "generic"
                                 }
                             },
@@ -148,11 +134,7 @@
                                     "maximum": 512
                                 }
                             },
-                            "required": [
-                                "type",
-                                "universe",
-                                "start_address"
-                            ],
+                            "required": ["type", "universe", "start_address"],
                             "additionalProperties": false
                         }
                     },
@@ -168,9 +150,7 @@
                             "properties": {
                                 "type": {
                                     "type": "string",
-                                    "enum": [
-                                        "default"
-                                    ],
+                                    "enum": ["default"],
                                     "default": "default"
                                 },
                                 "reset": {
@@ -194,35 +174,21 @@
                                                 "maximum": 255
                                             }
                                         },
-                                        "required": [
-                                            "fixture",
-                                            "channel",
-                                            "value"
-                                        ],
+                                        "required": ["fixture", "channel", "value"],
                                         "additionalProperties": false
                                     }
                                 }
                             },
-                            "required": [
-                                "values"
-                            ],
+                            "required": ["values"],
                             "additionalProperties": false
                         }
                     }
                 }
             },
-            "required": [
-                "fixture_types",
-                "fixtures",
-                "scenes"
-            ],
+            "required": ["fixture_types", "fixtures", "scenes"],
             "additionalProperties": false
         }
     },
-    "required": [
-        "audio",
-        "beamer",
-        "lighting"
-    ],
+    "required": ["audio", "beamer", "lighting"],
     "additionalProperties": false
 }

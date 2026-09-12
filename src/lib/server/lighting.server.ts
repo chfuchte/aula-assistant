@@ -1,9 +1,9 @@
-import "@tanstack/react-start/server-only";
-
+import { tryCatch, withCauseStack } from "@/utils";
 import { logger } from "@/utils/logger";
 import type { Socket } from "node:dgram";
 import { createSocket } from "node:dgram";
 import { buildArtNetPackage } from "./artnet.server";
+import { config } from "./config.server";
 
 const log = logger("service.lighting");
 
@@ -37,8 +37,6 @@ export class LightingService {
             }
         });
 
-        this.socket.connect(this.port, this.host, () => {});
-
         this.socket.on("error", (err) => {
             log("error", `Socket error: ${err.message}`);
             this.socket.close();
@@ -51,7 +49,7 @@ export class LightingService {
     private reinitializeSocket() {
         this.socket = createSocket("udp4");
         this.socket.connect(this.port, this.host, () => {});
-        log("info", "Reinitializing socket.");
+        log("info", "Reinitializing lighting socket.");
 
         this.socket.on("error", (err) => {
             log("error", `Socket error: ${err.message}`);
@@ -62,37 +60,50 @@ export class LightingService {
         this.socket.on("close", () => {});
     }
 
-    public static initialize(host: string, port: number, broadcast = false, scenes: Scenes): void {
-        if (LightingService._instance) {
-            throw new Error("LightingService is already initialized.");
-        }
-
-        LightingService._instance = new LightingService(host, port, broadcast, scenes);
-    }
-
     public static getInstance(): LightingService {
         if (!LightingService._instance) {
-            throw new Error("LightingService is not initialized. Call LightingService.initialize first.");
+            log("info", "Initializing lighting service.");
+            const { artnet, scenes } = config.lighting;
+            LightingService._instance = new LightingService(artnet.host, artnet.port, artnet.broadcast, scenes);
         }
 
         return LightingService._instance;
     }
 
     public async triggerScene(sceneName: string): Promise<void> {
+        log("debug", `Triggering lighting scene "${sceneName}".`);
+
         const scene = this.scenes[sceneName];
 
-        if (scene.reset) {
-            for (let i = 0; i < this.data.length; i++) {
-                this.data[i] = new Uint8ClampedArray(512).fill(0);
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        if (!scene) {
+            const wrapped = new Error(`Unknown lighting scene "${sceneName}".`);
+            log("error", wrapped);
+            return;
+        }
+
+        try {
+            if (scene.reset) {
+                for (let i = 0; i < this.data.length; i++) {
+                    this.data[i] = new Uint8ClampedArray(512).fill(0);
+                }
             }
-        }
 
-        for (const { universe, address, value } of scene.values) {
-            this.set(universe, address, value);
-        }
+            for (const { universe, address, value } of scene.values) {
+                this.set(universe, address, value);
+            }
 
-        for (const { universe } of scene.values) {
-            await this.send(universe);
+            for (const { universe } of scene.values) {
+                const [_, sendError] = await tryCatch(this.send(universe));
+                if (sendError) {
+                    const wrapped = withCauseStack(`Failed to send the lighting scene "${sceneName}".`, sendError);
+                    log("error", wrapped);
+                    return;
+                }
+            }
+        } catch (caughtError) {
+            const wrapped = withCauseStack(`Lighting scene "${sceneName}" failed to trigger.`, caughtError);
+            log("error", wrapped);
         }
     }
 
@@ -137,7 +148,7 @@ export class LightingService {
             }
 
             const buffer = buildArtNetPackage(universe, this.data[universe]);
-            this.socket.send(buffer, (err) => {
+            this.socket.send(buffer, this.port, this.host, (err) => {
                 if (err) {
                     throw err;
                 } else {

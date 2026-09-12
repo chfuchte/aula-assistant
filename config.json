@@ -62,7 +62,7 @@
         },
         "scenes": {
             "1": {
-                "type": "power-on",
+                "type": "default",
                 "reset": true,
                 "values": [
                     {
@@ -73,7 +73,7 @@
                 ]
             },
             "2": {
-                "type": "power-on",
+                "type": "default",
                 "reset": true,
                 "values": [
                     {
@@ -84,7 +84,7 @@
                 ]
             },
             "3": {
-                "type": "power-on",
+                "type": "default",
                 "reset": true,
                 "values": [
                     {
@@ -95,7 +95,7 @@
                 ]
             },
             "4": {
-                "type": "power-on",
+                "type": "default",
                 "reset": true,
                 "values": [
                     {
@@ -106,7 +106,7 @@
                 ]
             },
             "5": {
-                "type": "power-on",
+                "type": "default",
                 "reset": true,
                 "values": [
                     {
@@ -117,7 +117,7 @@
                 ]
             },
             "6": {
-                "type": "power-on",
+                "type": "default",
                 "reset": true,
                 "values": [
                     {
@@ -128,7 +128,7 @@
                 ]
             },
             "7": {
-                "type": "power-on",
+                "type": "default",
                 "reset": true,
                 "values": [
                     {
@@ -139,7 +139,7 @@
                 ]
             },
             "8": {
-                "type": "power-on",
+                "type": "default",
                 "reset": true,
                 "values": [
                     {
@@ -150,7 +150,7 @@
                 ]
             },
             "9": {
-                "type": "power-on",
+                "type": "default",
                 "reset": true,
                 "values": [
                     {
@@ -161,7 +161,7 @@
                 ]
             },
             "10": {
-                "type": "power-on",
+                "type": "default",
                 "reset": true,
                 "values": [
                     {
@@ -172,7 +172,7 @@
                 ]
             },
             "11": {
-                "type": "power-on",
+                "type": "default",
                 "reset": true,
                 "values": [
                     {
@@ -183,7 +183,7 @@
                 ]
             },
             "12": {
-                "type": "power-on",
+                "type": "default",
                 "reset": true,
                 "values": [
                     {

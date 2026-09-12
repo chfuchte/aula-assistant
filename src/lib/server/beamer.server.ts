@@ -1,12 +1,12 @@
-import "@tanstack/react-start/server-only";
-
+import { tryCatch, withCauseStack } from "@/utils";
 import { logger } from "@/utils/logger";
+import { config } from "./config.server";
 import { sendRS232Command } from "./ptmahdbt42.server";
+
+const log = logger("service.beamer");
 
 const BEAMER_PON = "02 50 4F 4E 03";
 const BEAMER_POF = "02 50 4F 46 03";
-
-const log = logger("service.beamer");
 
 export class BeamerService {
     private static _instance: BeamerService | undefined;
@@ -19,30 +19,37 @@ export class BeamerService {
         this.port = port;
     }
 
-    public static initialize(host: string, port: number): void {
-        if (BeamerService._instance) {
-            throw new Error("BeamerService is already initialized.");
-        }
-
-        BeamerService._instance = new BeamerService(host, port);
-    }
-
     public static getInstance(): BeamerService {
         if (!BeamerService._instance) {
-            throw new Error("BeamerService is not initialized. Call BeamerService.initialize first.");
+            logger("service.beamer")("info", "Initializing beamer service.");
+            BeamerService._instance = new BeamerService(config.beamer.ptmahdbt42.host, config.beamer.ptmahdbt42.port);
         }
 
         return BeamerService._instance;
     }
 
     public async turnOn() {
-        const success = await sendRS232Command(this.host, this.port, BEAMER_PON);
+        log("debug", "Turning beamer on.");
+
+        const [success, error] = await tryCatch(sendRS232Command(this.host, this.port, BEAMER_PON));
+        if (error) {
+            const wrapped = withCauseStack("Failed to power on the beamer.", error);
+            log("error", wrapped);
+            return false;
+        }
 
         return success;
     }
 
     public async turnOff() {
-        const success = await sendRS232Command(this.host, this.port, BEAMER_POF);
+        log("debug", "Turning beamer off.");
+
+        const [success, error] = await tryCatch(sendRS232Command(this.host, this.port, BEAMER_POF));
+        if (error) {
+            const wrapped = withCauseStack("Failed to power off the beamer.", error);
+            log("error", wrapped);
+            return false;
+        }
 
         return success;
     }
