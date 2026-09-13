@@ -32,4 +32,5 @@ This project is licensed under [GNU General Public License v3.0 or later](LICENS
 ## Credits
 
 - Art-Net™ Designed by and Copyright Artistic Licence. The Art-Net™ protocol specification can be found [here](https://art-net.org.uk/).
-- Behringer X32 OSC API documentation can be found [here](https://wiki.munichmakerlab.de/images/1/17/UNOFFICIAL_X32_OSC_REMOTE_PROTOCOL_%281%29.pdf).
+- The OSC API documentation of the Behringer X32 can be found [here](https://wiki.munichmakerlab.de/images/1/17/UNOFFICIAL_X32_OSC_REMOTE_PROTOCOL_%281%29.pdf).
+- The original HTTP API implementation by [@filip326](https://github.com/filip326/) of the PureLink PT-MA-HDBT42 can be found [here](https://github.com/filip326/aua/tree/master/backend/src/utils/beamer_http).
