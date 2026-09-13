@@ -10,6 +10,7 @@ export const configSchema = z.object({
             host: z.string(),
             port: z.number().int().min(1).max(65535).default(10023),
         }),
+        default_szene: z.number().int().min(0).max(99),
         channel: z
             .array(
                 z.object({

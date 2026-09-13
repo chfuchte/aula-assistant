@@ -1,6 +1,7 @@
 import { AudioService } from "@/lib/server/audio.server";
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { config } from "../server/config.server";
 
 export const getAudioChannels = createServerFn({ method: "GET" }).handler(async () => {
     const channels = AudioService.getInstance().getChannels();
@@ -30,3 +31,7 @@ export const setAudioChannelFader = createServerFn({ method: "POST" })
     .handler(async ({ data }) => {
         AudioService.getInstance().setChannelFader(data.channelPath, data.faderValue);
     });
+
+export const loadDefaultAudioScene = createServerFn({ method: "POST" }).handler(async () => {
+    AudioService.getInstance().loadScene(config.audio.default_szene);
+});

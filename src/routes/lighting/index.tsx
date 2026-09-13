@@ -5,7 +5,7 @@ import { getLightingScenes, triggerLightingScene } from "@/lib/functions/lightin
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 
-export const Route = createFileRoute("/lighting")({
+export const Route = createFileRoute("/lighting/")({
     loader: () => getLightingScenes(),
     component: RouteComponent,
 });

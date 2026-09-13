@@ -1,4 +1,3 @@
-import { tryCatchSync } from "@/lib/utils/index";
 import type { Socket } from "node:dgram";
 import { createSocket } from "node:dgram";
 import type { OSCArgument } from "osc-min";
@@ -48,9 +47,7 @@ export class AudioService {
 
         this.socket.connect(this.port, this.host, () => {});
 
-        this.socket.on("error", () => {
-            this.socket.close();
-        });
+        this.socket.on("error", () => {});
 
         this.socket.on("close", () => {});
     }
@@ -90,10 +87,7 @@ export class AudioService {
 
         this.listening = true;
         this.socket.on("message", (buffer, _) => {
-            const [data, err] = tryCatchSync(() => fromBuffer(buffer));
-            if (err) {
-                return;
-            }
+            const data = fromBuffer(buffer);
 
             if (data.oscType === "message") {
                 const msg = data;

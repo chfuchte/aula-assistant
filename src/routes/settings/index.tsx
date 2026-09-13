@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/settings")({
+export const Route = createFileRoute("/settings/")({
     component: RouteComponent,
 });
 

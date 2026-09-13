@@ -5,34 +5,35 @@
             "host": "x32.atec",
             "port": 10023
         },
+        "default_szene": 0,
         "channel": [
             {
                 "name": "M1",
                 "path": "/ch/01"
             },
             {
+                "name": "Headset (H1)",
+                "path": "/ch/05"
+            },
+            {
                 "name": "M2",
                 "path": "/ch/02"
+            },
+            {
+                "name": "Bluetooth (DN300Z)",
+                "path": "/ch/06"
             },
             {
                 "name": "M3",
                 "path": "/ch/03"
             },
             {
+                "name": "HDMI (Beamer)",
+                "path": "/ch/17"
+            },
+            {
                 "name": "Catchbox",
                 "path": "/ch/04"
-            },
-            {
-                "name": "Headset (H1)",
-                "path": "/ch/04"
-            },
-            {
-                "name": "Bluetooth (DN300Z)",
-                "path": "/ch/09"
-            },
-            {
-                "name": "HDMI (Beamer)",
-                "path": "/ch/11"
             },
             {
                 "name": "Sub (Bass)",

@@ -10,36 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AudioRouteImport } from './routes/audio'
-import { Route as BeamerRouteImport } from './routes/beamer'
-import { Route as LightingRouteImport } from './routes/lighting'
-import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ApiAudioRouteImport } from './routes/api/audio'
+import { Route as AudioIndexRouteImport } from './routes/audio/index'
+import { Route as AudioChannelRouteImport } from './routes/audio/channel'
+import { Route as BeamerIndexRouteImport } from './routes/beamer/index'
 import { Route as HelpIndexRouteImport } from './routes/help/index'
+import { Route as LightingIndexRouteImport } from './routes/lighting/index'
+import { Route as SettingsIndexRouteImport } from './routes/settings/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AudioRoute = AudioRouteImport.update({
-  id: '/audio',
-  path: '/audio',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BeamerRoute = BeamerRouteImport.update({
-  id: '/beamer',
-  path: '/beamer',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LightingRoute = LightingRouteImport.update({
-  id: '/lighting',
-  path: '/lighting',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAudioRoute = ApiAudioRouteImport.update({
@@ -47,78 +28,110 @@ const ApiAudioRoute = ApiAudioRouteImport.update({
   path: '/api/audio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AudioIndexRoute = AudioIndexRouteImport.update({
+  id: '/audio/',
+  path: '/audio/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AudioChannelRoute = AudioChannelRouteImport.update({
+  id: '/audio/channel',
+  path: '/audio/channel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeamerIndexRoute = BeamerIndexRouteImport.update({
+  id: '/beamer/',
+  path: '/beamer/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HelpIndexRoute = HelpIndexRouteImport.update({
   id: '/help/',
   path: '/help/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LightingIndexRoute = LightingIndexRouteImport.update({
+  id: '/lighting/',
+  path: '/lighting/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsIndexRoute = SettingsIndexRouteImport.update({
+  id: '/settings/',
+  path: '/settings/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/audio': typeof AudioRoute
-  '/beamer': typeof BeamerRoute
-  '/lighting': typeof LightingRoute
-  '/settings': typeof SettingsRoute
   '/api/audio': typeof ApiAudioRoute
+  '/audio/channel': typeof AudioChannelRoute
+  '/audio/': typeof AudioIndexRoute
+  '/beamer/': typeof BeamerIndexRoute
   '/help/': typeof HelpIndexRoute
+  '/lighting/': typeof LightingIndexRoute
+  '/settings/': typeof SettingsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/audio': typeof AudioRoute
-  '/beamer': typeof BeamerRoute
-  '/lighting': typeof LightingRoute
-  '/settings': typeof SettingsRoute
   '/api/audio': typeof ApiAudioRoute
+  '/audio/channel': typeof AudioChannelRoute
+  '/audio': typeof AudioIndexRoute
+  '/beamer': typeof BeamerIndexRoute
   '/help': typeof HelpIndexRoute
+  '/lighting': typeof LightingIndexRoute
+  '/settings': typeof SettingsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/audio': typeof AudioRoute
-  '/beamer': typeof BeamerRoute
-  '/lighting': typeof LightingRoute
-  '/settings': typeof SettingsRoute
   '/api/audio': typeof ApiAudioRoute
+  '/audio/channel': typeof AudioChannelRoute
+  '/audio/': typeof AudioIndexRoute
+  '/beamer/': typeof BeamerIndexRoute
   '/help/': typeof HelpIndexRoute
+  '/lighting/': typeof LightingIndexRoute
+  '/settings/': typeof SettingsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/audio'
-    | '/beamer'
-    | '/lighting'
-    | '/settings'
     | '/api/audio'
+    | '/audio/channel'
+    | '/audio/'
+    | '/beamer/'
     | '/help/'
+    | '/lighting/'
+    | '/settings/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/api/audio'
+    | '/audio/channel'
     | '/audio'
     | '/beamer'
+    | '/help'
     | '/lighting'
     | '/settings'
-    | '/api/audio'
-    | '/help'
   id:
     | '__root__'
     | '/'
-    | '/audio'
-    | '/beamer'
-    | '/lighting'
-    | '/settings'
     | '/api/audio'
+    | '/audio/channel'
+    | '/audio/'
+    | '/beamer/'
     | '/help/'
+    | '/lighting/'
+    | '/settings/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AudioRoute: typeof AudioRoute
-  BeamerRoute: typeof BeamerRoute
-  LightingRoute: typeof LightingRoute
-  SettingsRoute: typeof SettingsRoute
   ApiAudioRoute: typeof ApiAudioRoute
+  AudioChannelRoute: typeof AudioChannelRoute
+  AudioIndexRoute: typeof AudioIndexRoute
+  BeamerIndexRoute: typeof BeamerIndexRoute
   HelpIndexRoute: typeof HelpIndexRoute
+  LightingIndexRoute: typeof LightingIndexRoute
+  SettingsIndexRoute: typeof SettingsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -130,39 +143,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/audio': {
-      id: '/audio'
-      path: '/audio'
-      fullPath: '/audio'
-      preLoaderRoute: typeof AudioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/beamer': {
-      id: '/beamer'
-      path: '/beamer'
-      fullPath: '/beamer'
-      preLoaderRoute: typeof BeamerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lighting': {
-      id: '/lighting'
-      path: '/lighting'
-      fullPath: '/lighting'
-      preLoaderRoute: typeof LightingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/api/audio': {
       id: '/api/audio'
       path: '/api/audio'
       fullPath: '/api/audio'
       preLoaderRoute: typeof ApiAudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audio/': {
+      id: '/audio/'
+      path: '/audio'
+      fullPath: '/audio/'
+      preLoaderRoute: typeof AudioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audio/channel': {
+      id: '/audio/channel'
+      path: '/audio/channel'
+      fullPath: '/audio/channel'
+      preLoaderRoute: typeof AudioChannelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beamer/': {
+      id: '/beamer/'
+      path: '/beamer'
+      fullPath: '/beamer/'
+      preLoaderRoute: typeof BeamerIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/help/': {
@@ -172,17 +178,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HelpIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lighting/': {
+      id: '/lighting/'
+      path: '/lighting'
+      fullPath: '/lighting/'
+      preLoaderRoute: typeof LightingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/': {
+      id: '/settings/'
+      path: '/settings'
+      fullPath: '/settings/'
+      preLoaderRoute: typeof SettingsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AudioRoute: AudioRoute,
-  BeamerRoute: BeamerRoute,
-  LightingRoute: LightingRoute,
-  SettingsRoute: SettingsRoute,
   ApiAudioRoute: ApiAudioRoute,
+  AudioChannelRoute: AudioChannelRoute,
+  AudioIndexRoute: AudioIndexRoute,
+  BeamerIndexRoute: BeamerIndexRoute,
   HelpIndexRoute: HelpIndexRoute,
+  LightingIndexRoute: LightingIndexRoute,
+  SettingsIndexRoute: SettingsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

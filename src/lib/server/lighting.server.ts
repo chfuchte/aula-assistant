@@ -33,22 +33,7 @@ export class LightingService {
             }
         });
 
-        this.socket.on("error", (_err) => {
-            this.socket.close();
-            this.reinitializeSocket();
-        });
-
-        this.socket.on("close", () => {});
-    }
-
-    private reinitializeSocket() {
-        this.socket = createSocket("udp4");
-        this.socket.connect(this.port, this.host, () => {});
-
-        this.socket.on("error", (_err) => {
-            this.socket.close();
-            this.reinitializeSocket();
-        });
+        this.socket.on("error", (_err) => {});
 
         this.socket.on("close", () => {});
     }

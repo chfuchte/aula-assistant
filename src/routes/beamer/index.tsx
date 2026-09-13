@@ -6,7 +6,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { Power, PowerOff } from "lucide-react";
 
-export const Route = createFileRoute("/beamer")({
+export const Route = createFileRoute("/beamer/")({
     component: RouteComponent,
 });
 
