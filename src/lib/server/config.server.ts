@@ -1,6 +1,5 @@
 import { env } from "@/lib/server/env.server";
-import { tryCatchSync } from "@/utils";
-import { logger } from "@/utils/logger";
+import { tryCatchSync } from "@/lib/utils";
 import { readFileSync } from "node:fs";
 import { isAbsolute, join } from "node:path";
 import { z } from "zod";
@@ -100,34 +99,22 @@ export const configSchema = z.object({
 export const config: z.infer<typeof configSchema> = loadConfig();
 
 function loadConfig() {
-    const log = logger("config");
-
     const filePath = isAbsolute(env.CONFIG_FILE) ? env.CONFIG_FILE : join(process.cwd(), env.CONFIG_FILE);
 
     const [configText, readError] = tryCatchSync(() => readFileSync(filePath, "utf-8"));
     if (readError) {
-        log("error", readError);
-        throw readError;
+        throw new Error("Failed to read config file", { cause: readError });
     }
 
     const [configData, parseError] = tryCatchSync(() => JSON.parse(configText));
     if (parseError) {
-        log("error", parseError);
-        throw parseError;
+        throw new Error("Config file is not valid JSON", { cause: parseError });
     }
 
-    const [parsedConfig, validationError] = tryCatchSync(() => configSchema.safeParse(configData));
+    const [parsedConfig, validationError] = tryCatchSync(() => configSchema.parse(configData));
     if (validationError) {
-        log("error", validationError);
-        throw validationError;
+        throw new Error("Config file is not valid", { cause: validationError });
     }
 
-    if (!parsedConfig.success) {
-        log("error", parsedConfig.error);
-        throw new Error("Config validation failed");
-    }
-
-    log("info", `Loaded config from ${filePath}.`);
-
-    return parsedConfig.data;
+    return parsedConfig;
 }

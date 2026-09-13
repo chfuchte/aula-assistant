@@ -1,13 +1,10 @@
-import { tryCatchSync } from "@/utils/index";
-import { logger } from "@/utils/logger";
+import { tryCatchSync } from "@/lib/utils/index";
 import type { Socket } from "node:dgram";
 import { createSocket } from "node:dgram";
 import type { OSCArgument } from "osc-min";
 import { fromBuffer, toBuffer } from "osc-min";
 import { publishAudioState } from "./audio-events.server";
 import { config } from "./config.server";
-
-const log = logger("service.audio");
 
 export const CHANNEL_FADER_DELTA = 0.15;
 
@@ -28,7 +25,6 @@ export class AudioService {
     private listening = false;
     private lastMessageReceived = 0;
     private lastPublishedAlive: boolean | null = null;
-    private fatalNetworkError: string | null = null;
     private channelState = new Map<string, AudioChannelState>();
     private listeners: Array<{
         address: string;
@@ -52,10 +48,8 @@ export class AudioService {
 
         this.socket.connect(this.port, this.host, () => {});
 
-        this.socket.on("error", (err) => {
-            log("error", `Audio socket error: ${err.message}`);
+        this.socket.on("error", () => {
             this.socket.close();
-            this.markFatalNetworkError(`Audio socket error: ${err.message}`);
         });
 
         this.socket.on("close", () => {});
@@ -63,7 +57,6 @@ export class AudioService {
 
     public static getInstance(): AudioService {
         if (!AudioService._instance) {
-            log("info", "Initializing audio service.");
             AudioService._instance = new AudioService(config.audio.x32.host, config.audio.x32.port);
         }
 
@@ -95,7 +88,6 @@ export class AudioService {
             return;
         }
 
-        log("debug", "Starting audio listen interval.");
         this.listening = true;
         this.socket.on("message", (buffer, _) => {
             const [data, err] = tryCatchSync(() => fromBuffer(buffer));
@@ -125,7 +117,6 @@ export class AudioService {
             return;
         }
 
-        log("debug", "Stopping audio listen interval.");
         this.listening = false;
         if (this.interval) {
             clearInterval(this.interval);
@@ -140,12 +131,7 @@ export class AudioService {
         return now - this.lastMessageReceived < 15_000; // 15 seconds threshold
     }
 
-    public getFatalNetworkError(): string | null {
-        return this.fatalNetworkError;
-    }
-
     public loadScene(sceneNumber: number) {
-        log("debug", `Loading audio scene ${sceneNumber}.`);
         this.sendOSC("/-action/goscene", sceneNumber);
     }
 
@@ -164,21 +150,18 @@ export class AudioService {
     }
 
     public muteChannel(channelPath: string) {
-        log("debug", `Muting audio channel ${channelPath}.`);
         this.updateChannelState(channelPath, { isMuted: true });
         this.sendOSC(`${channelPath}/mix/on`, 0);
         this.publishAudioState();
     }
 
     public unmuteChannel(channelPath: string) {
-        log("debug", `Unmuting audio channel ${channelPath}.`);
         this.updateChannelState(channelPath, { isMuted: false });
         this.sendOSC(`${channelPath}/mix/on`, 1);
         this.publishAudioState();
     }
 
     public setChannelFader(channelPath: string, faderValue: number) {
-        log("debug", `Setting audio channel ${channelPath} fader to ${faderValue}.`);
         this.updateChannelState(channelPath, { faderValue });
         this.sendOSC(`${channelPath}/mix/fader`, faderValue);
         this.publishAudioState();
@@ -248,7 +231,6 @@ export class AudioService {
         publishAudioState({
             channels: this.getChannels(),
             isAlive: this.isAlive(),
-            fatalError: this.fatalNetworkError,
         });
         this.lastPublishedAlive = this.isAlive();
     }
@@ -259,12 +241,6 @@ export class AudioService {
             return;
         }
 
-        this.publishAudioState();
-    }
-
-    private markFatalNetworkError(message: string) {
-        this.fatalNetworkError = message;
-        this.stopListenInterval();
         this.publishAudioState();
     }
 

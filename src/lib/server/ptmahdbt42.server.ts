@@ -1,8 +1,4 @@
-import { tryCatch } from "@/utils";
-import { logger } from "@/utils/logger";
 import net from "node:net";
-
-const log = logger("lib.ptmahdbt42");
 
 const CRLF = "\r\n";
 const HEADER_BODY_SEPARATOR = "\r\n\r\n";
@@ -35,8 +31,7 @@ export async function sendRS232Command(
     port: number,
     command: string,
     timeoutMs: number = 1000,
-): Promise<boolean> {
-    log("debug", `Sending RS232 command to ${host}:${port}.`);
+): Promise<void> {
     const requestOptions: PTMAHDBT42RequestOptions = {
         method: "POST",
         path: "/cgi-bin/MMX32_Keyvalue.cgi",
@@ -44,13 +39,7 @@ export async function sendRS232Command(
     };
 
     // ignoring the response for now, just checking for errors
-    const [_response, error] = await tryCatch(fetchPTMAHDBT42(host, port, requestOptions, timeoutMs));
-    if (error) {
-        log("error", error instanceof Error ? error : new Error(String(error)));
-        return false;
-    }
-
-    return true;
+    await fetchPTMAHDBT42(host, port, requestOptions, timeoutMs);
 }
 
 export async function fetchPTMAHDBT42(

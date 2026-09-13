@@ -1,11 +1,7 @@
-import { tryCatch, withCauseStack } from "@/utils";
-import { logger } from "@/utils/logger";
 import type { Socket } from "node:dgram";
 import { createSocket } from "node:dgram";
 import { buildArtNetPackage } from "./artnet.server";
 import { config } from "./config.server";
-
-const log = logger("service.lighting");
 
 type Scenes = Record<
     string,
@@ -37,8 +33,7 @@ export class LightingService {
             }
         });
 
-        this.socket.on("error", (err) => {
-            log("error", `Socket error: ${err.message}`);
+        this.socket.on("error", (_err) => {
             this.socket.close();
             this.reinitializeSocket();
         });
@@ -49,10 +44,8 @@ export class LightingService {
     private reinitializeSocket() {
         this.socket = createSocket("udp4");
         this.socket.connect(this.port, this.host, () => {});
-        log("info", "Reinitializing lighting socket.");
 
-        this.socket.on("error", (err) => {
-            log("error", `Socket error: ${err.message}`);
+        this.socket.on("error", (_err) => {
             this.socket.close();
             this.reinitializeSocket();
         });
@@ -62,7 +55,6 @@ export class LightingService {
 
     public static getInstance(): LightingService {
         if (!LightingService._instance) {
-            log("info", "Initializing lighting service.");
             const { artnet, scenes } = config.lighting;
             LightingService._instance = new LightingService(artnet.host, artnet.port, artnet.broadcast, scenes);
         }
@@ -70,40 +62,21 @@ export class LightingService {
         return LightingService._instance;
     }
 
-    public async triggerScene(sceneName: string): Promise<void> {
-        log("debug", `Triggering lighting scene "${sceneName}".`);
-
+    public triggerScene(sceneName: string) {
         const scene = this.scenes[sceneName];
 
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        if (!scene) {
-            const wrapped = new Error(`Unknown lighting scene "${sceneName}".`);
-            log("error", wrapped);
-            return;
+        if (scene.reset) {
+            for (let i = 0; i < this.data.length; i++) {
+                this.data[i] = new Uint8ClampedArray(512).fill(0);
+            }
         }
 
-        try {
-            if (scene.reset) {
-                for (let i = 0; i < this.data.length; i++) {
-                    this.data[i] = new Uint8ClampedArray(512).fill(0);
-                }
-            }
+        for (const { universe, address, value } of scene.values) {
+            this.set(universe, address, value);
+        }
 
-            for (const { universe, address, value } of scene.values) {
-                this.set(universe, address, value);
-            }
-
-            for (const { universe } of scene.values) {
-                const [_, sendError] = await tryCatch(this.send(universe));
-                if (sendError) {
-                    const wrapped = withCauseStack(`Failed to send the lighting scene "${sceneName}".`, sendError);
-                    log("error", wrapped);
-                    return;
-                }
-            }
-        } catch (caughtError) {
-            const wrapped = withCauseStack(`Lighting scene "${sceneName}" failed to trigger.`, caughtError);
-            log("error", wrapped);
+        for (const { universe } of scene.values) {
+            this.send(universe);
         }
     }
 
@@ -131,7 +104,7 @@ export class LightingService {
         this.data[universe][channel - 1] = value;
     }
 
-    private async send(universe: number | undefined = undefined): Promise<void> {
+    private send(universe: number | undefined = undefined) {
         if (universe === undefined) {
             this.data.forEach((data, uni) => {
                 const buffer = buildArtNetPackage(uni, data);

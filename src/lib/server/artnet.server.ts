@@ -1,7 +1,11 @@
+import assert from "node:assert";
+
 const PACKET_SIZE = 530;
 const DATA_SIZE = 512;
 
 export function buildArtNetPackage(universe: number, data: Uint8Array | Uint8ClampedArray): Uint8Array {
+    assert(data.length === DATA_SIZE, `Data length must be ${DATA_SIZE}, but got ${data.length}`);
+
     const hUni = (universe >> 8) & 0xff;
     const lUni = universe & 0xff;
     const hLen = (DATA_SIZE >> 8) & 0xff;
@@ -31,6 +35,8 @@ export function buildArtNetPackage(universe: number, data: Uint8Array | Uint8Cla
 
     // Art-Net data
     pkg.set(data, 18);
+
+    assert(pkg.length === PACKET_SIZE, `Packet length must be ${PACKET_SIZE}, but got ${pkg.length}`);
 
     return pkg;
 }

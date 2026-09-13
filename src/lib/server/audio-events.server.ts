@@ -3,7 +3,6 @@ import type { AudioChannelState } from "./audio.server";
 export type AudioStreamState = {
     channels: AudioChannelState[];
     isAlive: boolean;
-    fatalError?: string | null;
 };
 
 const listeners = new Set<(state: AudioStreamState) => void>();

@@ -24,7 +24,6 @@ export const Route = createFileRoute("/api/audio")({
                             encodeEvent({
                                 channels: audioService.getChannels(),
                                 isAlive: audioService.isAlive(),
-                                fatalError: audioService.getFatalNetworkError(),
                             }),
                         );
 

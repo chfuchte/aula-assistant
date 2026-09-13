@@ -26,12 +26,7 @@ function RouteComponent() {
     const unmuteChannel = useServerFn(unmuteAudioChannel);
     const setChannelFader = useServerFn(setAudioChannelFader);
     const [channels, setChannels] = useState<AudioChannelState[]>(() => loadedChannels);
-    const [fatalError, setFatalError] = useState<Error | null>(null);
     const [draftFaders, setDraftFaders] = useState<Record<string, number | undefined>>({});
-
-    if (fatalError) {
-        throw fatalError;
-    }
 
     useEffect(() => {
         setChannels(loadedChannels);
@@ -44,15 +39,7 @@ function RouteComponent() {
             const payload = JSON.parse(event.data) as {
                 channels?: AudioChannelState[];
                 isAlive?: boolean;
-                fatalError?: string | null;
             };
-
-            if (payload.fatalError) {
-                const error = new Error(payload.fatalError);
-                (error as Error & { fatal?: true }).fatal = true;
-                setFatalError(error);
-                return;
-            }
 
             if (payload.channels) {
                 setChannels(payload.channels);
@@ -86,7 +73,6 @@ function RouteComponent() {
                                 {channel.name}
                             </span>
                             <Toggle
-                                size="lg"
                                 variant="outline"
                                 pressed={!channel.isMuted}
                                 onPressedChange={(pressed) => {
@@ -136,7 +122,6 @@ function RouteComponent() {
                                 {channel.name}
                             </span>
                             <Toggle
-                                size="lg"
                                 variant="outline"
                                 pressed={!channel.isMuted}
                                 className="shrink-0"
