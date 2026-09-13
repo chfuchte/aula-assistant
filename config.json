@@ -2,7 +2,7 @@
     "$schema": "./etc/config.schema.json",
     "audio": {
         "x32": {
-            "host": "192.168.178.120",
+            "host": "x32.atec",
             "port": 10023
         },
         "channel": [
@@ -23,7 +23,7 @@
                 "path": "/ch/04"
             },
             {
-                "name": "H1",
+                "name": "Headset (H1)",
                 "path": "/ch/04"
             },
             {
@@ -42,19 +42,82 @@
     },
     "beamer": {
         "ptmahdbt42": {
-            "host": "127.0.0.1",
+            "host": "beamer.atec",
             "port": 80
         }
     },
     "lighting": {
         "artnet": {
-            "host": "255.255.255.255",
+            "host": "192.168.1.86",
             "port": 6454,
-            "broadcast": true
+            "broadcast": false
         },
         "fixture_types": {
             "singlechannel": {
                 "on": "generic"
+            },
+            "revueled": {
+                "dimmer": "generic",
+                "strobe": "generic"
+            },
+            "cwww": {
+                "cw": "generic",
+                "ww": "generic",
+                "dimmer": "generic",
+                "strobe": "generic",
+                "colortemp": "generic"
+            },
+            "par64": {
+                "red": "generic",
+                "green": "generic",
+                "blue": "generic",
+                "white": "generic",
+                "cto": "generic",
+                "shutter": "generic",
+                "function": "generic",
+                "dimmer": "generic"
+            },
+            "w648": {
+                "dimmer": "generic",
+                "shutter": "generic",
+                "red": "generic",
+                "green": "generic",
+                "blue": "generic",
+                "function": "generic"
+            },
+            "mhx200": {
+                "pan": "generic",
+                "tilt": "generic",
+                "panFine": "generic",
+                "tiltFine": "generic",
+                "speed": "generic",
+                "color": "generic",
+                "shutter": "generic",
+                "dimmer": "generic",
+                "gobo1": "generic",
+                "gobo1Rotation": "generic",
+                "gobo2": "generic",
+                "focus": "generic",
+                "iris": "generic",
+                "prism": "generic",
+                "function": "generic",
+                "effect": "generic"
+            },
+            "mhz1915": {
+                "pan": "generic",
+                "tilt": "generic",
+                "speed": "generic",
+                "red": "generic",
+                "green": "generic",
+                "blue": "generic",
+                "white": "generic",
+                "effect": "generic",
+                "effectSpeed": "generic",
+                "dimmer": "generic",
+                "shutter": "generic",
+                "zoom": "generic",
+                "function": "generic",
+                "moveEffect": "generic"
             }
         },
         "fixtures": {
@@ -62,140 +125,526 @@
                 "type": "singlechannel",
                 "universe": 0,
                 "start_address": 1
+            },
+            "singlechannel2": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 2
+            },
+            "singlechannel3": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 3
+            },
+            "singlechannel4": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 4
+            },
+            "singlechannel5": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 5
+            },
+            "singlechannel6": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 6
+            },
+            "singlechannel7": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 7
+            },
+            "singlechannel8": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 8
+            },
+            "singlechannel9": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 9
+            },
+            "singlechannel10": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 10
+            },
+            "singlechannel11": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 11
+            },
+            "singlechannel12": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 12
+            },
+            "singlechannel13": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 13
+            },
+            "singlechannel14": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 14
+            },
+            "singlechannel15": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 15
+            },
+            "singlechannel16": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 16
+            },
+            "singlechannel17": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 17
+            },
+            "singlechannel18": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 18
+            },
+            "singlechannel19": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 19
+            },
+            "singlechannel20": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 20
+            },
+            "singlechannel21": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 21
+            },
+            "singlechannel22": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 22
+            },
+            "singlechannel23": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 23
+            },
+            "singlechannel24": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 24
+            },
+            "spot1": {
+                "type": "mhx200",
+                "universe": 0,
+                "start_address": 25
+            },
+            "spot2": {
+                "type": "mhx200",
+                "universe": 0,
+                "start_address": 41
+            },
+            "wash1": {
+                "type": "mhz1915",
+                "universe": 0,
+                "start_address": 134
+            },
+            "wash2": {
+                "type": "mhz1915",
+                "universe": 0,
+                "start_address": 61
+            },
+            "w6481": {
+                "type": "w648",
+                "universe": 0,
+                "start_address": 200
+            },
+            "w6482": {
+                "type": "w648",
+                "universe": 0,
+                "start_address": 206
+            },
+            "w6483": {
+                "type": "w648",
+                "universe": 0,
+                "start_address": 212
+            },
+            "w6484": {
+                "type": "w648",
+                "universe": 0,
+                "start_address": 218
+            },
+            "w6485": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 224
+            },
+            "cwww1": {
+                "type": "cwww",
+                "universe": 0,
+                "start_address": 105
+            },
+            "cwww2": {
+                "type": "cwww",
+                "universe": 0,
+                "start_address": 100
+            },
+            "revueled1": {
+                "type": "revueled",
+                "universe": 0,
+                "start_address": 76
+            },
+            "revueled2": {
+                "type": "revueled",
+                "universe": 0,
+                "start_address": 132
+            },
+            "par64_stage2": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 158
+            },
+            "par64_stage3": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 166
+            },
+            "par64_stage5": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 182
+            },
+            "par64_stage6": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 190
+            },
+            "par64_front1": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 246
+            },
+            "par64_front2": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 230
+            },
+            "par64_front3": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 238
+            },
+            "par64_front4": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 254
             }
         },
         "scenes": {
-            "1": {
+            "Power On (Reset)": {
                 "type": "default",
-                "reset": true,
+                "reset": false,
                 "values": [
                     {
                         "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel2",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel3",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel4",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel5",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel6",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel7",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel8",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel9",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel10",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel11",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel12",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel13",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel14",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel15",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel16",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel17",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel18",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel19",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel20",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel21",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel22",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel23",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel24",
                         "channel": "on",
                         "value": 255
                     }
                 ]
             },
-            "2": {
+            "Power Off": {
                 "type": "default",
                 "reset": true,
                 "values": [
                     {
                         "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel2",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel3",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel4",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel5",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel6",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel7",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel8",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel9",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel10",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel11",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel12",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel13",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel14",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel15",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel16",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel17",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel18",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel19",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel20",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel21",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel22",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel23",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel24",
+                        "channel": "on",
+                        "value": 0
+                    }
+                ]
+            },
+            "Strom (Bühne)": {
+                "type": "default",
+                "reset": false,
+                "values": [
+                    {
+                        "fixture": "singlechannel23",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel24",
                         "channel": "on",
                         "value": 255
                     }
                 ]
             },
-            "3": {
+            "Frontlicht": {
                 "type": "default",
-                "reset": true,
-                "values": [
-                    {
-                        "fixture": "singlechannel1",
-                        "channel": "on",
-                        "value": 255
-                    }
-                ]
+                "reset": false,
+                "values": []
             },
-            "4": {
+            "Frontlicht WW-only": {
                 "type": "default",
-                "reset": true,
-                "values": [
-                    {
-                        "fixture": "singlechannel1",
-                        "channel": "on",
-                        "value": 255
-                    }
-                ]
+                "reset": false,
+                "values": []
             },
-            "5": {
+            "Spot Links": {
                 "type": "default",
-                "reset": true,
-                "values": [
-                    {
-                        "fixture": "singlechannel1",
-                        "channel": "on",
-                        "value": 255
-                    }
-                ]
+                "reset": false,
+                "values": []
             },
-            "6": {
+            "Spot Mitte": {
                 "type": "default",
-                "reset": true,
-                "values": [
-                    {
-                        "fixture": "singlechannel1",
-                        "channel": "on",
-                        "value": 255
-                    }
-                ]
+                "reset": false,
+                "values": []
             },
-            "7": {
+            "Bühne weiß": {
                 "type": "default",
-                "reset": true,
-                "values": [
-                    {
-                        "fixture": "singlechannel1",
-                        "channel": "on",
-                        "value": 255
-                    }
-                ]
+                "reset": false,
+                "values": []
             },
-            "8": {
+            "Disko": {
                 "type": "default",
-                "reset": true,
-                "values": [
-                    {
-                        "fixture": "singlechannel1",
-                        "channel": "on",
-                        "value": 255
-                    }
-                ]
-            },
-            "9": {
-                "type": "default",
-                "reset": true,
-                "values": [
-                    {
-                        "fixture": "singlechannel1",
-                        "channel": "on",
-                        "value": 255
-                    }
-                ]
-            },
-            "10": {
-                "type": "default",
-                "reset": true,
-                "values": [
-                    {
-                        "fixture": "singlechannel1",
-                        "channel": "on",
-                        "value": 255
-                    }
-                ]
-            },
-            "11": {
-                "type": "default",
-                "reset": true,
-                "values": [
-                    {
-                        "fixture": "singlechannel1",
-                        "channel": "on",
-                        "value": 255
-                    }
-                ]
-            },
-            "12": {
-                "type": "default",
-                "reset": true,
-                "values": [
-                    {
-                        "fixture": "singlechannel1",
-                        "channel": "on",
-                        "value": 255
-                    }
-                ]
+                "reset": false,
+                "values": []
             }
         }
     }

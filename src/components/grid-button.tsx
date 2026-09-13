@@ -13,7 +13,10 @@ function GridButtonRoot({
         <Button
             variant="outline"
             asChild={asChild}
-            className={cn("flex size-full flex-col items-center justify-center gap-4 p-8 whitespace-normal", className)}
+            className={cn(
+                "@container flex size-full flex-col items-center justify-center gap-2 px-8 py-4 whitespace-normal @md:gap-4 @md:py-8",
+                className,
+            )}
             {...props}>
             {children}
         </Button>
@@ -25,12 +28,20 @@ function GridButtonIcon({ className, children }: React.ComponentProps<"span">) {
 }
 
 function GridButtonLabel({ className, children }: React.ComponentProps<"span">) {
-    return <span className={cn("text-lg leading-tight font-semibold md:text-xl", className)}>{children}</span>;
+    return (
+        <span className={cn("text-base leading-tight font-semibold @xs:text-lg @sm:text-xl", className)}>
+            {children}
+        </span>
+    );
 }
 
 function GridButtonDescription({ className, children }: React.ComponentProps<"span">) {
     return (
-        <span className={cn("text-sm leading-snug font-normal text-muted-foreground md:text-base", className)}>
+        <span
+            className={cn(
+                "text-xs leading-snug font-normal text-muted-foreground @xs:text-sm @sm:text-base",
+                className,
+            )}>
             {children}
         </span>
     );
