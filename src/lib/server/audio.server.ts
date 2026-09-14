@@ -101,7 +101,7 @@ export class AudioService {
             this.sendOSC("/status");
             this.sendOSC("/xremote");
             this.publishAudioStateIfChanged();
-        }, 1000);
+        }, 2000);
 
         this.publishAudioState();
     }
@@ -235,7 +235,7 @@ export class AudioService {
 
     private publishAudioStateIfChanged() {
         const isAlive = this.isAlive();
-        if (this.lastPublishedAlive === isAlive) {
+        if (this.lastPublishedAlive && isAlive) {
             return;
         }
 

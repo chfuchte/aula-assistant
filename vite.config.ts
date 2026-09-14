@@ -8,7 +8,14 @@ import { defineConfig, loadEnv } from "vite";
 const env = loadEnv(process.env.NODE_ENV || "development", process.cwd(), "");
 
 export default defineConfig({
-    plugins: [tailwindcss(), tanstackStart(), react(), nitro()],
+    plugins: [
+        tailwindcss(),
+        tanstackStart(),
+        react(),
+        nitro({
+            node: true,
+        }),
+    ],
     server: {
         port: 80,
     },

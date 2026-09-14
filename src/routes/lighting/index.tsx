@@ -1,4 +1,5 @@
 import { GridButton } from "@/components/grid-button";
+import { NetworkErrorVirtualPage } from "@/components/network-error";
 import { Page } from "@/components/page";
 import { View } from "@/components/view";
 import { getLightingScenes, triggerLightingScene } from "@/lib/functions/lighting.functions";
@@ -6,6 +7,7 @@ import { tryCatch } from "@/lib/utils";
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { cn } from "cn";
+import { useState } from "react";
 
 export const Route = createFileRoute("/lighting/")({
     loader: () => getLightingScenes(),
@@ -22,6 +24,19 @@ export const Route = createFileRoute("/lighting/")({
 function RouteComponent() {
     const scenes = Route.useLoaderData();
     const triggerScene = useServerFn(triggerLightingScene);
+    const [showNetworkError, setShowNetworkError] = useState<boolean>(false);
+
+    if (showNetworkError) {
+        return (
+            <Page title="Licht" withBefore help={"/help/lighting"} withSettings>
+                <NetworkErrorVirtualPage
+                    onOk={() => {
+                        setShowNetworkError(false);
+                    }}
+                />
+            </Page>
+        );
+    }
 
     return (
         <Page title="Licht" withBefore help={"/help/lighting"} withSettings>
@@ -36,7 +51,7 @@ function RouteComponent() {
                         onClick={async () => {
                             const [, error] = await tryCatch(triggerScene({ data: { sceneName: scene.name } }));
                             if (error) {
-                                alert(`Fehler beim Auslösen der Szene "${scene.name}": ${error.message}`);
+                                setShowNetworkError(true);
                             }
                         }}>
                         <GridButton.Label>{scene.name}</GridButton.Label>
