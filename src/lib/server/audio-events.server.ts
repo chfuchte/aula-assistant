@@ -21,6 +21,10 @@ export function hasAudioChannelListeners(): boolean {
 
 export function publishAudioState(state: AudioStreamState) {
     listeners.forEach((listener) => {
-        listener(state);
+        try {
+            listener(state);
+        } catch (error) {
+            throw new Error(`Error notifying audio state listener: ${error}`);
+        }
     });
 }

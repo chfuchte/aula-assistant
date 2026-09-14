@@ -1,3 +1,4 @@
+import { assert } from "node:console";
 import type { Socket } from "node:dgram";
 import { createSocket } from "node:dgram";
 import { buildArtNetPackage } from "./artnet.server";
@@ -33,9 +34,13 @@ export class LightingService {
             }
         });
 
-        this.socket.on("error", (_err) => {});
+        this.socket.on("error", (err) => {
+            console.error(`LightingService socket error:\n${err.stack}`);
+        });
 
-        this.socket.on("close", () => {});
+        this.socket.on("close", () => {
+            console.log("LightingService socket closed.");
+        });
     }
 
     public static getInstance(): LightingService {
@@ -101,15 +106,13 @@ export class LightingService {
                 });
             });
         } else {
-            if (!this.data[universe]) {
-                throw new Error("Universe not initialized.");
-            }
+            assert(universe >= 0, "Universe must be a non-negative integer.");
+            assert(universe < this.data.length, "Universe does not exist.");
 
             const buffer = buildArtNetPackage(universe, this.data[universe]);
             this.socket.send(buffer, this.port, this.host, (err) => {
                 if (err) {
                     throw err;
-                } else {
                 }
             });
         }

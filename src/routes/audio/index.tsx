@@ -1,7 +1,8 @@
 import { GridButton } from "@/components/grid-button";
-import { Page } from "@/components/router/page";
-import { View } from "@/components/router/view";
+import { Page } from "@/components/page";
+import { View } from "@/components/view";
 import { loadDefaultAudioScene } from "@/lib/functions/audio.functions";
+import { tryCatch } from "@/lib/utils";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { RotateCcw, SlidersVertical } from "lucide-react";
 
@@ -23,7 +24,13 @@ function RouteComponent() {
                     </Link>
                 </GridButton>
 
-                <GridButton onClick={() => void loadDefaultAudioScene()}>
+                <GridButton
+                    onClick={async () => {
+                        const [, error] = await tryCatch(loadDefaultAudioScene());
+                        if (error) {
+                            alert(`Fehler beim Laden der Standard-Szene: ${error.message}`);
+                        }
+                    }}>
                     <GridButton.Icon>
                         <RotateCcw />
                     </GridButton.Icon>

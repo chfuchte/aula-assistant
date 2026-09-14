@@ -1,7 +1,7 @@
-import { Page } from "@/components/router/page";
-import { View } from "@/components/router/view";
+import { Page } from "@/components/page";
 import { Slider } from "@/components/ui/slider";
 import { Toggle } from "@/components/ui/toggle";
+import { View } from "@/components/view";
 import {
     getAudioChannels,
     muteAudioChannel,
@@ -9,6 +9,7 @@ import {
     unmuteAudioChannel,
 } from "@/lib/functions/audio.functions";
 import type { AudioChannelState } from "@/lib/server/audio.server";
+import { tryCatch } from "@/lib/utils";
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { cn } from "cn";
@@ -45,7 +46,9 @@ function RouteComponent() {
             }
 
             if (typeof payload.isAlive === "boolean") {
-                // Keep the source stream alive and monitor health without rendering a stale UI state.
+                if (!payload.isAlive) {
+                    alert("Mischpult ist offline. Bitte überprüfe die Verbindung.");
+                }
             }
         };
 
@@ -65,10 +68,15 @@ function RouteComponent() {
                         <Toggle
                             variant="outline"
                             pressed={!channel.isMuted}
-                            onPressedChange={(pressed) => {
-                                void (pressed
-                                    ? unmuteChannel({ data: { channelPath: channel.path } })
-                                    : muteChannel({ data: { channelPath: channel.path } }));
+                            onPressedChange={async (pressed) => {
+                                const [, error] = await tryCatch(
+                                    pressed
+                                        ? unmuteChannel({ data: { channelPath: channel.path } })
+                                        : muteChannel({ data: { channelPath: channel.path } }),
+                                );
+                                if (error) {
+                                    alert(`Fehler beim ${pressed ? "entmuten" : "muten"} des Kanals: ${error.message}`);
+                                }
                             }}
                             aria-label="Mute channel">
                             <Volume2 className="hidden stroke-muted-foreground group-data-[state=on]/toggle:block" />
@@ -81,13 +89,18 @@ function RouteComponent() {
                             max={1}
                             step={0.01}
                             orientation="horizontal"
-                            onValueChange={(value) => {
-                                void setChannelFader({
-                                    data: {
-                                        channelPath: channel.path,
-                                        faderValue: value[0] ?? channel.faderValue,
-                                    },
-                                });
+                            onValueChange={async (value) => {
+                                const [, error] = await tryCatch(
+                                    setChannelFader({
+                                        data: {
+                                            channelPath: channel.path,
+                                            faderValue: value[0] ?? channel.faderValue,
+                                        },
+                                    }),
+                                );
+                                if (error) {
+                                    alert(`Fehler beim Setzen des Faderwerts: ${error.message}`);
+                                }
                             }}
                         />
                     </div>

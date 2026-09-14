@@ -1,6 +1,6 @@
 import LogoDarkMode from "@/assets/logo_transparent_dark.png";
-import { Page } from "@/components/router/page";
-import { View } from "@/components/router/view";
+import { Page } from "@/components/page";
+import { View } from "@/components/view";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 

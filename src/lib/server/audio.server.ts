@@ -125,7 +125,11 @@ export class AudioService {
         return now - this.lastMessageReceived < 15_000; // 15 seconds threshold
     }
 
-    public loadScene(sceneNumber: number) {
+    public loadDefaultScene() {
+        this.loadScene(config.audio.default_szene);
+    }
+
+    private loadScene(sceneNumber: number) {
         this.sendOSC("/-action/goscene", sceneNumber);
     }
 

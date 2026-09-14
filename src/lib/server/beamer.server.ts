@@ -1,3 +1,4 @@
+import { tryCatch } from "../utils";
 import { config } from "./config.server";
 import { sendRS232Command } from "./ptmahdbt42.server";
 
@@ -24,10 +25,16 @@ export class BeamerService {
     }
 
     public async turnOn() {
-        await sendRS232Command(this.host, this.port, BEAMER_PON);
+        const [, error] = await tryCatch(sendRS232Command(this.host, this.port, BEAMER_PON));
+        if (error) {
+            throw new Error(`Failed to turn beamer on: ${error.message}`);
+        }
     }
 
     public async turnOff() {
-        await sendRS232Command(this.host, this.port, BEAMER_POF);
+        const [, error] = await tryCatch(sendRS232Command(this.host, this.port, BEAMER_POF));
+        if (error) {
+            throw new Error(`Failed to turn beamer off: ${error.message}`);
+        }
     }
 }

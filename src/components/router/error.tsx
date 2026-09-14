@@ -1,5 +1,5 @@
-import { Page } from "@/components/router/page";
-import { View } from "@/components/router/view";
+import { Page } from "@/components/page";
+import { View } from "@/components/view";
 import { Button } from "@/components/ui/button";
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty";
 import { useQueryClient } from "@tanstack/react-query";

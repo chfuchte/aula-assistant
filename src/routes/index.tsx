@@ -1,6 +1,6 @@
 import { GridButton } from "@/components/grid-button";
-import { Page } from "@/components/router/page";
-import { View } from "@/components/router/view";
+import { Page } from "@/components/page";
+import { View } from "@/components/view";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { Lightbulb, Lock, Music, Projector } from "lucide-react";
 

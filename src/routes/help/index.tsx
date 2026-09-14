@@ -1,5 +1,5 @@
-import { Page } from "@/components/router/page";
-import { View } from "@/components/router/view";
+import { Page } from "@/components/page";
+import { View } from "@/components/view";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/help/")({
