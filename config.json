@@ -2,7 +2,7 @@
     "$schema": "./etc/config.schema.json",
     "audio": {
         "x32": {
-            "host": "x32.atec",
+            "host": "192.168.1.6",
             "port": 10023
         },
         "default_szene": 0,
@@ -630,7 +630,18 @@
             "Spot Links": {
                 "type": "default",
                 "reset": false,
-                "values": []
+                "values": [
+                    {
+                        "fixture": "revueled1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "revueled2",
+                        "channel": "dimmer",
+                        "value": 255
+                    }
+                ]
             },
             "Spot Mitte": {
                 "type": "default",

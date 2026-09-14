@@ -1,52 +1,17 @@
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
+import { nitro } from "nitro/vite";
 import path from "node:path";
 import { defineConfig, loadEnv } from "vite";
-import { VitePWA } from "vite-plugin-pwa";
 
 const env = loadEnv(process.env.NODE_ENV || "development", process.cwd(), "");
 
 export default defineConfig({
-    plugins: [
-        tailwindcss(),
-        tanstackStart(),
-        react(),
-        VitePWA({
-            injectRegister: "auto",
-            registerType: "autoUpdate",
-            manifest: {
-                name: "Aula Assistant",
-                short_name: "Aula Assistant",
-                description: "",
-                start_url: "/",
-                display: "standalone",
-                lang: "de",
-                orientation: "any",
-                id: "chfuchte.aula-assistant",
-                dir: "ltr",
-                background_color: "#0a0a0a",
-                theme_color: "#0a0a0a",
-                icons: [
-                    {
-                        src: "/web-app-manifest-192x192.png",
-                        sizes: "192x192",
-                        type: "image/png",
-                        purpose: "maskable",
-                    },
-                    {
-                        src: "/web-app-manifest-512x512.png",
-                        sizes: "512x512",
-                        type: "image/png",
-                        purpose: "maskable",
-                    },
-                ],
-            },
-            workbox: {
-                globPatterns: ["**/*.{js,css,html,ico,png,svg,webmanifest}"],
-            },
-        }),
-    ],
+    plugins: [tailwindcss(), tanstackStart(), react(), nitro()],
+    server: {
+        port: 80,
+    },
     define: {
         __APP_VERSION__: JSON.stringify(env.npm_package_version),
         __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
