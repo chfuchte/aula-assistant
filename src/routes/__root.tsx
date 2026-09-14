@@ -1,4 +1,3 @@
-import { ThemeProvider } from "@/components/theme-provider";
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 
 import css from "@/styles/global.css?url";
@@ -44,9 +43,7 @@ function Root() {
                 <HeadContent />
             </head>
             <body>
-                <ThemeProvider defaultTheme="dark" storageKey="aula-assistant-ui-theme">
-                    <Outlet />
-                </ThemeProvider>
+                <Outlet />
 
                 <Scripts />
             </body>

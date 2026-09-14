@@ -51,7 +51,7 @@ export function Page(
                             </Link>
                         </Button>
 
-                        <Button size="icon" variant="ghost" disabled={props.withSettings === false}>
+                        <Button size="icon" variant="ghost" disabled={/* props.withSettings === false */ true}>
                             <Link to="/settings">
                                 <Cog className="size-6" />
                             </Link>
