@@ -19,6 +19,13 @@ import { useEffect, useState } from "react";
 export const Route = createFileRoute("/audio/channel")({
     loader: () => getAudioChannels(),
     component: RouteComponent,
+    head: () => ({
+        meta: [
+            {
+                title: "ATec Aula Assistant // Audio-Känale",
+            },
+        ],
+    }),
 });
 
 function RouteComponent() {
@@ -58,7 +65,7 @@ function RouteComponent() {
     }, []);
 
     return (
-        <Page title="Audio-Känale" withBefore help withSettings>
+        <Page title="Audio-Känale" withBefore help={"/help/audio"} withSettings>
             <View className="grid grid-cols-2 grid-rows-4 gap-x-12 gap-y-4 pt-4">
                 {channels.map((channel) => (
                     <div key={channel.path} className="relative grid grid-cols-4 grid-rows-1 items-center gap-4">

@@ -17,8 +17,8 @@ function RouteComponent() {
                         <GridButton.Icon>
                             <Music />
                         </GridButton.Icon>
-                        <GridButton.Label>Ton</GridButton.Label>
-                        <GridButton.Description></GridButton.Description>
+                        <GridButton.Label>Audio</GridButton.Label>
+                        <GridButton.Description>Lautstärken der Mikrofone und Musik einstellen</GridButton.Description>
                     </Link>
                 </GridButton>
 
@@ -28,7 +28,7 @@ function RouteComponent() {
                             <Projector />
                         </GridButton.Icon>
                         <GridButton.Label>Beamer</GridButton.Label>
-                        <GridButton.Description></GridButton.Description>
+                        <GridButton.Description>Projektor für die Leinwand ein-/auschalten</GridButton.Description>
                     </Link>
                 </GridButton>
 
@@ -38,7 +38,7 @@ function RouteComponent() {
                             <Lightbulb />
                         </GridButton.Icon>
                         <GridButton.Label>Bühnenbeleuchtung</GridButton.Label>
-                        <GridButton.Description></GridButton.Description>
+                        <GridButton.Description>Lichtstimmungen für die Bühne auswählen</GridButton.Description>
                     </Link>
                 </GridButton>
 
@@ -47,7 +47,7 @@ function RouteComponent() {
                         <Lock />
                     </GridButton.Icon>
                     <GridButton.Label>Bald verfügbar</GridButton.Label>
-                    <GridButton.Description></GridButton.Description>
+                    <GridButton.Description>Bleib gespannt</GridButton.Description>
                 </GridButton>
             </View>
         </Page>

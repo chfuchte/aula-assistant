@@ -5,10 +5,18 @@ import { getLightingScenes, triggerLightingScene } from "@/lib/functions/lightin
 import { tryCatch } from "@/lib/utils";
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
+import { cn } from "cn";
 
 export const Route = createFileRoute("/lighting/")({
     loader: () => getLightingScenes(),
     component: RouteComponent,
+    head: () => ({
+        meta: [
+            {
+                title: "ATec Aula Assistant // Bühnenbeleuchtung",
+            },
+        ],
+    }),
 });
 
 function RouteComponent() {
@@ -16,8 +24,12 @@ function RouteComponent() {
     const triggerScene = useServerFn(triggerLightingScene);
 
     return (
-        <Page title="Licht" withBefore help withSettings>
-            <View className="grid-cols-4 grid-rows-3">
+        <Page title="Licht" withBefore help={"/help/lighting"} withSettings>
+            <View
+                className={cn(
+                    "grid-rows-3",
+                    scenes.length > 9 ? "grid-cols-4" : scenes.length > 6 ? "grid-cols-3" : "grid-cols-2",
+                )}>
                 {scenes.map((scene) => (
                     <GridButton
                         key={scene.name}

@@ -17,6 +17,9 @@ import { Route as BeamerIndexRouteImport } from './routes/beamer/index'
 import { Route as HelpIndexRouteImport } from './routes/help/index'
 import { Route as LightingIndexRouteImport } from './routes/lighting/index'
 import { Route as SettingsIndexRouteImport } from './routes/settings/index'
+import { Route as HelpAudioIndexRouteImport } from './routes/help/audio/index'
+import { Route as HelpBeamerIndexRouteImport } from './routes/help/beamer/index'
+import { Route as HelpLightingIndexRouteImport } from './routes/help/lighting/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +61,21 @@ const SettingsIndexRoute = SettingsIndexRouteImport.update({
   path: '/settings/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HelpAudioIndexRoute = HelpAudioIndexRouteImport.update({
+  id: '/help/audio/',
+  path: '/help/audio/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpBeamerIndexRoute = HelpBeamerIndexRouteImport.update({
+  id: '/help/beamer/',
+  path: '/help/beamer/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpLightingIndexRoute = HelpLightingIndexRouteImport.update({
+  id: '/help/lighting/',
+  path: '/help/lighting/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +86,9 @@ export interface FileRoutesByFullPath {
   '/help/': typeof HelpIndexRoute
   '/lighting/': typeof LightingIndexRoute
   '/settings/': typeof SettingsIndexRoute
+  '/help/audio/': typeof HelpAudioIndexRoute
+  '/help/beamer/': typeof HelpBeamerIndexRoute
+  '/help/lighting/': typeof HelpLightingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +99,9 @@ export interface FileRoutesByTo {
   '/help': typeof HelpIndexRoute
   '/lighting': typeof LightingIndexRoute
   '/settings': typeof SettingsIndexRoute
+  '/help/audio': typeof HelpAudioIndexRoute
+  '/help/beamer': typeof HelpBeamerIndexRoute
+  '/help/lighting': typeof HelpLightingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +113,9 @@ export interface FileRoutesById {
   '/help/': typeof HelpIndexRoute
   '/lighting/': typeof LightingIndexRoute
   '/settings/': typeof SettingsIndexRoute
+  '/help/audio/': typeof HelpAudioIndexRoute
+  '/help/beamer/': typeof HelpBeamerIndexRoute
+  '/help/lighting/': typeof HelpLightingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +128,9 @@ export interface FileRouteTypes {
     | '/help/'
     | '/lighting/'
     | '/settings/'
+    | '/help/audio/'
+    | '/help/beamer/'
+    | '/help/lighting/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +141,9 @@ export interface FileRouteTypes {
     | '/help'
     | '/lighting'
     | '/settings'
+    | '/help/audio'
+    | '/help/beamer'
+    | '/help/lighting'
   id:
     | '__root__'
     | '/'
@@ -121,6 +154,9 @@ export interface FileRouteTypes {
     | '/help/'
     | '/lighting/'
     | '/settings/'
+    | '/help/audio/'
+    | '/help/beamer/'
+    | '/help/lighting/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +168,9 @@ export interface RootRouteChildren {
   HelpIndexRoute: typeof HelpIndexRoute
   LightingIndexRoute: typeof LightingIndexRoute
   SettingsIndexRoute: typeof SettingsIndexRoute
+  HelpAudioIndexRoute: typeof HelpAudioIndexRoute
+  HelpBeamerIndexRoute: typeof HelpBeamerIndexRoute
+  HelpLightingIndexRoute: typeof HelpLightingIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +231,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/help/audio/': {
+      id: '/help/audio/'
+      path: '/help/audio'
+      fullPath: '/help/audio/'
+      preLoaderRoute: typeof HelpAudioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help/beamer/': {
+      id: '/help/beamer/'
+      path: '/help/beamer'
+      fullPath: '/help/beamer/'
+      preLoaderRoute: typeof HelpBeamerIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help/lighting/': {
+      id: '/help/lighting/'
+      path: '/help/lighting'
+      fullPath: '/help/lighting/'
+      preLoaderRoute: typeof HelpLightingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,6 +264,9 @@ const rootRouteChildren: RootRouteChildren = {
   HelpIndexRoute: HelpIndexRoute,
   LightingIndexRoute: LightingIndexRoute,
   SettingsIndexRoute: SettingsIndexRoute,
+  HelpAudioIndexRoute: HelpAudioIndexRoute,
+  HelpBeamerIndexRoute: HelpBeamerIndexRoute,
+  HelpLightingIndexRoute: HelpLightingIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

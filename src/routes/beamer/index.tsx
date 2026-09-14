@@ -9,6 +9,13 @@ import { Power, PowerOff } from "lucide-react";
 
 export const Route = createFileRoute("/beamer/")({
     component: RouteComponent,
+    head: () => ({
+        meta: [
+            {
+                title: "ATec Aula Assistant // Beamer",
+            },
+        ],
+    }),
 });
 
 function RouteComponent() {
@@ -16,7 +23,7 @@ function RouteComponent() {
     const turnOff = useServerFn(turnBeamerOff);
 
     return (
-        <Page title="Beamer" withBefore help withSettings>
+        <Page title="Beamer" withBefore help={"/help/beamer"} withSettings>
             <View className="grid-cols-2 grid-rows-1">
                 <GridButton
                     onClick={async () => {

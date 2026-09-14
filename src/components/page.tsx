@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
 import { cn } from "cn";
 import { ArrowLeft, CircleQuestionMark, Cog } from "lucide-react";
 import type { ReactNode } from "react";
@@ -11,7 +11,7 @@ type PageProps = {
           fullscreen?: false;
 
           withBefore?: boolean;
-          help?: boolean;
+          help?: "/help" | "/help/audio" | "/help/beamer" | "/help/lighting" | boolean;
           withSettings?: boolean;
           title?: string;
       }
@@ -23,11 +23,21 @@ type PageProps = {
 export function Page(
     props: PageProps = {
         fullscreen: false,
-        help: true,
+        help: "/help",
         withBefore: true,
         withSettings: true,
     },
 ) {
+    const router = useRouter();
+
+    if (props.fullscreen === false && props.help !== false) {
+        router.preloadRoute({ to: props.help === true ? "/help" : props.help || "/help" });
+    }
+
+    if (props.fullscreen === false && props.withSettings !== false) {
+        router.preloadRoute({ to: "/settings" });
+    }
+
     return (
         <>
             {!props.fullscreen && (
@@ -36,17 +46,21 @@ export function Page(
                         size="icon"
                         variant="ghost"
                         className={props.withBefore ? "visible" : "invisible"}
-                        asChild={props.withBefore}>
-                        <Link to="..">
-                            <ArrowLeft className="size-6" />
-                        </Link>
+                        onClick={() => {
+                            if (router.history.canGoBack()) {
+                                router.history.back();
+                            } else {
+                                router.navigate({ to: "/" });
+                            }
+                        }}>
+                        <ArrowLeft className="size-6" />
                     </Button>
 
                     <h1 className="text-lg">{props.title}</h1>
 
                     <div className="flex flex-row items-center gap-2">
                         <Button size="icon" variant="ghost" disabled={!props.help}>
-                            <Link to="/help">
+                            <Link to={props.help === true ? "/help" : props.help || "/help"}>
                                 <CircleQuestionMark className="size-6" />
                             </Link>
                         </Button>

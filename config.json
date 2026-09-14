@@ -74,13 +74,13 @@
                 "blue": "generic",
                 "white": "generic",
                 "cto": "generic",
-                "shutter": "generic",
+                "strobe": "generic",
                 "function": "generic",
                 "dimmer": "generic"
             },
             "w648": {
                 "dimmer": "generic",
-                "shutter": "generic",
+                "strobe": "generic",
                 "red": "generic",
                 "green": "generic",
                 "blue": "generic",
@@ -475,6 +475,22 @@
                     }
                 ]
             },
+            "Strom (Bühne)": {
+                "type": "default",
+                "reset": false,
+                "values": [
+                    {
+                        "fixture": "singlechannel23",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel24",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
             "Power Off": {
                 "type": "default",
                 "reset": true,
@@ -601,18 +617,318 @@
                     }
                 ]
             },
-            "Strom (Bühne)": {
+            "Bühne weiß": {
                 "type": "default",
                 "reset": false,
                 "values": [
                     {
-                        "fixture": "singlechannel23",
-                        "channel": "on",
+                        "fixture": "par64_stage2",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "white",
                         "value": 255
                     },
                     {
-                        "fixture": "singlechannel24",
-                        "channel": "on",
+                        "fixture": "par64_stage2",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6481",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6481",
+                        "channel": "green",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6481",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6481",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6481",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6481",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6482",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6482",
+                        "channel": "green",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6482",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6482",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6482",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6482",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6483",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6483",
+                        "channel": "green",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6483",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6483",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6483",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6483",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6484",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6484",
+                        "channel": "green",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6484",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6484",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6484",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6484",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6485",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6485",
+                        "channel": "green",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6485",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6485",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6485",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6485",
+                        "channel": "dimmer",
                         "value": 255
                     }
                 ]
@@ -620,12 +936,434 @@
             "Frontlicht": {
                 "type": "default",
                 "reset": false,
-                "values": []
+                "values": [
+                    {
+                        "fixture": "cwww1",
+                        "channel": "ww",
+                        "value": 200
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "cw",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "colortemp",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "ww",
+                        "value": 200
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "cw",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "colortemp",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "dimmer",
+                        "value": 255
+                    }
+                ]
             },
-            "Frontlicht WW-only": {
+            "Frontlicht WW": {
                 "type": "default",
                 "reset": false,
-                "values": []
+                "values": [
+                    {
+                        "fixture": "cwww1",
+                        "channel": "ww",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "cw",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "colortemp",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "ww",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "cw",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "colortemp",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "red",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "green",
+                        "value": 64
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "dimmer",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "red",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "green",
+                        "value": 64
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "dimmer",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "red",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "green",
+                        "value": 64
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "dimmer",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "red",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "green",
+                        "value": 64
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "dimmer",
+                        "value": 128
+                    }
+                ]
             },
             "Spot Links": {
                 "type": "default",
@@ -637,18 +1375,23 @@
                         "value": 255
                     },
                     {
+                        "fixture": "revueled1",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
                         "fixture": "revueled2",
                         "channel": "dimmer",
                         "value": 255
+                    },
+                    {
+                        "fixture": "revueled2",
+                        "channel": "strobe",
+                        "value": 0
                     }
                 ]
             },
             "Spot Mitte": {
-                "type": "default",
-                "reset": false,
-                "values": []
-            },
-            "Bühne weiß": {
                 "type": "default",
                 "reset": false,
                 "values": []

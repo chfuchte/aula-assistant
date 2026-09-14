@@ -2,12 +2,12 @@ import { Page } from "@/components/page";
 import { View } from "@/components/view";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/help/")({
+export const Route = createFileRoute("/help/audio/")({
     component: RouteComponent,
     head: () => ({
         meta: [
             {
-                title: "ATec Aula Assistant // Hilfe",
+                title: "ATec Aula Assistant // Hilfe (Audio)",
             },
         ],
     }),

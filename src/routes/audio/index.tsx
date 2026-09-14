@@ -8,11 +8,18 @@ import { RotateCcw, SlidersVertical } from "lucide-react";
 
 export const Route = createFileRoute("/audio/")({
     component: RouteComponent,
+    head: () => ({
+        meta: [
+            {
+                title: "ATec Aula Assistant // Audio",
+            },
+        ],
+    }),
 });
 
 function RouteComponent() {
     return (
-        <Page title="Audio" withBefore help withSettings>
+        <Page title="Audio" withBefore help={"/help/audio"} withSettings>
             <View className="grid-cols-2 grid-rows-1">
                 <GridButton asChild>
                     <Link to="/audio/channel">
