@@ -43,15 +43,15 @@
     },
     "beamer": {
         "ptmahdbt42": {
-            "host": "beamer.atec",
+            "host": "192.168.1.101",
             "port": 80
         }
     },
     "lighting": {
         "artnet": {
-            "host": "192.168.1.86",
+            "host": "255.255.255.255",
             "port": 6454,
-            "broadcast": false
+            "broadcast": true
         },
         "fixture_types": {
             "singlechannel": {
@@ -349,14 +349,14 @@
             }
         },
         "scenes": {
-            "Power On (Reset)": {
+            "Power / Reset": {
                 "type": "default",
                 "reset": false,
                 "values": [
                     {
                         "fixture": "singlechannel1",
                         "channel": "on",
-                        "value": 0
+                        "value": 255
                     },
                     {
                         "fixture": "singlechannel2",
@@ -491,7 +491,7 @@
                     }
                 ]
             },
-            "Power Off": {
+            "Alles Aus": {
                 "type": "default",
                 "reset": true,
                 "values": [
@@ -617,7 +617,7 @@
                     }
                 ]
             },
-            "Bühne weiß": {
+            "Bühne Weiß": {
                 "type": "default",
                 "reset": false,
                 "values": [
@@ -1394,12 +1394,469 @@
             "Spot Mitte": {
                 "type": "default",
                 "reset": false,
-                "values": []
+                "values": [
+                    {
+                        "fixture": "spot1",
+                        "channel": "pan",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "tilt",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "panFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "tiltFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "speed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "color",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "shutter",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "gobo1",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "gobo1Rotation",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "gobo2",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "focus",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "iris",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "prism",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "effect",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "pan",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "tilt",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "panFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "tiltFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "speed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "color",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "shutter",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "gobo1",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "gobo1Rotation",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "gobo2",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "focus",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "iris",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "prism",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "effect",
+                        "value": 0
+                    }
+                ]
             },
             "Disko": {
                 "type": "default",
                 "reset": false,
-                "values": []
+                "values": [
+                    {
+                        "fixture": "spot1",
+                        "channel": "pan",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "tilt",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "panFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "tiltFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "speed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "color",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "shutter",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "gobo1",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "gobo1Rotation",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "gobo2",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "focus",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "iris",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "prism",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "effect",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "pan",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "tilt",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "panFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "tiltFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "speed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "color",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "shutter",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "gobo1",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "gobo1Rotation",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "gobo2",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "focus",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "iris",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "prism",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "effect",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "pan",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "tilt",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "speed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "white",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "effect",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "effectSpeed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "shutter",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "zoom",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "moveEffect",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "tilt",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "speed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "white",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "effect",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "effectSpeed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "shutter",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "zoom",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "moveEffect",
+                        "value": 0
+                    }
+                ]
             }
         }
     }
