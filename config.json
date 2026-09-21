@@ -13,7 +13,7 @@
             },
             {
                 "name": "Headset (H1)",
-                "path": "/ch/05"
+                "path": "/ch/04"
             },
             {
                 "name": "M2",
@@ -21,23 +21,19 @@
             },
             {
                 "name": "Bluetooth (DN300Z)",
-                "path": "/ch/06"
+                "path": "/ch/09"
             },
             {
                 "name": "M3",
                 "path": "/ch/03"
             },
             {
-                "name": "HDMI (Beamer)",
-                "path": "/ch/17"
-            },
-            {
                 "name": "Catchbox",
-                "path": "/ch/04"
+                "path": "/ch/11"
             },
             {
                 "name": "Sub (Bass)",
-                "path": "/mix/main/m"
+                "path": "/main/m"
             }
         ]
     },
@@ -49,9 +45,9 @@
     },
     "lighting": {
         "artnet": {
-            "host": "255.255.255.255",
+            "host": "192.168.1.86",
             "port": 6454,
-            "broadcast": true
+            "broadcast": false
         },
         "fixture_types": {
             "singlechannel": {
@@ -351,7 +347,7 @@
         "scenes": {
             "Power / Reset": {
                 "type": "default",
-                "reset": false,
+                "reset": true,
                 "values": [
                     {
                         "fixture": "singlechannel1",
@@ -1206,12 +1202,12 @@
                     {
                         "fixture": "par64_front1",
                         "channel": "red",
-                        "value": 128
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front1",
                         "channel": "green",
-                        "value": 64
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front1",
@@ -1221,7 +1217,7 @@
                     {
                         "fixture": "par64_front1",
                         "channel": "white",
-                        "value": 255
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front1",
@@ -1241,17 +1237,17 @@
                     {
                         "fixture": "par64_front1",
                         "channel": "dimmer",
-                        "value": 128
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front2",
                         "channel": "red",
-                        "value": 128
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front2",
                         "channel": "green",
-                        "value": 64
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front2",
@@ -1261,7 +1257,7 @@
                     {
                         "fixture": "par64_front2",
                         "channel": "white",
-                        "value": 255
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front2",
@@ -1281,17 +1277,17 @@
                     {
                         "fixture": "par64_front2",
                         "channel": "dimmer",
-                        "value": 128
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front3",
                         "channel": "red",
-                        "value": 128
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front3",
                         "channel": "green",
-                        "value": 64
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front3",
@@ -1301,7 +1297,7 @@
                     {
                         "fixture": "par64_front3",
                         "channel": "white",
-                        "value": 255
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front3",
@@ -1321,17 +1317,17 @@
                     {
                         "fixture": "par64_front3",
                         "channel": "dimmer",
-                        "value": 128
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front4",
                         "channel": "red",
-                        "value": 128
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front4",
                         "channel": "green",
-                        "value": 64
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front4",
@@ -1341,7 +1337,7 @@
                     {
                         "fixture": "par64_front4",
                         "channel": "white",
-                        "value": 255
+                        "value": 0
                     },
                     {
                         "fixture": "par64_front4",
@@ -1361,7 +1357,7 @@
                     {
                         "fixture": "par64_front4",
                         "channel": "dimmer",
-                        "value": 128
+                        "value": 0
                     }
                 ]
             },
@@ -1398,12 +1394,12 @@
                     {
                         "fixture": "spot1",
                         "channel": "pan",
-                        "value": 128
+                        "value": 104
                     },
                     {
                         "fixture": "spot1",
                         "channel": "tilt",
-                        "value": 128
+                        "value": 189
                     },
                     {
                         "fixture": "spot1",
@@ -1478,12 +1474,12 @@
                     {
                         "fixture": "spot2",
                         "channel": "pan",
-                        "value": 128
+                        "value": 69
                     },
                     {
                         "fixture": "spot2",
                         "channel": "tilt",
-                        "value": 128
+                        "value": 191
                     },
                     {
                         "fixture": "spot2",
@@ -1589,7 +1585,7 @@
                     {
                         "fixture": "spot1",
                         "channel": "color",
-                        "value": 0
+                        "value": 27
                     },
                     {
                         "fixture": "spot1",
@@ -1614,12 +1610,12 @@
                     {
                         "fixture": "spot1",
                         "channel": "gobo2",
-                        "value": 0
+                        "value": 33
                     },
                     {
                         "fixture": "spot1",
                         "channel": "focus",
-                        "value": 0
+                        "value": 140
                     },
                     {
                         "fixture": "spot1",
@@ -1629,7 +1625,7 @@
                     {
                         "fixture": "spot1",
                         "channel": "prism",
-                        "value": 0
+                        "value": 29
                     },
                     {
                         "fixture": "spot1",
@@ -1669,7 +1665,7 @@
                     {
                         "fixture": "spot2",
                         "channel": "color",
-                        "value": 0
+                        "value": 27
                     },
                     {
                         "fixture": "spot2",
@@ -1694,12 +1690,12 @@
                     {
                         "fixture": "spot2",
                         "channel": "gobo2",
-                        "value": 0
+                        "value": 33
                     },
                     {
                         "fixture": "spot2",
                         "channel": "focus",
-                        "value": 0
+                        "value": 140
                     },
                     {
                         "fixture": "spot2",
@@ -1709,7 +1705,7 @@
                     {
                         "fixture": "spot2",
                         "channel": "prism",
-                        "value": 0
+                        "value": 29
                     },
                     {
                         "fixture": "spot2",
@@ -1759,12 +1755,12 @@
                     {
                         "fixture": "wash1",
                         "channel": "effect",
-                        "value": 0
+                        "value": 107
                     },
                     {
                         "fixture": "wash1",
                         "channel": "effectSpeed",
-                        "value": 0
+                        "value": 210
                     },
                     {
                         "fixture": "wash1",
@@ -1804,12 +1800,12 @@
                     {
                         "fixture": "wash2",
                         "channel": "red",
-                        "value": 255
+                        "value": 0
                     },
                     {
                         "fixture": "wash2",
                         "channel": "green",
-                        "value": 0
+                        "value": 255
                     },
                     {
                         "fixture": "wash2",
@@ -1824,12 +1820,12 @@
                     {
                         "fixture": "wash2",
                         "channel": "effect",
-                        "value": 0
+                        "value": 107
                     },
                     {
                         "fixture": "wash2",
                         "channel": "effectSpeed",
-                        "value": 0
+                        "value": 210
                     },
                     {
                         "fixture": "wash2",
