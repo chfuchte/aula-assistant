@@ -45,9 +45,9 @@
     },
     "lighting": {
         "artnet": {
-            "host": "192.168.1.86",
+            "host": "255.255.255.255",
             "port": 6454,
-            "broadcast": false
+            "broadcast": true
         },
         "fixture_types": {
             "singlechannel": {
@@ -279,7 +279,7 @@
                 "start_address": 218
             },
             "w6485": {
-                "type": "par64",
+                "type": "w648",
                 "universe": 0,
                 "start_address": 224
             },
