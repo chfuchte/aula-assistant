@@ -24,7 +24,7 @@ export const Route = createFileRoute("/audio/")({
 
 function RouteComponent() {
     const [showX32NotReachable, setShowX32NotReachable] = useState<boolean>(false);
-    const suppressUntilRef = useRef<number>(0);
+    const suppressUntilRef = useRef<number>(Date.now() + X32_UNREACHABLE_SUPPRESS_MS / 10);
 
     const triggerX32NotReachable = () => {
         if (Date.now() < suppressUntilRef.current) {

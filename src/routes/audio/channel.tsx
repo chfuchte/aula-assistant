@@ -38,7 +38,7 @@ function RouteComponent() {
     const setChannelFader = useServerFn(setAudioChannelFader);
     const [channels, setChannels] = useState<AudioChannelState[]>(() => loadedChannels);
     const [showX32NotReachable, setShowX32NotReachable] = useState<boolean>(false);
-    const suppressUntilRef = useRef<number>(0);
+    const suppressUntilRef = useRef<number>(Date.now() + X32_UNREACHABLE_SUPPRESS_MS / 10);
     const sendFaderUpdateRef = useRef<Record<string, NodeJS.Timeout>>({});
     const [localFaderValues, setLocalFaderValues] = useState<Record<string, number>>({});
 
