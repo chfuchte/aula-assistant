@@ -1,8 +1,4 @@
-.env
-node_modules
-lib
-dist
-logs
-
-# any files that should not be pushed
-*.local.*
+node_modules/
+dist/
+.tanstack/
+.output/

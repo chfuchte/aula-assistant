@@ -1,0 +1,1859 @@
+{
+    "$schema": "./etc/config.schema.json",
+    "audio": {
+        "x32": {
+            "host": "192.168.1.6",
+            "port": 10023
+        },
+        "default_szene": 0,
+        "channel": [
+            {
+                "name": "M1",
+                "path": "/ch/01"
+            },
+            {
+                "name": "Headset (H1)",
+                "path": "/ch/04"
+            },
+            {
+                "name": "M2",
+                "path": "/ch/02"
+            },
+            {
+                "name": "Bluetooth (DN300Z)",
+                "path": "/ch/09"
+            },
+            {
+                "name": "M3",
+                "path": "/ch/03"
+            },
+            {
+                "name": "Catchbox",
+                "path": "/ch/11"
+            },
+            {
+                "name": "Sub (Bass)",
+                "path": "/main/m"
+            }
+        ]
+    },
+    "beamer": {
+        "ptmahdbt42": {
+            "host": "192.168.1.101",
+            "port": 80
+        }
+    },
+    "lighting": {
+        "artnet": {
+            "host": "255.255.255.255",
+            "port": 6454,
+            "broadcast": true
+        },
+        "fixture_types": {
+            "singlechannel": {
+                "on": "generic"
+            },
+            "revueled": {
+                "dimmer": "generic",
+                "strobe": "generic"
+            },
+            "cwww": {
+                "cw": "generic",
+                "ww": "generic",
+                "dimmer": "generic",
+                "strobe": "generic",
+                "colortemp": "generic"
+            },
+            "par64": {
+                "red": "generic",
+                "green": "generic",
+                "blue": "generic",
+                "white": "generic",
+                "cto": "generic",
+                "strobe": "generic",
+                "function": "generic",
+                "dimmer": "generic"
+            },
+            "w648": {
+                "dimmer": "generic",
+                "strobe": "generic",
+                "red": "generic",
+                "green": "generic",
+                "blue": "generic",
+                "function": "generic"
+            },
+            "mhx200": {
+                "pan": "generic",
+                "tilt": "generic",
+                "panFine": "generic",
+                "tiltFine": "generic",
+                "speed": "generic",
+                "color": "generic",
+                "shutter": "generic",
+                "dimmer": "generic",
+                "gobo1": "generic",
+                "gobo1Rotation": "generic",
+                "gobo2": "generic",
+                "focus": "generic",
+                "iris": "generic",
+                "prism": "generic",
+                "function": "generic",
+                "effect": "generic"
+            },
+            "mhz1915": {
+                "pan": "generic",
+                "tilt": "generic",
+                "speed": "generic",
+                "red": "generic",
+                "green": "generic",
+                "blue": "generic",
+                "white": "generic",
+                "effect": "generic",
+                "effectSpeed": "generic",
+                "dimmer": "generic",
+                "shutter": "generic",
+                "zoom": "generic",
+                "function": "generic",
+                "moveEffect": "generic"
+            }
+        },
+        "fixtures": {
+            "singlechannel1": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 1
+            },
+            "singlechannel2": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 2
+            },
+            "singlechannel3": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 3
+            },
+            "singlechannel4": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 4
+            },
+            "singlechannel5": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 5
+            },
+            "singlechannel6": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 6
+            },
+            "singlechannel7": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 7
+            },
+            "singlechannel8": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 8
+            },
+            "singlechannel9": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 9
+            },
+            "singlechannel10": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 10
+            },
+            "singlechannel11": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 11
+            },
+            "singlechannel12": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 12
+            },
+            "singlechannel13": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 13
+            },
+            "singlechannel14": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 14
+            },
+            "singlechannel15": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 15
+            },
+            "singlechannel16": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 16
+            },
+            "singlechannel17": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 17
+            },
+            "singlechannel18": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 18
+            },
+            "singlechannel19": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 19
+            },
+            "singlechannel20": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 20
+            },
+            "singlechannel21": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 21
+            },
+            "singlechannel22": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 22
+            },
+            "singlechannel23": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 23
+            },
+            "singlechannel24": {
+                "type": "singlechannel",
+                "universe": 0,
+                "start_address": 24
+            },
+            "spot1": {
+                "type": "mhx200",
+                "universe": 0,
+                "start_address": 25
+            },
+            "spot2": {
+                "type": "mhx200",
+                "universe": 0,
+                "start_address": 41
+            },
+            "wash1": {
+                "type": "mhz1915",
+                "universe": 0,
+                "start_address": 134
+            },
+            "wash2": {
+                "type": "mhz1915",
+                "universe": 0,
+                "start_address": 61
+            },
+            "w6481": {
+                "type": "w648",
+                "universe": 0,
+                "start_address": 200
+            },
+            "w6482": {
+                "type": "w648",
+                "universe": 0,
+                "start_address": 206
+            },
+            "w6483": {
+                "type": "w648",
+                "universe": 0,
+                "start_address": 212
+            },
+            "w6484": {
+                "type": "w648",
+                "universe": 0,
+                "start_address": 218
+            },
+            "w6485": {
+                "type": "w648",
+                "universe": 0,
+                "start_address": 224
+            },
+            "cwww1": {
+                "type": "cwww",
+                "universe": 0,
+                "start_address": 105
+            },
+            "cwww2": {
+                "type": "cwww",
+                "universe": 0,
+                "start_address": 100
+            },
+            "revueled1": {
+                "type": "revueled",
+                "universe": 0,
+                "start_address": 76
+            },
+            "revueled2": {
+                "type": "revueled",
+                "universe": 0,
+                "start_address": 132
+            },
+            "par64_stage2": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 158
+            },
+            "par64_stage3": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 166
+            },
+            "par64_stage5": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 182
+            },
+            "par64_stage6": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 190
+            },
+            "par64_front1": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 246
+            },
+            "par64_front2": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 230
+            },
+            "par64_front3": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 238
+            },
+            "par64_front4": {
+                "type": "par64",
+                "universe": 0,
+                "start_address": 254
+            }
+        },
+        "scenes": {
+            "Power / Reset": {
+                "type": "default",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel2",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel3",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel4",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel5",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel6",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel7",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel8",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel9",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel10",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel11",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel12",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel13",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel14",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel15",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel16",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel17",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel18",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel19",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel20",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel21",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel22",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel23",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel24",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "Strom (Bühne)": {
+                "type": "default",
+                "reset": false,
+                "values": [
+                    {
+                        "fixture": "singlechannel23",
+                        "channel": "on",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "singlechannel24",
+                        "channel": "on",
+                        "value": 255
+                    }
+                ]
+            },
+            "Alles Aus": {
+                "type": "default",
+                "reset": true,
+                "values": [
+                    {
+                        "fixture": "singlechannel1",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel2",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel3",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel4",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel5",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel6",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel7",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel8",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel9",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel10",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel11",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel12",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel13",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel14",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel15",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel16",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel17",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel18",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel19",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel20",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel21",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel22",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel23",
+                        "channel": "on",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "singlechannel24",
+                        "channel": "on",
+                        "value": 0
+                    }
+                ]
+            },
+            "Bühne Weiß": {
+                "type": "default",
+                "reset": false,
+                "values": [
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage3",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage5",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_stage6",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6481",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6481",
+                        "channel": "green",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6481",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6481",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6481",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6481",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6482",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6482",
+                        "channel": "green",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6482",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6482",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6482",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6482",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6483",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6483",
+                        "channel": "green",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6483",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6483",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6483",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6483",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6484",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6484",
+                        "channel": "green",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6484",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6484",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6484",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6484",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6485",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6485",
+                        "channel": "green",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6485",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "w6485",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6485",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "w6485",
+                        "channel": "dimmer",
+                        "value": 255
+                    }
+                ]
+            },
+            "Frontlicht": {
+                "type": "default",
+                "reset": false,
+                "values": [
+                    {
+                        "fixture": "cwww1",
+                        "channel": "ww",
+                        "value": 200
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "cw",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "colortemp",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "ww",
+                        "value": 200
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "cw",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "colortemp",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "white",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "dimmer",
+                        "value": 255
+                    }
+                ]
+            },
+            "Frontlicht WW": {
+                "type": "default",
+                "reset": false,
+                "values": [
+                    {
+                        "fixture": "cwww1",
+                        "channel": "ww",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "cw",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "cwww1",
+                        "channel": "colortemp",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "ww",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "cw",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "cwww2",
+                        "channel": "colortemp",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "white",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front1",
+                        "channel": "dimmer",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "white",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front2",
+                        "channel": "dimmer",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "white",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front3",
+                        "channel": "dimmer",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "blue",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "white",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "cto",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "par64_front4",
+                        "channel": "dimmer",
+                        "value": 0
+                    }
+                ]
+            },
+            "Spot Links": {
+                "type": "default",
+                "reset": false,
+                "values": [
+                    {
+                        "fixture": "revueled1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "revueled1",
+                        "channel": "strobe",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "revueled2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "revueled2",
+                        "channel": "strobe",
+                        "value": 0
+                    }
+                ]
+            },
+            "Spot Mitte": {
+                "type": "default",
+                "reset": false,
+                "values": [
+                    {
+                        "fixture": "spot1",
+                        "channel": "pan",
+                        "value": 104
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "tilt",
+                        "value": 189
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "panFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "tiltFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "speed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "color",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "shutter",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "gobo1",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "gobo1Rotation",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "gobo2",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "focus",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "iris",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "prism",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "effect",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "pan",
+                        "value": 69
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "tilt",
+                        "value": 191
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "panFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "tiltFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "speed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "color",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "shutter",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "gobo1",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "gobo1Rotation",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "gobo2",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "focus",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "iris",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "prism",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "effect",
+                        "value": 0
+                    }
+                ]
+            },
+            "Disko": {
+                "type": "default",
+                "reset": false,
+                "values": [
+                    {
+                        "fixture": "spot1",
+                        "channel": "pan",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "tilt",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "panFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "tiltFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "speed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "color",
+                        "value": 27
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "shutter",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "gobo1",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "gobo1Rotation",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "gobo2",
+                        "value": 33
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "focus",
+                        "value": 140
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "iris",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "prism",
+                        "value": 29
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot1",
+                        "channel": "effect",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "pan",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "tilt",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "panFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "tiltFine",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "speed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "color",
+                        "value": 27
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "shutter",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "gobo1",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "gobo1Rotation",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "gobo2",
+                        "value": 33
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "focus",
+                        "value": 140
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "iris",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "prism",
+                        "value": 29
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "spot2",
+                        "channel": "effect",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "pan",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "tilt",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "speed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "red",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "green",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "white",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "effect",
+                        "value": 107
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "effectSpeed",
+                        "value": 210
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "shutter",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "zoom",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash1",
+                        "channel": "moveEffect",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "tilt",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "speed",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "red",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "green",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "blue",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "white",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "effect",
+                        "value": 107
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "effectSpeed",
+                        "value": 210
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "dimmer",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "shutter",
+                        "value": 255
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "zoom",
+                        "value": 128
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "function",
+                        "value": 0
+                    },
+                    {
+                        "fixture": "wash2",
+                        "channel": "moveEffect",
+                        "value": 0
+                    }
+                ]
+            }
+        }
+    }
+}

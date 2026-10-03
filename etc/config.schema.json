@@ -1,0 +1,199 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "chfuchte.aula_assistant.config.schema.json",
+    "title": "ATec Aula Assistant Server configuration file schema",
+    "description": "Schema for the configuration file of the ATec Aula Assistant Server",
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "audio": {
+            "type": "object",
+            "properties": {
+                "x32": {
+                    "type": "object",
+                    "properties": {
+                        "host": {
+                            "type": "string"
+                        },
+                        "port": {
+                            "type": "number",
+                            "minimum": 1,
+                            "maximum": 65535,
+                            "default": 10023
+                        }
+                    },
+                    "required": ["host"],
+                    "additionalProperties": false
+                },
+                "default_szene": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 99
+                },
+                "channel": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "path": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["name", "path"],
+                        "additionalProperties": false
+                    },
+                    "maxItems": 8
+                }
+            },
+            "required": ["x32", "channel"],
+            "additionalProperties": false
+        },
+        "beamer": {
+            "type": "object",
+            "properties": {
+                "ptmahdbt42": {
+                    "type": "object",
+                    "properties": {
+                        "host": {
+                            "type": "string"
+                        },
+                        "port": {
+                            "type": "number",
+                            "minimum": 1,
+                            "maximum": 65535,
+                            "default": 80
+                        }
+                    },
+                    "required": ["host"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["ptmahdbt42"],
+            "additionalProperties": false
+        },
+        "lighting": {
+            "type": "object",
+            "properties": {
+                "artnet": {
+                    "type": "object",
+                    "properties": {
+                        "host": {
+                            "type": "string",
+                            "default": "255.255.255.255"
+                        },
+                        "port": {
+                            "type": "number",
+                            "minimum": 1,
+                            "maximum": 65535,
+                            "default": 6454
+                        },
+                        "broadcast": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    "required": [],
+                    "additionalProperties": false
+                },
+                "fixture_types": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_-]+$": {
+                            "type": "object",
+                            "patternProperties": {
+                                "^[a-zA-Z0-9_-]+$": {
+                                    "type": "string",
+                                    "enum": ["generic"],
+                                    "default": "generic"
+                                }
+                            },
+                            "required": [],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [],
+                    "additionalProperties": false
+                },
+                "fixtures": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_-]+$": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string"
+                                },
+                                "universe": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 15
+                                },
+                                "start_address": {
+                                    "type": "number",
+                                    "minimum": 1,
+                                    "maximum": 512
+                                }
+                            },
+                            "required": ["type", "universe", "start_address"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [],
+                    "additionalProperties": false
+                },
+                "scenes": {
+                    "type": "object",
+                    "maxProperties": 12,
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_-]+$": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "enum": ["default"],
+                                    "default": "default"
+                                },
+                                "reset": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "values": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "fixture": {
+                                                "type": "string"
+                                            },
+                                            "channel": {
+                                                "type": "string"
+                                            },
+                                            "value": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "maximum": 255
+                                            }
+                                        },
+                                        "required": ["fixture", "channel", "value"],
+                                        "additionalProperties": false
+                                    }
+                                }
+                            },
+                            "required": ["values"],
+                            "additionalProperties": false
+                        }
+                    }
+                }
+            },
+            "required": ["fixture_types", "fixtures", "scenes"],
+            "additionalProperties": false
+        }
+    },
+    "required": ["audio", "beamer", "lighting"],
+    "additionalProperties": false
+}
